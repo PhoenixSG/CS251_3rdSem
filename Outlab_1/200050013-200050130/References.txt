@@ -1,0 +1,6 @@
+1. https://stackoverflow.com/questions/18568706/check-number-of-arguments-passed-to-a-bash-script
+2. https://linuxconfig.org/download-file-from-url-on-linux-using-command-line
+3. https://stackoverflow.com/questions/17638543/how-to-ignore-specific-type-of-files-to-download-in-wget
+4. https://unix.stackexchange.com/questions/524059/how-to-use-wget-to-download-directory-recursively-into-directory-with-the-same
+5. https://stackoverflow.com/questions/17282915/how-to-download-an-entire-directory-and-subdirectories-using-wget
+6. https://unix.stackexchange.com/questions/470539/wget-downloading-files-selectively-and-recursively
