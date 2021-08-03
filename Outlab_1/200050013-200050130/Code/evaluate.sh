@@ -1,5 +1,6 @@
 #!/bin/bash
 
+rm -f marksheet.csv
 touch marksheet.csv
 touch distribution.txt
 
@@ -23,11 +24,11 @@ find . -maxdepth 1 -mindepth 1 -type d -printf '%f\n' | while read line || [[ -n
 			./$line/executable  < $iter > $line/student_outputs/$filename.out 2>/dev/null & sleep 1
 			cmp -s $line/student_outputs/$filename.out ../mock_grading/outputs/$filename.out
 			ans=$?
-			#echo $ans
-			if [[ $ans==0 ]]
+			echo $ans
+			if [[ $ans -eq 0 ]]
 			then
-				marks=$(($marks+1))
-				#echo $marks
+				let marks++
+				echo $marks
 			fi
 			#echo "here"
 		done
@@ -35,6 +36,5 @@ find . -maxdepth 1 -mindepth 1 -type d -printf '%f\n' | while read line || [[ -n
     fi   
 done    
 done
-
 
 
