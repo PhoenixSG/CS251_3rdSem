@@ -17,4 +17,6 @@
 16. https://stackoverflow.com/questions/23429197/bash-how-to-print-out-that-files-are-the-same-when-using-cmp
 17. https://linuxize.com/post/bash-append-to-file/
 18. https://unix.stackexchange.com/questions/506099/how-to-create-a-script-to-write-a-csv-file
-19. 
+19. https://stackoverflow.com/questions/4286469/how-to-parse-a-csv-file-in-bash
+20. https://stackoverflow.com/questions/13360925/sort-files-numerically-in-bash
+

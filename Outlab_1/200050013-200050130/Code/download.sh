@@ -7,7 +7,7 @@ fi
 
 filename=$(basename $1)
 
-wget  -rqx -nH -np --reject "index.html{}, index.html, index.html.tmp" --cut-dirs=$2 $1
+wget  -rqx -nH -np --reject "index.html{}, index.html, index.html.tmp, *.tmp, *.html" --cut-dirs=$2 $1
 
 if [ $filename != "mock_grading" ]
 then
