@@ -1,0 +1,29 @@
+1.  https://stackoverflow.com/questions/18568706/check-number-of-arguments-passed-to-a-bash-script
+2.  https://linuxconfig.org/download-file-from-url-on-linux-using-command-line
+3.  https://stackoverflow.com/questions/17638543/how-to-ignore-specific-type-of-files-to-download-in-wget
+4.  https://unix.stackexchange.com/questions/524059/how-to-use-wget-to-download-directory-recursively-into-directory-with-the-same
+5.  https://stackoverflow.com/questions/17282915/how-to-download-an-entire-directory-and-subdirectories-using-wget
+6.  https://unix.stackexchange.com/questions/470539/wget-downloading-files-selectively-and-recursively
+7.  https://stackoverflow.com/questions/1521462/looping-through-the-content-of-a-file-in-bash
+8.  https://stackoverflow.com/questions/229551/how-to-check-if-a-string-contains-a-substring-in-bash
+9.  https://stackoverflow.com/questions/23408782/loop-through-files-in-a-given-directory
+10. https://askubuntu.com/questions/89995/bash-remove-first-and-last-characters-from-a-string
+11. https://stackoverflow.com/questions/8574038/wget-downloaded-file-name
+12. https://stackoverflow.com/questions/2107945/how-to-loop-over-directories-in-linux
+13. https://www.geeksforgeeks.org/cmp-command-in-linux-with-examples/
+14. https://stackoverflow.com/questions/687948/timeout-a-command-in-bash-without-unnecessary-delay
+15. https://www.geeksforgeeks.org/cmp-command-in-linux-with-examples/
+16. https://ryanstutorials.net/bash-scripting-tutorial/bash-arithmetic.php
+17. https://stackoverflow.com/questions/23429197/bash-how-to-print-out-that-files-are-the-same-when-using-cmp
+18. https://linuxize.com/post/bash-append-to-file/
+19. https://unix.stackexchange.com/questions/506099/how-to-create-a-script-to-write-a-csv-file
+20. https://stackoverflow.com/questions/28521938/how-to-conceal-a-segmentation-fault-in-a-bash-script
+21. https://bencane.com/2014/09/02/understanding-exit-codes-and-how-to-use-them-in-bash-scripts/
+=====================================================================================================
+22. How to check for existence of a file in bash : https://stackoverflow.com/questions/638975/how-do-i-tell-if-a-regular-file-does-not-exist-in-bash
+23. https://stackoverflow.com/questions/26675681/how-to-check-the-exit-status-using-an-if-statement
+24. https://stackoverflow.com/questions/1378274/in-a-bash-script-how-can-i-exit-the-entire-script-if-a-certain-condition-occurs
+25. https://stackoverflow.com/questions/5719030/bash-silently-kill-background-function-process
+26. https://www.linuxjournal.com/content/bash-trap-command
+27. https://unix.stackexchange.com/questions/53289/does-segmentation-fault-message-come-under-stderr
+
