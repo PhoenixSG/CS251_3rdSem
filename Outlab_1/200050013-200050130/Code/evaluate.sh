@@ -1,6 +1,5 @@
 #!/bin/bash
 
-
 rm -f marksheet.csv
 rm -f distribution.txt
 touch marksheet.csv
@@ -12,46 +11,35 @@ cd organised/
 cat ../mock_grading/roll_list | while read line || [[ -n $line ]]; do
 
    for j in $line/*; do
-    #echo $j 
     mkdir -p $line/student_outputs
     marks=0
     if [[ $j == $line*.cpp ]]; then
-    	#echo $j "check"
-		g++ -o $line/executable $j  2>/dev/null		
-		#echo "first"
+		g++ -o $line/executable $j  2>/dev/null	
 		for iter in ../mock_grading/inputs/*;do
 			filename=$(basename $iter .in)
-			#echo $iter
-			#echo $filename
-            #./$line/executable  < $iter > $line/student_outputs/$filename.out 2>/dev/null | cat & sleep 1
-			commd=./$line/executable  < $iter > $line/student_outputs/$filename.out 
-			(
-            ((t = 5))
-
-             while ((t > 0)); do
-                sleep 1
-                kill -0 commd || exit 0
-                ((t -= 1))
-            done
-            kill -s SIGTERM commd && kill -0 commd || exit 0
-            kill -s SIGKILL commd
-            ) 2> /dev/null
-
+            function commd()
+            {
+                #[ ! -f /$line/executable ] && touch $line/student_outputs/$filename.out
+                #EXC=/$line/executable
+                #if [ -f "$EXC" ]; then
+                timeout 5 ./$line/executable  < $iter > $line/student_outputs/$filename.out 2>/dev/null
+                #else
+                #touch $line/student_outputs/$filename.out
+                #fi
+            }           
+            commd
             cmp -s $line/student_outputs/$filename.out ../mock_grading/outputs/$filename.out
 			ans=$?
-			#echo $ans
 			if [[ $ans -eq 0 ]]
 			then
 				let marks++
-				#echo $marks
 			fi
-			#echo "here"
 		done
-		printf "$line,$marks\n" >> ../marksheet.csv
+        printf "$line,$marks\n" >> ../marksheet.csv
     fi   
 done    
 done
-
+rm -f ../organised/nul
 cd ..
 while IFS=, read -r col1 col2
 do
@@ -59,9 +47,3 @@ do
 done < marksheet.csv
 
 sort -nr -o distribution.txt distribution.txt
-
-killall -q executable
-
-
-
-
