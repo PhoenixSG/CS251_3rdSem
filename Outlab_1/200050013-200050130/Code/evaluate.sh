@@ -11,10 +11,10 @@ cd organised/
 cat ../mock_grading/roll_list | while read line || [[ -n $line ]]; do
 
    for j in $line/*; do
-   	rm -rf $line/student_outputs
-    mkdir -p $line/student_outputs
     marks=0
     if [[ $j == $line*.cpp ]]; then
+    	rm -rf $line/student_outputs
+    	mkdir -p $line/student_outputs
 		g++ -o $line/executable $j  2>/dev/null	
 		for iter in ../mock_grading/inputs/*;do
 			filename=$(basename $iter .in)
