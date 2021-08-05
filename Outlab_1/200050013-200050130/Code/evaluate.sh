@@ -11,6 +11,7 @@ cd organised/
 cat ../mock_grading/roll_list | while read line || [[ -n $line ]]; do
 
    for j in $line/*; do
+   	rm -rf $line/student_outputs
     mkdir -p $line/student_outputs
     marks=0
     if [[ $j == $line*.cpp ]]; then
@@ -20,12 +21,16 @@ cat ../mock_grading/roll_list | while read line || [[ -n $line ]]; do
             function commd()
             {
                 #[ ! -f /$line/executable ] && touch $line/student_outputs/$filename.out
-                #EXC=/$line/executable
-                #if [ -f "$EXC" ]; then
-                timeout 5 ./$line/executable  < $iter > $line/student_outputs/$filename.out 2>/dev/null
-                #else
-                #touch $line/student_outputs/$filename.out
-                #fi
+                EXC=./$line/executable
+                if test -f "$EXC"; then
+                	timeout 5 ./$line/executable  < $iter > $line/student_outputs/$filename.out 2>/dev/null
+                	#echo "1"
+                	#echo $EXC
+                else
+                	touch $line/student_outputs/$filename.out
+                	#echo "2"
+                	#echo $EXC
+                fi
             }           
             commd
             cmp -s $line/student_outputs/$filename.out ../mock_grading/outputs/$filename.out
