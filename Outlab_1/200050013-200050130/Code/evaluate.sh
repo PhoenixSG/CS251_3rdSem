@@ -32,7 +32,7 @@ cat ../mock_grading/roll_list | while read line || [[ -n $line ]]; do
                 	#echo $EXC
                 fi
             }           
-            commd
+            commd 2>/dev/null
             cmp -s $line/student_outputs/$filename.out ../mock_grading/outputs/$filename.out
 			ans=$?
 			if [[ $ans -eq 0 ]]
