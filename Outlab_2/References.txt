@@ -1,0 +1,11 @@
+1. https://tex.stackexchange.com/questions/7546/how-to-get-latex-symbol-in-document
+2. https://en.wikipedia.org/wiki/List_of_mathematical_symbols_by_subject
+3. https://www.overleaf.com/learn/latex/Integrals,_sums_and_limits
+4. https://tex.stackexchange.com/questions/153360/bold-bracket-row-vector-matrix
+5. https://tex.stackexchange.com/questions/406266/latex-doesnt-show-negative-sign-in-exponent
+6. https://tex.stackexchange.com/questions/45355/theorem-numbering-as-chapter-section-subsection-theorem-number
+7. https://tex.stackexchange.com/questions/326936/vertical-lines-in-algpseudocode
+8. https://tex.stackexchange.com/questions/95075/center-just-one-line-of-code-e-g-comment
+9. https://tex.stackexchange.com/questions/199725/how-to-write-definition-2-1-in-texmaker
+10. https://tex.stackexchange.com/questions/327779/how-to-draw-matrix-with-dots
+11. https://tex.stackexchange.com/questions/37581/latex-figures-side-by-side
