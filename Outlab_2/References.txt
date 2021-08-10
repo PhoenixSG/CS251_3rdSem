@@ -9,3 +9,8 @@
 9. https://tex.stackexchange.com/questions/199725/how-to-write-definition-2-1-in-texmaker
 10. https://tex.stackexchange.com/questions/327779/how-to-draw-matrix-with-dots
 11. https://tex.stackexchange.com/questions/37581/latex-figures-side-by-side
+12. https://tex.stackexchange.com/questions/69716/how-to-embed-citations-into-footnotes
+13. https://tex.stackexchange.com/questions/109153/how-to-add-horizontal-line-after-header-and-before-footer
+14. https://support.authorea.com/en-us/article/how-do-i-reference-my-latex-tables-or-equations-brkb5m/
+15. https://tex.stackexchange.com/questions/49131/inserting-latex-code-into-latex
+16. https://www.overleaf.com/learn/latex/Code_listing
