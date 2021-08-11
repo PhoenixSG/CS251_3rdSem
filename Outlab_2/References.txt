@@ -14,3 +14,4 @@
 14. https://support.authorea.com/en-us/article/how-do-i-reference-my-latex-tables-or-equations-brkb5m/
 15. https://tex.stackexchange.com/questions/49131/inserting-latex-code-into-latex
 16. https://www.overleaf.com/learn/latex/Code_listing
+17. https://www.overleaf.com/learn/latex/Bibliography_management_with_bibtex
