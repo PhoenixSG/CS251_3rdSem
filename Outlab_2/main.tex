@@ -1,4 +1,9 @@
 \documentclass[a4paper,12pt]{article}
+
+\hypersetup{pdftitle={main.pdf},
+    colorlinks=false,
+    linkbordercolor=red
+}
 \usepackage[utf8]{inputenc}
 \usepackage[english]{babel}
 \usepackage[utf8]{inputenc}
@@ -21,17 +26,14 @@
 % \bibliographystyle{plainurl}
 % \bibliography{biblio}
 \usepackage{amssymb}   
-\usepackage{hyperref}
+
 \usepackage{cancel}
 \usepackage{fancyhdr}
 \usepackage{graphicx}
 \usepackage{verbatim}
 \usepackage{dirtytalk}
 \usepackage[document]{ragged2e}
-\hypersetup{pdftitle={main.pdf},
-    colorlinks=false,
-    linkbordercolor=red
-}
+
 
 \renewcommand{\footrulewidth}{0.4pt}
 \newtheorem{definition}{Definition}
@@ -65,7 +67,7 @@
     basicstyle=\large
 }
 
-
+\usepackage{hyperref}
 
 
 %opening
@@ -93,7 +95,7 @@ Arpon Basu  \\
 % \renewcommand{\refReferences}{} % this is for changing the heading of bibliography
 \maketitle
 
-
+\justifying
 \tableofcontents
 
 \newpage
@@ -106,6 +108,7 @@ We all know about the Fibonacci Sequence, given by the recurrence\\
 \\
 and initialised as $f_0 = 0,$ $f_1 = 1$. This is an instance of what is called a Linear Recurrence Sequence, or LRS.\\
 \begin{definition}
+\label{Def1.1}
 LRS $(u_n)^\infty_{n=0}$ of order $k$ over field $\mathbb{F}$ is the sequence determined by the recurrence\\
 
 
@@ -117,13 +120,14 @@ for integers $n$ $\geq$ \emph{0} with $a_0 , . . . , a_{k−1} \in \mathbb{F}, a
 \makebox[\linewidth]{$\begin{bmatrix} $u_0$ & ... & $u_{k-1}$ \end{bmatrix}^{T} \in \mathbb{F}^{k \times 1}$}
 
 \end{definition}\\
-Thanks to Definition 1.1, when we say that we are given $(u_n)^\infty_{n=0}$
+Thanks to Definition \ref{Def1.1}, when we say that we are given $(u_n)^\infty_{n=0}$
  of order $k$ over $\mathbb{F}$, we actually mean that we are given the 2$k$ constants $a_0 , . . . a_{k−1} , u_0 , . . . , u_{k−1} \in \mathbb{F}$.\\
 The Fibonacci sequence shows up a lot in pop culture and DSA assignments, however, the study of LRS is a vast subject in its own right, with applications in software verification, quantum computing, formal languages, statistical physics, combinatorics, and theoretical biology, to name a few.
 \subsection{Computing terms of an LRS}
 For a fixed $k$, assuming we can do arithmetic operations in $\mathbb{F}$ in constant time, how long does it
 take to compute the $n^{th}$ term of a given LRS?\\
 \begin{algorithm}[ht]
+%\label{algo:1}
 \caption{Naive first attempt \textsf{naive}}
 \SetAlgoLined
 \DontPrintSemicolon
@@ -144,6 +148,7 @@ the size of the \emph{bit representation} of the input, i.e. how many bits it ta
 integer $n$ takes log $n$ bits to represent, so the parameter for describing complexity is not $n$, but
 $\eta$ = log $n$.\\
 \begin{algorithm}[ht]
+
 \caption{Bottom up dynamic programming approach  \textsf{bottomup}}
 \SetAlgoLined
 \DontPrintSemicolon
@@ -224,6 +229,7 @@ As you can see, it’s Last In, First Out.\\
 The division while loop gets the bits of $n$ from least to most significant, the iterated square while
 loop uses the bits from most to least significant. A stack fits the bill.\\
 \begin{algorithm}[ht]
+\label{algo:3}
 \caption{Iterated squaring approach \textsf{efficient}}
 \SetAlgoLined
 \DontPrintSemicolon
@@ -328,32 +334,31 @@ long ago.
  \hline
  \textbf{operations} & \textbf{working}  \\ 
  \hline
- \{1, 0, 1, 1, 0, 1, 0, 1, 1\} & \{1, 0, 0, 1\}  \\ 
+ \begin{flushleft}{ \{1, 0, 1, 1, 0, 1, 0, 1, 1\}}\end{flushleft} & \{1, 0, 0, 1\}  \\ 
  \hline
- \{1, 0, 1, 1, 0, 1, 0, 1\} & \{0, 1, 1, 1\}  \\ 
+ \begin{flushleft}{ \{1, 0, 1, 1, 0, 1, 0, 1\}}\end{flushleft} & \{0, 1, 1, 1\}  \\ 
  \hline
- \{1, 0, 1, 1, 0, 1, 0\} & \{1, 2, 3, 3\}  \\ 
+ \begin{flushleft}{ \{1, 0, 1, 1, 0, 1, 0\}}\end{flushleft} & \{1, 2, 3, 3\}  \\ 
  \hline
- \{1, 0, 1, 1, 0, 1\} & \{5, 8, 8, 13\}  \\ 
+\begin{flushleft}{ \{1, 0, 1, 1, 0, 1\}}\end{flushleft} & \{5, 8, 8, 13\}  \\ 
  \hline
- \{1, 0, 1, 1, 0\} & \{144, 233, 233, 377\}  \\ 
+ \begin{flushleft}{ \{1, 0, 1, 1, 0\}}\end{flushleft} & \{144, 233, 233, 377\}  \\ 
  \hline
- \{1, 0, 1, 1\} & \{75025, 121393, 121393, 196418\}  \\ 
+ \begin{flushleft}{ \{1, 0, 1, 1\}}\end{flushleft} & \{75025, 121393, 121393, 196418\}  \\ 
  \hline
- \{1, 0, 1\} & \{3e+10, 5e+10, 5e+10, 8e+10\}  \\
+ \begin{flushleft}{ \{1, 0, 1\}}\end{flushleft} & \{3e+10, 5e+10, 5e+10, 8e+10\}  \\
  \hline
- \{1, 0\} & \{6e+21, 1e+22,  1e+22, 1e+22\}  \\ 
+ \begin{flushleft}{ \{1, 0\}}\end{flushleft}  & \{6e+21, 1e+22,  1e+22, 1e+22\}  \\ 
  \hline
- \{1\} & \{1e+44, 2e+44, 2e+44, 3e+44\}  \\
+ \begin{flushleft}{ \{1\}}\end{flushleft}  & \{1e+44, 2e+44, 2e+44, 3e+44\}  \\
  \hline
- \{\} & \{1e+89, 2e+89, 2e+89, 3e+89\}  \\ 
+ \begin{flushleft}{ \{ \}}\end{flushleft}  & \{1e+89, 2e+89, 2e+89, 3e+89\} \\ 
  
  
  
  
  \hline
 \end{tabular}
-\caption{Printing Everything! Note the alignment}
 %\end{center}
 
 
@@ -408,6 +413,7 @@ the usage of $\textsf{\textbackslash mathsf}$, and encourages the use of macros.
 16 \bibliographystyle {plainurl}
 17 \bibliography{biblio}
 \end{lstlisting}
+\justifying
 To earn bonus credit, your PDF should include this listing, and a reference to it, like so: Listing
 1. The lesson on Advanced Formatting in the tutorial may help you go about defining such a
 custom environment and a counter with the help of $\texttt{\textbackslash lstnewenvironment}$.\\
