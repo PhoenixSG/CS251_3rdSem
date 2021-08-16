@@ -12,7 +12,7 @@ for x in f0:
 
 f0.close()
 # print()
-f2 = open(sys.argv[6]+"winners.txt", "x")
+f2 = open(sys.argv[6]+"winners.txt", "w")
 f2.close()
 f1 = open(sys.argv[4], "r")
 count=0
