@@ -4,6 +4,15 @@ https://www.w3schools.com/python/ref_file_readline.asp
 https://www.geeksforgeeks.org/python-string-split/
 https://www.w3schools.com/python/python_file_open.asp
 
+https://stackoverflow.com/questions/35751306/python-how-to-pad-numpy-array-with-zeros
+https://www.w3resource.com/python-exercises/numpy/python-numpy-exercise-94.php
+https://numpy.org/doc/stable/reference/generated/numpy.sort.html
+https://docs.scipy.org/doc/numpy-1.14.0/reference/generated/numpy.linalg.pinv.html
+https://www.geeksforgeeks.org/numpy-round_-python/
+
+
+
+
 ==========================================================================================================
 
 
