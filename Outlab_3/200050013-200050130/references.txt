@@ -15,6 +15,7 @@ https://unix.stackexchange.com/questions/118811/why-cant-i-run-gui-apps-from-roo
 
 https://matplotlib.org/stable/api/_as_gen/matplotlib.pyplot.scatter.html
 https://www.kite.com/python/answers/how-to-convert-a-numpy-array-of-floats-into-integers-in-python
+
 ==========================================================================================================
 
 
@@ -31,3 +32,4 @@ https://www.kite.com/python/answers/how-to-convert-a-numpy-array-of-floats-into-
 11. https://stackoverflow.com/questions/18713321/element-wise-addition-of-2-lists/18713367#18713367
 12. https://stackoverflow.com/questions/613183/how-do-i-sort-a-dictionary-by-value
 13. https://stackoverflow.com/questions/34170515/sort-dictionary-by-multiple-values
+14. https://stackoverflow.com/questions/35169368/subtract-every-column-in-dataframe-with-the-mean-of-that-column-with-python
