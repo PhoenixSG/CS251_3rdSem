@@ -1,8 +1,10 @@
 import pandas as pd
 import numpy as np
+import matplotlib
 from numpy import linalg as LA
 import sys
 import matplotlib.pyplot as plt
+matplotlib.use('Agg')
 
 a = pd.read_csv(str(sys.argv[2]), header = None)
 a -= a.mean()
@@ -12,7 +14,6 @@ eigval, eigvec = LA.eig(np.cov(a.transpose()))
 #print(eigval)
 eigvec = eigvec.transpose()
 #print(eigvec)
-
 eigval, eigvec = zip(*sorted(zip(eigval, eigvec), reverse = True))
 
 eigval = [c for c in eigval] 

@@ -10,9 +10,11 @@ https://numpy.org/doc/stable/reference/generated/numpy.sort.html
 https://docs.scipy.org/doc/numpy-1.14.0/reference/generated/numpy.linalg.pinv.html
 https://www.geeksforgeeks.org/numpy-round_-python/
 
+https://stackoverflow.com/questions/4930524/how-can-i-set-the-backend-in-matplotlib-in-python
+https://unix.stackexchange.com/questions/118811/why-cant-i-run-gui-apps-from-root-no-protocol-specified
 
-
-
+https://matplotlib.org/stable/api/_as_gen/matplotlib.pyplot.scatter.html
+https://www.kite.com/python/answers/how-to-convert-a-numpy-array-of-floats-into-integers-in-python
 ==========================================================================================================
 
 
