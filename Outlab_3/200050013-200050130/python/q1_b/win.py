@@ -1,6 +1,17 @@
-import sys
+import argparse
+ap = argparse.ArgumentParser()
+ap.add_argument("--path1", required = True)
+ap.add_argument("--path2", required = True)
+ap.add_argument("--output", required = True)
+args = vars(ap.parse_args())
 
-f0 = open(sys.argv[2], "r")
+
+
+
+f0 = open(args['path1'], "r")
+
+
+
 
 for x in f0:
     y=x.split("/")
@@ -11,10 +22,10 @@ for x in f0:
     print(s)
 
 f0.close()
-# print()
-f2 = open(sys.argv[6]+"winners.txt", "w")
+
+f2 = open(args['output'] + "winners.txt", "w")
 f2.close()
-f1 = open(sys.argv[4], "r")
+f1 = open(args['path2'], "r")
 count=0
 for x in f1:
     y=x.split("||")
@@ -28,19 +39,16 @@ for x in f1:
     if(len(w)==2):
         url = w[1]
 
-    f0 = open(sys.argv[2], "r")
+    f0 = open(args['path1'], "r")
     for z in f0:
         url2 = z.split("www.")
         if url == url2[1][:-1]:
             print("user_name - "+user_name+" : Winner - Lucky draw!!! - "+z, end="")
             count+=1
-            f2 = open(sys.argv[6]+"winners.txt", "a")
-            f2.write( user_name+"||"+ip_address+"||"+z )
+            f2 = open(args['output'] + "winners.txt", "a")
+            f2.write(user_name + "||" + ip_address + "||" + z)
             f2.close()
             
     f0.close()
 
 print(count)
-
-
-
