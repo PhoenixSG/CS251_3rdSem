@@ -1,10 +1,20 @@
 import os
-import sys
+import argparse
+
+
+ap = argparse.ArgumentParser()
+ap.add_argument("--path", required = True)
+args = vars(ap.parse_args())
+
+
+
+
+
 
 def convert (l):
     return [int(elem) for elem in l]
 
-directory = str(sys.argv[2])[:-1]
+directory = str(args['path'])[:-1]
 
 countries = {}
 for filename in os.listdir(directory):   
