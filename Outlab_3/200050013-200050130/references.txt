@@ -33,3 +33,4 @@ https://www.kite.com/python/answers/how-to-convert-a-numpy-array-of-floats-into-
 12. https://stackoverflow.com/questions/613183/how-do-i-sort-a-dictionary-by-value
 13. https://stackoverflow.com/questions/34170515/sort-dictionary-by-multiple-values
 14. https://stackoverflow.com/questions/35169368/subtract-every-column-in-dataframe-with-the-mean-of-that-column-with-python
+15. https://stackoverflow.com/questions/18598012/how-to-read-in-a-command-line-as-floats
