@@ -7,9 +7,9 @@ ap.add_argument("--path", required = True)
 args = vars(ap.parse_args())
 
 
-a = pd.read_csv(args['path'], delimiter = ",", header = None);
+a = pd.read_csv(args['path'], delimiter = ",", header = None)
 
-b = a.to_numpy();
+b = a.to_numpy()
 b = b.transpose()
 x_index=0
 y_index=0

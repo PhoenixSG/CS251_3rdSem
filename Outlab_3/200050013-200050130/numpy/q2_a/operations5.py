@@ -9,9 +9,9 @@ ap.add_argument("--num", required = True)
 args = vars(ap.parse_args())
 
 
-a = pd.read_csv(args['path'], delimiter=",", header=None);
+a = pd.read_csv(args['path'], delimiter=",", header=None)
 
-b = a.to_numpy();
+b = a.to_numpy()
 
 c= int(args['num'])
 
