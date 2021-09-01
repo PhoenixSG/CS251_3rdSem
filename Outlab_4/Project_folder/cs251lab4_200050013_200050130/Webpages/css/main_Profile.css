@@ -35,9 +35,9 @@ body{
   padding: 14px 28px;
 }
 
-.userList{
+.userDetails{
 
-
+    margin-left: 200px;
 }
 
 .user_button{
@@ -52,3 +52,4 @@ body{
     border-radius: 4px;
     text-align: center;
 }
+
