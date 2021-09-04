@@ -4,10 +4,10 @@
 {% block title %}Home{% endblock %}
 
 {% block content %}
-{% if user.is_authenticated %}
 
 <div class="upperbody">
   <div class="pretitle">Built by 200050013-200050130</div>
+  {% if user.is_authenticated %}
   <div class="title">
     <h1>Hi {{ user.username }}! Welcome to Github Profiles!</h1>
   </div>
@@ -37,8 +37,8 @@
   <h1>You are not logged in</h1>
 </div>
 <div class="hero-cta">
-  <a href="{% url 'login' %}" class="pressit">Log In</a>
-  <a href="{% url 'signup' %}" class="pressit">Sign Up</a>
+  <a href="{% url 'signup' %}" class="pressit">Signup</a>
+  <a href="{% url 'login' %}" class="pressit">Login</a>
 </div>
 {% endif %}
 {% endblock %}

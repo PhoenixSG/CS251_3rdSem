@@ -1,7 +1,0 @@
-1. https://www.google.com/search?q=how+to+center+in+css&rlz=1C1VDKB_enIN928IN928&oq=how+to+center+in+css&aqs=chrome.0.0i512l4j0i22i30l6.3153j0j7&sourceid=chrome&ie=UTF-8
-2. https://www.w3schools.com/css/css3_buttons.asp
-3. https://www.w3schools.com/css/tryit.asp?filename=trycss_buttons_color
-4. https://www.w3schools.com/css/tryit.asp?filename=trycss_buttons_basic
-5. https://www.w3schools.com/howto/tryit.asp?filename=tryhow_css_block_buttons
-6. https://www.google.com/search?q=bordered+button+css&rlz=1C1VDKB_enIN928IN928&oq=bordered+button+css&aqs=chrome..69i57j0i10j0i22i30l5.4718j0j7&sourceid=chrome&ie=UTF-8
-7. 
