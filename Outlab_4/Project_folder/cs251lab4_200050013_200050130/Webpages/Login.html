@@ -1,37 +1,46 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <meta charset="UTF-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Login</title>
-        <link rel="stylesheet" href="css/main_Login.css">
-    </head>
-    <body>
-        <div class="upperbody">
-            <div class="pretitle">Built by 200050013-200050130</div>
-            <div class="title"><h1>Welcome to Github Profiles!</h1></div>
-            <div class="hero-cta">
-                <a href="Signup.html" class="pressit">Signup</a>
-                <a href="Login.html" class="pressit">Login</a>
-            </div>
-        </div>
-        
-        <div class="padding">
-            <h1>
-                Login to Github Profile
-            </h1>
-            <form>
-                <label for="uname">Username:</label>
-                <input type="text" id="uname" name="uname"> <br> <br>
-                <label for="pwd">Password:</label>
-                <input type="text" id="pwd" name="pwd">
-            </form>
-            <br><br>
-            <div class="custom_hero-cta">
-                <a href="#" class="pressit">Login</a>
-            </div>
-        </div>
 
-    </body>
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+    <link rel="stylesheet" href="css/main_Login.css">
+</head>
+
+<body>
+    <div class="upperbody">
+        <div class="pretitle">Built by 200050013-200050130</div>
+        <div class="title">
+            <h1>Welcome to Github Profiles!</h1>
+        </div>
+        <div class="hero-cta">
+            <a href="Signup.html" class="pressit">Signup</a>
+            <a href="Login.html" class="pressit">Login</a>
+        </div>
+    </div>
+
+    <div class="padding">
+        <h1>
+            Login to Github Profile
+        </h1>
+        <form method="post">
+            {% csrf_token %}
+            <!-- <label for="uname">Username:</label>
+            <input type="text" id="uname" name="uname"> <br> <br>
+            <label for="pwd">Password:</label>
+            <input type="text" id="pwd" name="pwd">
+
+            <br><br> -->
+            {{ form.as_p }}
+            <button type="submit">Log In</button>
+            <!-- <div class="custom_hero-cta">
+                <a href="#" type="submit" class="pressit">Login</a>
+            </div> -->
+        </form>
+    </div>
+
+</body>
+
 </html>
