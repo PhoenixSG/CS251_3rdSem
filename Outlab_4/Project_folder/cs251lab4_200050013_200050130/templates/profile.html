@@ -1,0 +1,44 @@
+<!-- templates/registration/login.html -->
+{% extends 'base.html' %}
+
+
+{% block title %}Profile{% endblock %}
+
+{% block content %}
+<div class="upperbody">
+    <div class="pretitle">Built by 200050013-200050130</div>
+    <div class="title">
+        <h1>Hi {{ user.first_name }}! Welcome to Github Profiles!</h1>
+    </div>
+    <div class="hero-cta">
+        <a href="../explore" class="pressit">Explore</a>
+        <a href="../profile" class="pressit">My Profile</a>
+        <a href="{% url 'logout' %}" class="pressit">Logout</a>
+    </div>
+</div>
+<div class="userDetails">
+    <h2>{{ user.first_name }} {{user.last_name}} (@{{ user.username }})</h2>
+    hello
+    {% if followers and time %}
+    {{followers}} followers
+    <br>
+    Profile last updated at {{time}} (GMT)
+    {% endif %}
+    <br>
+    <li>
+        <ul>{{repo1}}</ul>
+        <ul>{{repo2}}</ul>
+        <ul>{{repo3}}</ul>
+        <ul>{{repo4}}</ul>
+        <ul>{{repo5}}</ul>
+        <ul>{{repo6}}</ul>
+    </li>
+    
+    <form id="update" method="post" action="" >
+        {% csrf_token %}
+        <input type="hidden" name="username" value={{ user.username }} />
+        <button type="submit">(Update Now)</button>
+    </form>
+</div>
+
+{% endblock %}

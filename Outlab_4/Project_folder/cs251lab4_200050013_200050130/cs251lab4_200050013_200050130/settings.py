@@ -26,7 +26,7 @@ SECRET_KEY = config('SECRET_KEY')
 #SECRET_KEY = 'django-insecure-askyxsus$(8*w=b&ubgbaerkuw)bxjqz4lmroe^k7ajc5br5*!'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
 ALLOWED_HOSTS = [
     '127.0.0.1', 
@@ -45,6 +45,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'accounts', # new
     'cs251lab4_200050013_200050130',
+    'profile_fetch',
 ]
 
 MIDDLEWARE = [

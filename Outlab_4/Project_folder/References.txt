@@ -9,3 +9,7 @@
 
 1. https://stackoverflow.com/questions/7682804/django-model-forms-setting-a-required-field
 2. https://dev.to/coderasha/create-advanced-user-sign-up-view-in-django-step-by-step-k9m
+
+
+https://www.geeksforgeeks.org/weather-app-using-django-python/
+https://www.programiz.com/python-programming/datetime/current-datetime
