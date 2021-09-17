@@ -1,3 +1,4 @@
+from django.contrib.auth.models import UserManager
 from django.shortcuts import render
 from django.http import HttpResponse
 
@@ -9,6 +10,8 @@ import json
 # urllib.request to make a request to api
 import urllib.request
 from datetime import datetime
+from accounts import views
+from accounts.models import Profile
 
 
 def index(request):
@@ -17,7 +20,7 @@ def index(request):
     if request.method == 'POST':
         print("HI") 
         try:
-            username = request.POST['username']
+            username = request.POST['username'] 
             source = urllib.request.urlopen('https://api.github.com/users/' + username).read()
             print("Here!")
 
@@ -29,14 +32,14 @@ def index(request):
             list_of_data2 = json.loads(source2)
             arr=[]
             for i in list_of_data2:
-                arr.append(str(i['name'])+" - " + str(i["stargazers_count"]))
+                arr.append(str(i['name'])+" - " + str(i["stargazers_count"])+ " stars")
             # datetime object containing current date and time
             now = datetime.now()
             
             print("now =", now)
 
             # dd/mm/YY H:M:S
-            dt_string = now.strftime("%d/%m/%Y %H:%M:%S")
+            dt_string = now.strftime("%Y-%m-%d %H:%M:%S:%f")
   
         # data={
         #     "followers": "vittvcy",
@@ -51,18 +54,29 @@ def index(request):
                 "number": n,
 
             }
+            views.set_attributes(request.user, list_of_data['followers'], now)
+            print("YEFEIYF")
+
             for i in range(n):
                 data["repo"+str(i+1)] = arr[i]
 
 
             
             print(data)
-        except KeyError:
-            data={}
-            print ('Error!\n')
+        except Exception as e:
+            data={"error": "Oops!, Data could not be fetched due to some error, please try again or wait for some time"}
+            print (str(e)+' Error!\n')
+            user, _ = Profile.objects.get_or_create(user=request.user)
+            data["followers"]=str(int(user.NumFollowers))
+            data["time"]=str(user.LastUpdated)
+            print("Hello error", data["followers"], data["time"])
         return render(request, 'profile.html', data)
     else:
-        print("Hello")
-        return render(request, 'profile.html', {})
+        data={}
+        user, _ = Profile.objects.get_or_create(user=request.user)
+        data["followers"]=str(int(user.NumFollowers))
+        data["time"]=str(user.LastUpdated)
+        print("Hello", data["followers"], data["time"])
+        return render(request, 'profile.html', data)
 
         

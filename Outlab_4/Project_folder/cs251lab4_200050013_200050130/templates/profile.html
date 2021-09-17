@@ -18,21 +18,50 @@
 </div>
 <div class="userDetails">
     <h2>{{ user.first_name }} {{user.last_name}} (@{{ user.username }})</h2>
-    hello
+    {% if error %}
+    {{error}}
+    <br>
+    {% endif %}
     {% if followers and time %}
     {{followers}} followers
     <br>
     Profile last updated at {{time}} (GMT)
     {% endif %}
     <br>
-    <li>
+    <br>
+    A snapshot of your repositories : <br>
+    <!li>
         <ul>{{repo1}}</ul>
         <ul>{{repo2}}</ul>
         <ul>{{repo3}}</ul>
         <ul>{{repo4}}</ul>
         <ul>{{repo5}}</ul>
         <ul>{{repo6}}</ul>
-    </li>
+        <ul>{{repo7}}</ul>
+        <ul>{{repo8}}</ul>
+        <ul>{{repo9}}</ul>
+        <ul>{{repo10}}</ul>
+        <ul>{{repo11}}</ul>
+        <ul>{{repo12}}</ul>
+        <ul>{{repo13}}</ul>
+        <ul>{{repo14}}</ul>
+        <ul>{{repo15}}</ul>
+        <ul>{{repo16}}</ul>
+        <ul>{{repo17}}</ul>
+        <ul>{{repo18}}</ul>
+        <ul>{{repo19}}</ul>
+        <ul>{{repo20}}</ul>
+        <ul>{{repo21}}</ul>
+        <ul>{{repo22}}</ul>
+        <ul>{{repo23}}</ul>
+        <ul>{{repo24}}</ul>
+        <ul>{{repo25}}</ul>
+        <ul>{{repo26}}</ul>
+        <ul>{{repo27}}</ul>
+        <ul>{{repo28}}</ul>
+        <ul>{{repo29}}</ul>
+        <ul>{{repo30}}</ul>
+    <!/li>
     
     <form id="update" method="post" action="" >
         {% csrf_token %}
