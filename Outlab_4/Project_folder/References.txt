@@ -4,7 +4,7 @@
 4. https://www.w3schools.com/css/tryit.asp?filename=trycss_buttons_basic
 5. https://www.w3schools.com/howto/tryit.asp?filename=tryhow_css_block_buttons
 6. https://www.google.com/search?q=bordered+button+css&rlz=1C1VDKB_enIN928IN928&oq=bordered+button+css&aqs=chrome..69i57j0i10j0i22i30l5.4718j0j7&sourceid=chrome&ie=UTF-8
-
+7. https://saruwakakun.com/en/css3-buttons
 ============================================================================================================================================
 
 1. https://stackoverflow.com/questions/7682804/django-model-forms-setting-a-required-field
@@ -13,3 +13,9 @@
 
 https://www.geeksforgeeks.org/weather-app-using-django-python/
 https://www.programiz.com/python-programming/datetime/current-datetime
+
+=============================================================================================================================================
+
+1. https://www.analyticsvidhya.com/blog/2020/10/step-by-step-guide-for-deploying-a-django-application-using-heroku-for-free/
+2. https://devcenter.heroku.com/articles/config-vars
+3. https://stackoverflow.com/questions/55801011/heroku-app-successfully-deploying-but-receiving-application-error-when-loading
