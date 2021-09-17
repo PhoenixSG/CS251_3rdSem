@@ -23,14 +23,14 @@
     <br>
     {% endif %}
     {% if followers and time %}
-    {{followers}} followers
+    You currently have {{followers}} followers.
     <br>
-    Profile last updated at {{time}} (GMT)
+    Your profile was last updated at {{time}} (GMT).
     {% endif %}
     <br>
     <br>
     A snapshot of your repositories : <br>
-    <!li>
+    <ul>
         <ul>{{repo1}}</ul>
         <ul>{{repo2}}</ul>
         <ul>{{repo3}}</ul>
@@ -61,12 +61,12 @@
         <ul>{{repo28}}</ul>
         <ul>{{repo29}}</ul>
         <ul>{{repo30}}</ul>
-    <!/li>
+    </ul>
     
     <form id="update" method="post" action="" >
         {% csrf_token %}
         <input type="hidden" name="username" value={{ user.username }} />
-        <button type="submit">(Update Now)</button>
+        <button type="submit">Update Now</button>
     </form>
 </div>
 
