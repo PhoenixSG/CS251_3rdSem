@@ -2,7 +2,7 @@
 {% extends 'base.html' %}
 
 
-{% block title %}Profile{% endblock %}
+{% block title %}Other Profile{% endblock %}
 
 {% block content %}
 <div class="upperbody">
@@ -17,7 +17,7 @@
     </div>
 </div>
 <div class="userDetails">
-    <h2>{{ user.first_name }} {{user.last_name}} (@{{ user.username }})</h2>
+    <h2>{{ first_name }} {{last_name}} (@{{ name }})</h2>
     {% if error %}
     {{error}}
     <br>
@@ -25,7 +25,7 @@
     {% if followers and time %}
     You currently have {{followers}} followers.
     <br>
-    Your profile was last updated at- {{time}} .
+    Your profile was last updated at- {{time}} (GMT).
     {% endif %}
     <br>
     <br>
@@ -37,12 +37,15 @@
             </li>
         {% endfor %}
     </ul>
-    
-    <form id="update" method="post" action="" >
+
+    <!-- {% if name == user.username %}
+    <form id="update" method="post" action="../../profile/" >
         {% csrf_token %}
         <input type="hidden" name="username" value={{ user.username }} />
         <button type="submit">Update Now</button>
     </form>
+    {% endif %} -->
+
 </div>
 
 {% endblock %}

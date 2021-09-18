@@ -26,6 +26,5 @@ urlpatterns = [
     path('accounts/', include('accounts.urls')), # new
     path('accounts/', include('django.contrib.auth.urls')),
     path('', TemplateView.as_view(template_name='home.html'), name='home'), # new
-    path('explore/', TemplateView.as_view(template_name='explore.html'), name='explore'),
-    path('profile/', include('profile_fetch.urls'), name='profile_fetch'),
+    path('', include('accounts.urls'), name='explore_profile'),
 ] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)

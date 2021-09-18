@@ -32,7 +32,7 @@ ALLOWED_HOSTS = [
     '127.0.0.1', 
     'localhost',
 ]
-
+APPEND_SLASH=False
 
 # Application definition
 
@@ -45,7 +45,6 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'accounts', # new
     'cs251lab4_200050013_200050130',
-    'profile_fetch',
 ]
 
 MIDDLEWARE = [
@@ -119,7 +118,7 @@ AUTH_PASSWORD_VALIDATORS = [
 
 LANGUAGE_CODE = 'en-us'
 
-TIME_ZONE = 'UTC'
+TIME_ZONE = 'Asia/Kolkata'
 
 USE_I18N = True
 
