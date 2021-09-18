@@ -8,7 +8,7 @@
 <div class="upperbody">
     <div class="pretitle">Built by 200050013-200050130</div>
     <div class="title">
-        <h1>Hi {{ user.first_name }}! Welcome to Github Profiles!</h1>
+        <h1 class="font-weight-bold">Hi {{ user.first_name }}! Welcome to Github Profiles!</h1>
     </div>
     <div class="hero-cta">
         <a href="../explore" class="pressit">Explore</a>
@@ -17,23 +17,23 @@
     </div>
 </div>
 <div class="userDetails">
-    <h2>{{ first_name }} {{last_name}} (@{{ name }})</h2>
+    <h2 class="font-weight-bold">{{ first_name }} {{last_name}} (@{{ name }})</h2>
     {% if error %}
     {{error}}
     <br>
     {% endif %}
     {% if followers and time %}
-    You currently have {{followers}} followers.
+    {{ first_name }} currently has <a class="font-weight-bold">{{followers}} followers</a>.
     <br>
-    Your profile was last updated at- {{time}} (GMT).
+    Their profile was last updated at- <a class="font-weight-bold">{{time}} (IST)</a>.
     {% endif %}
     <br>
     <br>
-    A snapshot of your repositories : <br>
+    A snapshot of their repositories : <br>
     <ul>
         {% for repo in all_repos %}
             <li>
-                {{ repo }}
+                <a class="font-weight-bold">{{ repo }}</a>
             </li>
         {% endfor %}
     </ul>

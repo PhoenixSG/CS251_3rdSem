@@ -8,7 +8,7 @@
 <div class="upperbody">
     <div class="pretitle">Built by 200050013-200050130</div>
     <div class="title">
-        <h1>Hi {{ user.first_name }}! Welcome to Github Profiles!</h1>
+        <h1 class="bg-gradient-primary text-success">Hi {{ user.first_name }}! Welcome to Github Profiles!</h1>
     </div>
     <div class="hero-cta">
         <a href="../explore" class="pressit">Explore</a>
@@ -16,32 +16,33 @@
         <a href="{% url 'logout' %}" class="pressit">Logout</a>
     </div>
 </div>
-<div class="userDetails">
-    <h2>{{ user.first_name }} {{user.last_name}} (@{{ user.username }})</h2>
+<div class="userDetails" >
+    <h2 class="font-weight-bold"> {{ user.first_name }} {{user.last_name}} (@{{ user.username }})</h2>
     {% if error %}
     {{error}}
     <br>
     {% endif %}
     {% if followers and time %}
-    You currently have {{followers}} followers.
+    You currently have <a class="font-weight-bold">{{followers}} followers</a>.
     <br>
-    Your profile was last updated at- {{time}} .
+    Your profile was last updated at- <a class="font-weight-bold">{{time}}</a> .
     {% endif %}
     <br>
     <br>
     A snapshot of your repositories : <br>
     <ul>
         {% for repo in all_repos %}
-            <li>
+            <li><a class="font-weight-bold">
+                <a class="text-info">
                 {{ repo }}
-            </li>
+            </a></a></li>
         {% endfor %}
     </ul>
     
     <form id="update" method="post" action="" >
         {% csrf_token %}
         <input type="hidden" name="username" value={{ user.username }} />
-        <button type="submit">Update Now</button>
+        <button class="text-dark" type="submit">Update Now</button>
     </form>
 </div>
 

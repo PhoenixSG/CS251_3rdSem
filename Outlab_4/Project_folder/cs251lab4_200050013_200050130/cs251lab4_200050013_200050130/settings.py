@@ -23,14 +23,12 @@ SECRET_KEY = config('SECRET_KEY')
 # See https://docs.djangoproject.com/en/3.2/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-#SECRET_KEY = 'django-insecure-askyxsus$(8*w=b&ubgbaerkuw)bxjqz4lmroe^k7ajc5br5*!'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
 ALLOWED_HOSTS = [
-    '127.0.0.1', 
-    'localhost',
+    '*'
 ]
 APPEND_SLASH=False
 

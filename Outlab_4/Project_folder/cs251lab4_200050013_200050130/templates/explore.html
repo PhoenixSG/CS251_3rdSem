@@ -9,22 +9,27 @@
 <div class="upperbody">
     <div class="pretitle">Built by 200050013-200050130</div>
     <div class="title">
-        <h1>Hi {{ user.first_name }}! Welcome to Github Profiles!</h1>
+        <h1 class="text-success">Hi {{ user.first_name }}! Welcome to Github Profiles!</h1>
     </div>
     <div class="hero-cta">
         <a href="../explore" class="pressit">Explore</a>
         <a href="../profile" class="pressit">My Profile</a>
         <a href="{% url 'logout' %}" class="pressit">Logout</a>
     </div>
+    
 </div>
+
 <div>
+<div >
+    <br>
     <ul>
         {% for User in all_users %}
-            <li class="username">
-                <a href="./{{User}}" class="user_button">{{ User }}</a>
+            <li class="username" class="badge bg-primary text-wrap">
+                <a href="./{{User}}" class="user_button" class="btn btn-link" button type="button" style="white-space: normal;"> {{ User }}</button></a>
                 <br>
             </li>
         {% endfor %}
     </ul>
+  </div>
 </div>
 {% endblock %}
