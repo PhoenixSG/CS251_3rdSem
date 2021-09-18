@@ -41,7 +41,7 @@ def set_attributes(name, followers=0, time=None, allrepos=""):
     user, _ = Profile.objects.get_or_create(user=name)
     print(user.NumFollowers)
     print(time)
-    user.NumFollowers = followers
+    user.NumFollowers = followers or 0
     user.LastUpdated = time or datetime(2000, 1, 1, 1, 1, 1, 1)
     user.AllRepos = allrepos
         
@@ -66,7 +66,7 @@ def show_profile(request, name):
     temp=user.id
     user, _ = Profile.objects.get_or_create(user=temp)
     context["followers"]= user.NumFollowers
-    context["time"]= user.LastUpdated
+    context["time"]= user.LastUpdated.strftime("%Y-%m-%d %H:%M:%S")
     context["all_repos"]=str(user.AllRepos).split('|')
 
     print(user.AllRepos)
@@ -99,7 +99,7 @@ def index(request):
             print("now =", now)
 
             # dd/mm/YY H:M:S
-            dt_string = now.strftime("%Y-%m-%d %H:%M:%S:%f")
+            dt_string = now.strftime("%Y-%m-%d %H:%M:%S")
   
         # data={
         #     "followers": "vittvcy",
@@ -130,7 +130,7 @@ def index(request):
             print (str(e)+' Error!\n')
             user, _ = Profile.objects.get_or_create(user=request.user)
             data["followers"]=str(int(user.NumFollowers))
-            data["time"]=str(user.LastUpdated)
+            data["time"]=str(user.LastUpdated.strftime("%Y-%m-%d %H:%M:%S"))
             data["all_repos"]=str(user.AllRepos).split('|')
             if int(user.NumFollowers)==-1:
                 data["time"]="Not Updated Ever!"
@@ -142,7 +142,7 @@ def index(request):
         user, _ = Profile.objects.get_or_create(user=request.user)
         data["followers"]=str(int(user.NumFollowers))
         print(user.LastUpdated)
-        data["time"]=str(user.LastUpdated+datetime.timedelta(hours=5, minutes=30)).split('+')[0]
+        data["time"]=str((user.LastUpdated+datetime.timedelta(hours=5, minutes=30)).strftime("%Y-%m-%d %H:%M:%S"))
         data["all_repos"]=str(user.AllRepos).split('|')
 
         print()
