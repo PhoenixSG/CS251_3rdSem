@@ -11,8 +11,8 @@
         <h1 class="font-weight-bold">Hi {{ user.first_name }}! Welcome to Github Profiles!</h1>
     </div>
     <div class="hero-cta">
-        <a href="../explore" class="pressit">Explore</a>
-        <a href="../profile" class="pressit">My Profile</a>
+        <a href="../explore/" class="pressit">Explore</a>
+        <a href="../profile/" class="pressit">My Profile</a>
         <a href="{% url 'logout' %}" class="pressit">Logout</a>
     </div>
 </div>
@@ -23,14 +23,24 @@
     <br>
     {% endif %}
     
-    {% if followers and time %}
+    {% if time %}
     
     {{ first_name }} currently has <a class="font-weight-bold">{{followers}} followers</a>.
     <br>
     Their profile was last updated at- <a class="font-weight-bold">{{time}} (IST)</a>.
     {% endif %}
     <br>
+    {% if followers == -1 %}
+    <a class="text-danger">
+    Their profile was never updated or is not valid.
+    Kindly update the profile.
+    </a>
+    {% endif %}
+    
     <br>
+    <br>
+    {% if followers != -1 %}
+    {% if followers != '#' %}
     A snapshot of their repositories : <br>
     <ul>
         {% for repo in all_repos %}
@@ -39,6 +49,9 @@
             </li>
         {% endfor %}
     </ul>
+    {% endif %}
+    {% endif %}
+
 
     <!-- {% if name == user.username %}
     <form id="update" method="post" action="../../profile/" >

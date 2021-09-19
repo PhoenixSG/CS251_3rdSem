@@ -37,10 +37,10 @@ def signup_view(request):
     return render(request, 'signup.html', {'form': form})
 
 def set_attributes(name, followers=0, time=None, allrepos=""):
-    print(name)
+    # print(name)
     user, _ = Profile.objects.get_or_create(user=name)
-    print(user.NumFollowers)
-    print(time)
+    # print(user.NumFollowers)
+    # print(time)
     user.NumFollowers = followers or 0
     user.LastUpdated = time or datetime(2000, 1, 1, 1, 1, 1, 1)
     user.AllRepos = allrepos
@@ -52,12 +52,12 @@ def showthis(request):
     all_users= get_user_model().objects.all()
     context= {'all_users': all_users}
     temp=dict(context)
-    print(temp)
+    # print(temp)
     return render(request, 'explore.html', temp)
 
 def show_profile(request, name):
     if request.user.username==name:
-        print(request.user.username, name)
+        # print(request.user.username, name)
         return index(request)
     context= {'name': name}
     user=User.objects.get(username=name)
@@ -66,11 +66,11 @@ def show_profile(request, name):
     temp=user.id
     user, _ = Profile.objects.get_or_create(user=temp)
     context["followers"]= user.NumFollowers
-    context["time"]= user.LastUpdated.strftime("%Y-%m-%d %H:%M:%S")
+    context["time"]= str((user.LastUpdated+datetime.timedelta(hours=5, minutes=30)).strftime("%Y-%m-%d %H:%M:%S"))
     context["all_repos"]=str(user.AllRepos).split('|')
 
-    print(user.AllRepos)
-    print(context)
+    # print(user.AllRepos)
+    # print(context)
     return render(request, 'alt_profile.html', context)
 
 
@@ -78,11 +78,11 @@ def index(request):
     # return HttpResponse("You're looking at question ")
 
     if request.method == 'POST':
-        print("HI") 
+        # print("HI") 
         try:
             username = request.POST['username'] 
             source = urllib.request.urlopen('https://api.github.com/users/' + username).read()
-            print("Here!")
+            # print("Here!")
 
             source2 = urllib.request.urlopen('https://api.github.com/users/' + username + '/repos').read()
             
@@ -96,7 +96,7 @@ def index(request):
             # datetime object containing current date and time
             now = dt.now()
             
-            print("now =", now)
+            # print("now =", now)
 
             # dd/mm/YY H:M:S
             dt_string = now.strftime("%Y-%m-%d %H:%M:%S")
@@ -114,7 +114,7 @@ def index(request):
                 "number": n,
 
             }
-            print("YEFEIYF")
+            # print("YEFEIYF")
             all_repos={}
             string=""
             for i in range(n):
@@ -141,16 +141,16 @@ def index(request):
         data={}
         user, _ = Profile.objects.get_or_create(user=request.user)
         data["followers"]=str(int(user.NumFollowers))
-        print(user.LastUpdated)
+        # print(user.LastUpdated)
         data["time"]=str((user.LastUpdated+datetime.timedelta(hours=5, minutes=30)).strftime("%Y-%m-%d %H:%M:%S"))
         data["all_repos"]=str(user.AllRepos).split('|')
 
-        print()
-        print((user.AllRepos).split('|'))
+        # print()
+        # print((user.AllRepos).split('|'))
         if int(user.NumFollowers)==-1:
             data["time"]="Not Updated Ever!"
             data["followers"]="#"
-        print("Hello", data["followers"], data["time"])
+        # print("Hello", data["followers"], data["time"])
         return render(request, 'profile.html', data)
 
         
