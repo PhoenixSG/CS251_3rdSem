@@ -9,18 +9,22 @@
   <div class="pretitle">Built by 200050013-200050130</div>
   {% if user.is_authenticated %}
   <div class="title">
+<<<<<<< HEAD
+    <h1  class="text-success">Hi {{ user.first_name }}! Welcome to Github Profiles!</h1>
+=======
     <h1>Hi {{ user.first_name }}! Welcome to Github Profiles!</h1><br>
+>>>>>>> main
   </div>
   <div class="hero-cta">
-    <a href="../explore" class="pressit">Explore</a>
-    <a href="../profile" class="pressit">My Profile</a>
+    <a href="../explore/" class="pressit">Explore</a>
+    <a href="../profile/" class="pressit">My Profile</a>
     <a href="{% url 'logout' %}" class="pressit">Logout</a>
   </div>
 </div>
 
 {% else %}
 <div class="title">
-  <h1>You are not logged in</h1>
+  <h1 class="text-warning">You are not logged in</h1>
 </div>
 <div class="hero-cta">
   <a href="{% url 'signup' %}" class="pressit">Signup</a>

@@ -1,0 +1,66 @@
+<!-- templates/registration/login.html -->
+{% extends 'base.html' %}
+
+
+{% block title %}Other Profile{% endblock %}
+
+{% block content %}
+<div class="upperbody">
+    <div class="pretitle">Built by 200050013-200050130</div>
+    <div class="title">
+        <h1 class="font-weight-bold">Hi {{ user.first_name }}! Welcome to Github Profiles!</h1>
+    </div>
+    <div class="hero-cta">
+        <a href="../explore/" class="pressit">Explore</a>
+        <a href="../profile/" class="pressit">My Profile</a>
+        <a href="{% url 'logout' %}" class="pressit">Logout</a>
+    </div>
+</div>
+<div class="userDetails">
+    <h2 class="font-weight-bold">{{ first_name }} {{last_name}} (@{{ name }})</h2>
+    {% if error %}
+    {{error}}
+    <br>
+    {% endif %}
+    
+    {% if time %}
+    
+    {{ first_name }} currently has <a class="font-weight-bold">{{followers}} followers</a>.
+    <br>
+    Their profile was last updated at- <a class="font-weight-bold">{{time}} (IST)</a>.
+    {% endif %}
+    <br>
+    {% if followers == -1 %}
+    <a class="text-danger">
+    Their profile was never updated or is not valid.
+    Kindly update the profile.
+    </a>
+    {% endif %}
+    
+    <br>
+    <br>
+    {% if followers != -1 %}
+    {% if followers != '#' %}
+    A snapshot of their repositories : <br>
+    <ul>
+        {% for repo in all_repos %}
+            <li>
+                <a class="font-weight-bold">{{ repo }}</a>
+            </li>
+        {% endfor %}
+    </ul>
+    {% endif %}
+    {% endif %}
+
+
+    <!-- {% if name == user.username %}
+    <form id="update" method="post" action="../../profile/" >
+        {% csrf_token %}
+        <input type="hidden" name="username" value={{ user.username }} />
+        <button type="submit">Update Now</button>
+    </form>
+    {% endif %} -->
+
+</div>
+
+{% endblock %}

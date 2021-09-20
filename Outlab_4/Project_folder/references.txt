@@ -1,0 +1,31 @@
+1. https://www.google.com/search?q=how+to+center+in+css&rlz=1C1VDKB_enIN928IN928&oq=how+to+center+in+css&aqs=chrome.0.0i512l4j0i22i30l6.3153j0j7&sourceid=chrome&ie=UTF-8
+2. https://www.w3schools.com/css/css3_buttons.asp
+3. https://www.w3schools.com/css/tryit.asp?filename=trycss_buttons_color
+4. https://www.w3schools.com/css/tryit.asp?filename=trycss_buttons_basic
+5. https://www.w3schools.com/howto/tryit.asp?filename=tryhow_css_block_buttons
+6. https://www.google.com/search?q=bordered+button+css&rlz=1C1VDKB_enIN928IN928&oq=bordered+button+css&aqs=chrome..69i57j0i10j0i22i30l5.4718j0j7&sourceid=chrome&ie=UTF-8
+7. https://saruwakakun.com/en/css3-buttons
+============================================================================================================================================
+
+1. https://stackoverflow.com/questions/7682804/django-model-forms-setting-a-required-field
+2. https://dev.to/coderasha/create-advanced-user-sign-up-view-in-django-step-by-step-k9m
+
+
+https://www.geeksforgeeks.org/weather-app-using-django-python/
+https://www.programiz.com/python-programming/datetime/current-datetime
+
+=============================================================================================================================================
+
+1. https://www.analyticsvidhya.com/blog/2020/10/step-by-step-guide-for-deploying-a-django-application-using-heroku-for-free/
+2. https://devcenter.heroku.com/articles/config-vars
+3. https://stackoverflow.com/questions/55801011/heroku-app-successfully-deploying-but-receiving-application-error-when-loading
+4. https://stackoverflow.com/questions/61095316/invalid-http-host-header-0-0-0-08000-you-may-need-to-add-0-0-0-0-to-allow
+5. https://stackoverflow.com/questions/27213752/collecting-staticfiles-throws-improperlyconfigured
+6. https://www.youtube.com/watch?v=GMbVzl_aLxM
+
+
+==========================================================================================================================================
+1. https://stackoverflow.com/questions/39923686/bootstrap-change-background-color
+2. https://stackoverflow.com/questions/38792005/how-to-change-the-bootstrap-primary-color
+3. https://getbootstrap.com/docs/5.0/utilities/text/
+4. https://www.codegrepper.com/code-examples/html/bootstrap+bg+gradient+colors
