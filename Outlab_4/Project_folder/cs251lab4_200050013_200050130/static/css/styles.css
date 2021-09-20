@@ -1,11 +1,7 @@
 body{
-<<<<<<< HEAD
 
     font-family: Arial, sans-serif;
 
-=======
-    font-family: Arial, sans-serif;
->>>>>>> main
     margin: 0;
 
 }
@@ -87,7 +83,6 @@ body{
   padding: 14px 28px;
 
   margin: 5px;
-<<<<<<< HEAD
 
   
 
@@ -97,12 +92,6 @@ body{
 
 
 
-=======
-  
-    border-bottom: solid 4px #627295;
-    border-radius: 3px;
-
->>>>>>> main
 }
 
 
@@ -146,7 +135,6 @@ body{
     border-radius: 4px;
 
     text-align: center;
-<<<<<<< HEAD
 
     border-bottom: solid 4px #627295;
 
@@ -186,28 +174,5 @@ body{
 
     border-bottom: none;/*disappears*/
 
-=======
-    
-    border-bottom: solid 4px #627295;
-    border-radius: 3px;
-
-
 }
-
-.pressit:active {/*on Click*/
-    -ms-transform: translateY(4px);
-    -webkit-transform: translateY(4px);
-    transform: translateY(4px);/*Move down*/
-    border-bottom: none;/*disappears*/
->>>>>>> main
-}
-
-
-.user_button:active {/*on Click*/
-    -ms-transform: translateY(4px);
-    -webkit-transform: translateY(4px);
-    transform: translateY(4px);/*Move down*/
-    border-bottom: none;/*disappears*/
-}
-
 

@@ -10,15 +10,9 @@ from django.contrib.postgres.fields import ArrayField
 
 class Profile(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE)
-<<<<<<< HEAD
     NumFollowers = models.IntegerField(default=-1)
     LastUpdated = models.DateTimeField(default=now)
     AllRepos = models.CharField(max_length=1000, default="|")
-=======
-    NumFollowers = models.IntegerField(default=0)
-    LastUpdated = models.DateTimeField(default=now)
-
->>>>>>> main
 
 @receiver(post_save, sender=User)
 def create_user_profile(sender, instance, created, **kwargs):
@@ -28,22 +22,3 @@ def create_user_profile(sender, instance, created, **kwargs):
 @receiver(post_save, sender=User)
 def save_user_profile(sender, instance, **kwargs):
     instance.profile.save()
-<<<<<<< HEAD
-=======
-
-
-# class Repository(models.Model):
-#     repos = ArrayField(
-#         models.CharField(max_length=100, blank=True, default=""),
-#         size=30,
-#     )
-
-# @receiver(post_save, sender=User)
-# def create_user_profile(sender, instance, created, **kwargs):
-#     if created:
-#         Repository.objects.create(user=instance)
-
-# @receiver(post_save, sender=User)
-# def save_user_profile(sender, instance, **kwargs):
-#     instance.profile.save()
->>>>>>> main
