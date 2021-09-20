@@ -1,3 +1,5 @@
+#! /usr/bin/awk -f 
+
 BEGIN{
     count=1
     FS="\t"
