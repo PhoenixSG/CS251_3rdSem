@@ -1,5 +1,5 @@
-#! /usr/bin/awk -f 
-
+#!/bin/bash
+awk -F sample.csv | awk '
 BEGIN{
     count=1
     FS="\t"
