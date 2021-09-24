@@ -1,6 +1,11 @@
 #!/bin/bash
-awk -F sample.csv | awk '
+
+awk -v j="$2" -v i="$3" '
 BEGIN{
+    split(j, time_string, ":")
+    start_time=(time_string[1]*3600+time_string[2]*60+time_string[3])
+    split(i, time_string, ":")
+    end_time=(time_string[1]*3600+time_string[2]*60+time_string[3])
     count=1
     FS="\t"
     OFS="\t"
@@ -11,7 +16,7 @@ BEGIN{
         split(date_time_string[2], time_string, ":")
         time_seconds=(time_string[1]*3600+time_string[2]*60+time_string[3])
         if($2=="Joined"){
-            if(time_seconds<50400){
+            if(time_seconds<start_time){
                 time_seconds=50400
             }
             time_seconds=-1*time_seconds    
@@ -29,7 +34,7 @@ END{
     
     for(key in arr){
         if(toggle[key]==-1){
-            arr[key]=arr[key]+55800
+            arr[key]=arr[key]+end_time
         }
         hours = int(arr[key]/3600)
         minutes = int( (arr[key]%3600)/60 )
@@ -38,6 +43,7 @@ END{
     }
     
 }
+' $1 > output.txt
 
 #toggel arr and  time array
 # convert time to numbers and add and subtract

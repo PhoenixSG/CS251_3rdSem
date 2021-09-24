@@ -1,4 +1,6 @@
-#! /usr/bin/awk -f 
+#!/bin/bash
+
+awk '
 BEGIN{
     FS=">"
 }
@@ -20,7 +22,7 @@ BEGIN{
         for (key in arr){
         # if()
             if(key==array[1]){
-                print(key, arr[key]) | "sort"
+                printf("%s %s\r\n",key, arr[key]) | "sort"
                 # print($0) |"sort"
                 # print($0, arr[$0]) | "sort"
             }
@@ -42,9 +44,4 @@ END{
     #         print(word, arr[word]) | "sort"
     #     # }
     # }
-}
-
-#toggel arr and  time array
-# convert time to numbers and add and subtract
-# easy logic notmuch
-# sort while printing at the end
+}' covid_status.html sample.txt > output.txt
