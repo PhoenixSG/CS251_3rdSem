@@ -7,3 +7,11 @@
 7. https://stackoverflow.com/questions/30988586/creating-an-array-from-a-text-file-in-bash
 8. https://stackoverflow.com/questions/39112980/sed-remove-numbers-from-file
 9. https://stackoverflow.com/questions/16414410/delete-empty-lines-using-sed
+
+
+https://www.thegeekstuff.com/2010/03/awk-arrays-explained-with-5-practical-examples/
+https://www.youtube.com/watch?v=_q6Uj4X_knc
+https://unix.stackexchange.com/questions/127664/what-does-getline-do-inside-awk/127684
+https://askubuntu.com/questions/1165212/can-awk-simultaneously-read-multiple-input-files
+https://www.unix.com/shell-programming-and-scripting/77199-splitting-string-awk.html
+

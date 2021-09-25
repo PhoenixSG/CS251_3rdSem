@@ -19,12 +19,18 @@ BEGIN{
             if(time_seconds<start_time){
                 time_seconds=start_time
             }
+            if(time_seconds>end_time){
+                time_seconds=end_time
+            }
             time_seconds=-1*time_seconds    
             toggle[$1]=-1    
         }
         if($2=="Left"){
             if(time_seconds>end_time){
                 time_seconds=end_time
+            }
+            if(time_seconds<start_time){
+                time_seconds=start_time
             }
             toggle[$1]=1    
         }
