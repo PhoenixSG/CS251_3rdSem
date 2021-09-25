@@ -17,12 +17,15 @@ BEGIN{
         time_seconds=(time_string[1]*3600+time_string[2]*60+time_string[3])
         if($2=="Joined"){
             if(time_seconds<start_time){
-                time_seconds=50400
+                time_seconds=start_time
             }
             time_seconds=-1*time_seconds    
             toggle[$1]=-1    
         }
         if($2=="Left"){
+            if(time_seconds>end_time){
+                time_seconds=end_time
+            }
             toggle[$1]=1    
         }
         arr[$1]=arr[$1]+time_seconds
