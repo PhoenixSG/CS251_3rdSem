@@ -10,7 +10,7 @@ do
     sed -i "s/${i}\b/A/g" output.txt #Replaces suffixes with dummy character 'A', guaranteed not to occur anywhere else since all letters have been lowercased
 done 
 sed -i -e "s/A\+//g" output.txt #Removes the 'A's introduced above (The 'A's basically ensure that each word is stemmed atmost once)
-sed -i -e 's/\b\w{1,2}\s?\b//g' output.txt
+sed -i -re 's/\b\w{1,2}\s?\b//g' output.txt
 sed -i -e 's/[[:blank:]]*$//' output.txt #Trims spaces at end of lines
 sed -i -e '/^[[:space:]]*$/d' output.txt #Trims spaces at beginnings of lines
 sed -i -e "s/[[:space:]]\{2,\}/ /g" output.txt #Makes spacing uniform
