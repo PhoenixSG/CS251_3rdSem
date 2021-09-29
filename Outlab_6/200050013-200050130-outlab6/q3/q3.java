@@ -1,6 +1,9 @@
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.util.ArrayList;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 public class q3 {
     public static void main(String[] args) throws IOException {
@@ -8,7 +11,10 @@ public class q3 {
         // System.out.print(func1("D46gg"));
 
         while (true) {
-            System.out.print(func3(reader.readLine()));
+            String s[] = func4(reader.readLine(), reader.readLine());
+            for(int i=0; i<s.length; i++){
+                System.out.println(s[i]);
+            }
             System.out.println("");
         }
     }
@@ -39,28 +45,14 @@ public class q3 {
 
     public static boolean func2(String s) {
         
-        int i=0;
-        while(s.charAt(i)=='a'){
-            i++;
-            if(i==s.length()){
-                return false;
-            }
+        Pattern input = Pattern.compile("a*b+c");
+        Matcher list = input.matcher(s);
+        if(list.find()){
+            return (list.start()==0 && list.end()==s.length());
         }
-        if(s.charAt(i)!='b'){
+        else{
             return false;
         }
-        i++;
-        if(i==s.length()){
-            return false;
-        }
-        while(s.charAt(i)=='b'){
-            i++;
-            if(i==s.length()){
-                return false;
-            }
-        }
-        return (s.charAt(i)=='c' && i==s.length()-1);
-     
     }
 
     public static boolean func3(String s) {
@@ -82,8 +74,16 @@ public class q3 {
         }
         return false;
     }
-    public static boolean func4(String s, String p) {
-        //Didn't get what they meant
-        return false;
+    public static String[] func4(String s, String p) {
+        
+        Pattern input = Pattern.compile(p);
+
+        Matcher list = input.matcher(s);
+        ArrayList<String> array = new ArrayList<>();
+        while(list.find()){
+            array.add(list.group());
+        }
+        String normalarray[] = new String[array.size()];
+        return array.toArray(normalarray);
     }
 }
