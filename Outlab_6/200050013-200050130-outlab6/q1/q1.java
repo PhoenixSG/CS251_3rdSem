@@ -18,6 +18,6 @@ public class q1
         System.out.print(",");
         System.out.print(sum);
         System.out.print(",");
-        System.out.print(product);
+        System.out.println(product);
     }
 }
