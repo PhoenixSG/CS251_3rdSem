@@ -1,13 +1,18 @@
+import java.math.BigInteger;
 public class q1
 {
-    static int sum = 0, product = 1, cnt = 0; 
     public static void main(String[] args)
     {
+        BigInteger sum = BigInteger.ZERO;
+        BigInteger product = BigInteger.ONE;
+        BigInteger cnt = BigInteger.ZERO;
+
+
         for (String val : args) {
-            int x = Integer.parseInt(val);
-            sum += x;
-            product *= x;
-            cnt += 1;
+            BigInteger x = new BigInteger(val);
+            sum = sum.add(x);
+            product = product.multiply(x);
+            cnt = cnt.add(BigInteger.ONE);
         }
         System.out.print(cnt);
         System.out.print(",");
