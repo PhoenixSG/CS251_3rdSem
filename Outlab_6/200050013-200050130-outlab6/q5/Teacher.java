@@ -4,22 +4,23 @@ public class Teacher extends Person
 {
     private Integer salary;
     private ArrayList<Student> studList = new ArrayList<Student>();
-    public Teacher(String n, Integer a, Integer s){
-        super(n,a);
-        name = n;
-        age = a;
-        salary = s;
+    public Teacher(String name, Integer age, Integer salary){
+        super(name,age);
+        this.name = name;
+        this.age = age;
+        this.salary = salary;
     }
-    public Teacher(String n, Integer a){
-        super(n,a);
-        name = n;
-        age = a;
-        salary = 10000;
+    public Teacher(String name, Integer age){
+        super(name,age);
+        this.name = name;
+        this.age = age;
+        this.salary = 10000;
     }
-    public Teacher (Person p, Integer s){
-        name = p.getName();
-        age = p.getAge();
-        salary = s;
+    public Teacher (Person p, Integer salary){
+        //name = p.getName();
+        //age = p.getAge();
+        super(p);
+        this.salary = salary;
     }
     public Integer getSalary (){
         return salary;

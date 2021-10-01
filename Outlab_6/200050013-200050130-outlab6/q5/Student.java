@@ -3,16 +3,17 @@ public class Student extends Person
 {
     private Integer rollno;
     private ArrayList<Teacher> teachrList = new ArrayList<Teacher>();
-    public Student(String n, Integer a, Integer r){
-        super(n,a);
-        name = n;
-        age = a;
-        rollno = r;
+    public Student(String name, Integer age, Integer rollno){
+        super(name,age);
+        this.name = name;
+        this.age = age;
+        this.rollno = rollno;
     }
-    public Student(Person p, Integer r){
-        name = p.getName();
-        age = p.getAge();
-        rollno = r;
+    public Student(Person p, Integer rollno){
+        //name = p.getName();
+        //age = p.getAge();
+        super(p);
+        this.rollno = rollno;
     }
     public Integer getRollno(){
         return rollno;

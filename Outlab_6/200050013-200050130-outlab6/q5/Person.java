@@ -2,10 +2,13 @@ public class Person
 {
     protected String name;
     protected Integer age;
-    protected Person(){}
-    public Person(String s, Integer i){
-        name = s;
-        age = i;
+    protected Person(Person person){
+        this.name = person.name;
+        this.age = person.age;
+    }
+    public Person(String name, Integer age){
+        this.name = name;
+        this.age = age;
     }
     public String getName(){
         return name;
