@@ -20,6 +20,6 @@ public class Person
     }
     public void intro(){
         String aj = age.toString();
-        System.out.print("I am a person, " + name + ", " + aj);
+        System.out.println("I am a person, " + name + ", " + aj);
     }
 }

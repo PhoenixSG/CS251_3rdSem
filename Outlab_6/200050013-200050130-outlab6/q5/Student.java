@@ -23,7 +23,7 @@ public class Student extends Person
     public void intro(){
         String aj = age.toString();
         String rol = rollno.toString();
-        System.out.print("I am a Student, " + name + ", " + aj + ", " + rol);
+        System.out.println("I am a Student, " + name + ", " + aj + ", " + rol);
 
     }
 

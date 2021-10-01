@@ -28,7 +28,7 @@ public class Teacher extends Person
     public void intro(){
         String aj = age.toString();
         String salar = salary.toString();
-        System.out.print("I am a Teacher, " + name + ", " + aj + ", " + salar);
+        System.out.println("I am a Teacher, " + name + ", " + aj + ", " + salar);
 
     }
 
