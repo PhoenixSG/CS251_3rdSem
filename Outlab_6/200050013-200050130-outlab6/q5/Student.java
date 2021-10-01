@@ -5,17 +5,13 @@ public class Student extends Person
     private ArrayList<Teacher> teachrList = new ArrayList<Teacher>();
     public Student(String name, Integer age, Integer rollno){
         super(name,age);
-        this.name = name;
-        this.age = age;
         this.rollno = rollno;
     }
     public Student(Person p, Integer rollno){
-        //name = p.getName();
-        //age = p.getAge();
         super(p);
         this.rollno = rollno;
     }
-    public Integer getRollno(){
+    public Integer getRollNo(){
         return rollno;
     }
     public void addTeacher(Teacher teachr){

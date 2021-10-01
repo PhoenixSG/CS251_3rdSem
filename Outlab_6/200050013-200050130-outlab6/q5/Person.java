@@ -2,10 +2,12 @@ public class Person
 {
     protected String name;
     protected Integer age;
+
     protected Person(Person person){
         this.name = person.name;
         this.age = person.age;
     }
+
     public Person(String name, Integer age){
         this.name = name;
         this.age = age;
