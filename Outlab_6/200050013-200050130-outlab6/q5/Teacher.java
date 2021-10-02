@@ -13,7 +13,7 @@ public class Teacher extends Person
         this.salary = 10000;
     }
     public Teacher (Person p, Integer salary){
-        super(p);
+        super(p.getName(), p.getAge());
         this.salary = salary;
     }
     public Integer getSalary (){

@@ -8,7 +8,7 @@ public class Student extends Person
         this.rollno = rollno;
     }
     public Student(Person p, Integer rollno){
-        super(p);
+        super(p.getName(), p.getAge());
         this.rollno = rollno;
     }
     public Integer getRollNo(){
