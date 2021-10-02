@@ -6,18 +6,6 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 public class q3 {
-    public static void main(String[] args) throws IOException {
-        BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
-        // System.out.print(func1("D46gg"));
-
-        while (true) {
-            String s[] = func4(reader.readLine(), reader.readLine());
-            for(int i=0; i<s.length; i++){
-                System.out.println(s[i]);
-            }
-            System.out.println("");
-        }
-    }
 
     public static boolean func1(String s) {
 
