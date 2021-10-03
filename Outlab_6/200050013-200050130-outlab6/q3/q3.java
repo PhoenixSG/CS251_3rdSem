@@ -3,28 +3,22 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 public class q3 {
-
+    
     public static boolean func1(String s) {
 
         if (s.length() > 5) {
             return false;
         }
 
-        for (int i = 0; i < s.length(); i++) {
-            // System.out.println(s.charAt(i));
-            if (s.charAt(i) <= 'z' && s.charAt(i) >= 'a') {
-                continue;
-            } else if (s.charAt(i) <= 'Z' && s.charAt(i) >= 'A') {
-                continue;
-            } else if (s.charAt(i) <= '9' && s.charAt(i) >= '0') {
-                continue;
-            } else {
-                return false;
-            }
+        Pattern input = Pattern.compile("[a-zA-Z0-9]*");
+        Matcher list = input.matcher(s);
+        if(list.find()){
+            return (list.start()==0 && list.end()==s.length());
         }
-        // System.out.println(s.length());
+        else{
+            return false;
+        }
 
-        return true;
     }
 
 
@@ -41,23 +35,19 @@ public class q3 {
     }
 
     public static boolean func3(String s) {
-        if(s.length()<2){
+        if(s.length()%2!=0){
             return false;
         }
-        int i=0, j=0;
-        while(s.charAt(i)=='a'){
-            i++;
-            if(i==s.length()){
-                return false;
-            }
+        Pattern input = Pattern.compile("a+b+");
+        Pattern input2 = Pattern.compile("a+");
+        Matcher list = input.matcher(s);
+        Matcher list2 = input2.matcher(s);
+        if(list.find() && list2.find()){
+            return (list.start()==0 && list.end()==s.length() && list2.start()==0 && list2.end()==s.length()/2);
         }
-        while(s.charAt(i+j)=='b'){
-            j++;
-            if((i+j)==s.length()){
-                return i==j;
-            }
+        else{
+            return false;
         }
-        return false;
     }
     public static String[] func4(String s, String p) {
         
