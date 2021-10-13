@@ -6,6 +6,8 @@ import java.util.*;
 
 import java.util.concurrent.Semaphore;
 
+import jdk.internal.net.http.hpack.QuickHuffman;
+
 public class Moderator implements Runnable{
 	private Board board;
 	
@@ -22,10 +24,12 @@ public class Moderator implements Runnable{
 				2) one needs a permit to modify thread info
 
 				*/
+				board.moderatorEnabler.acquire();
+				board.threadInfoProtector.acquire();
                                           
                                              
 
-
+				
 				/* 
 				look at the thread info, and decide how many threads can be 
 				permitted to play next round
@@ -44,6 +48,11 @@ public class Moderator implements Runnable{
 				//base case
 				
 				if (this.board.embryo){
+
+					
+					///
+
+					
 					                              
                                         
                                    
@@ -53,37 +62,54 @@ public class Moderator implements Runnable{
 				
 				
 				//find out how many newbies
-				int newbies = ;
+				int newbies = board.totalThreads+board.quitThreads-board.playingThreads;
 
-
+				
+				
 				/*
 				If there are no threads at all, it means Game Over, and there are no 
 				more new threads to "reap". dead has been set to true, then 
 				the server won't spawn any more threads when it gets the lock.
-
+				
 				Thus, the moderator's job will be done, and this thread can terminate.
 				As good practice, we will release the "lock" we held. 
 				*/
-
-				                                  
-                                              
-            
-     
+				
+				if(board.totalThreads==0){
+					board.dead=true;
+					board.moderatorEnabler.release();
+					board.threadInfoProtector.release();
+					return;
+				}
+				else{
+					///
+					;
+				}
+				
+				
+				
+				
+				
 				
 				/* 
 				If we have come so far, the game is afoot.
-
+				
 				totalThreads is accurate. 
 				Correct playingThreads
 				reset quitThreads
-
-
+				
+				
 				Release permits for threads to play, and the permit to modify thread info
 				*/
-
-				                                                    
-                               
-    
+				
+				board.playingThreads = board.totalThreads;
+				board.quitThreads = 0;
+				
+				board.moderatorEnabler.release();
+				board.threadInfoProtector.release();
+				
+				
+				
                                              
                                                           
                                              
