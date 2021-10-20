@@ -67,11 +67,12 @@ public class ScotlandYard implements Runnable{
 
 			try{
 			
-				//INITIALISATION: get the game going				
+				//INITIALISATION: get the game going
+
 				
 
-				Socket socket = this.socket;
-				boolean fugitiveIn = false;
+				Socket socket = null;
+				boolean fugitiveIn;
 				
 				/*
 				listen for a client to play fugitive, and spawn the moderator.
@@ -80,10 +81,7 @@ public class ScotlandYard implements Runnable{
 				*/
 				
 				do{
-					///
-					input = new BufferedReader(new InputStreamReader(socket.getInputStream()));
-					board.totalThreads++;
-					Moderator moderator = new Moderator(board);
+			                    
           
                                     
        
@@ -96,16 +94,14 @@ public class ScotlandYard implements Runnable{
 				System.out.println(this.gamenumber);
 
 				// Spawn a thread to run the Fugitive
-				ServerThread serverThread = new ServerThread(board, -1, socket, port, gamenumber);
-                         ///                    
+                                             
                                  
                             
                                                                                                   
                                              
 
 				// Spawn the moderator
-				Moderator moderator = new Moderator(board);
-                      ///                            
+                                                  
                 
 				while (true){
 					/*
@@ -117,9 +113,6 @@ public class ScotlandYard implements Runnable{
 
 					} 
 					catch (SocketTimeoutException t){
-						if(board.dead){
-							return;
-						}
                                                
                             
                                                 
@@ -139,21 +132,6 @@ public class ScotlandYard implements Runnable{
 
 					don't forget to release lock when done!
 					*/
-					board.threadInfoProtector.acquire();
-					
-					int i = board.getAvailableID();
-
-					if(i!=-1){
-						board.installPlayer(i);
-						board.totalThreads++;
-					}
-					else{
-
-					}
-					board.threadInfoProtector.release();
-
-					///
-
 					                                         
                           
                      
