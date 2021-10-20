@@ -40,6 +40,10 @@ public class ServerThread implements Runnable{
 			PART 0_________________________________
 			Set the sockets up
 			*/
+
+			// String feedback;
+			input = new BufferedReader(new InputStreamReader(socket.getInputStream()));
+			output = new PrintWriter(socket.getOutputStream(), true);
 			
 			try{
                                                                                     
@@ -59,6 +63,12 @@ public class ServerThread implements Runnable{
 				there's no use keeping this thread, so undo what the
 				server did when it decided to run it
 				*/
+				board.threadInfoProtector.acquire();
+				board.erasePlayer(id);
+				board.totalThreads--;
+				board.threadInfoProtector.release();
+				///
+				
 				                                         
                               
                                     
@@ -112,6 +122,12 @@ public class ServerThread implements Runnable{
 				*/
 				
 				if (this.id == -1 && !this.registered){
+
+					this.registered = true;
+					board.installPlayer(this.id);
+					Moderator moderator = new Moderator(board);
+					moderator.run();
+					///
                                        
                             
                                               
@@ -141,6 +157,7 @@ public class ServerThread implements Runnable{
 
 				String cmd = "";
 				try {
+					cmd = input.readLine();
 
 				} 
 				catch (IOException i) {
@@ -148,7 +165,7 @@ public class ServerThread implements Runnable{
                  
                         
  					
-					// elease everything socket related
+					// release everything socket related
                    
                     
                     
@@ -156,6 +173,10 @@ public class ServerThread implements Runnable{
 
 				if (cmd == null){
 					// rage quit (this would happen if buffer is closed due to SIGINT (Ctrl+C) from Client), set flags
+					quit_while_reading = true;
+					quit=true;
+
+
 					            
                         
 
@@ -167,6 +188,8 @@ public class ServerThread implements Runnable{
 
 				else if (cmd.equals("Q")) {
 					// client wants to disconnect, set flags
+					client_quit = true;
+					quit = true;
 					            
                         
 
@@ -179,6 +202,7 @@ public class ServerThread implements Runnable{
 				else{
 					try{
 						//interpret input as the integer target
+						target = Integer.parseInt(cmd);
 
 					}
 					catch(Exception e){
@@ -208,6 +232,9 @@ public class ServerThread implements Runnable{
 				Note that installation of a Fugitive sets embryo to false
 				*/
 				if (!this.registered){
+
+					board.moderatorEnabler.acquire();
+
 					                                  
                             
                                               
@@ -236,6 +263,17 @@ public class ServerThread implements Runnable{
 
 				else, erase the player
 				*/
+				if(!quit){
+					if(id == -1){
+						board.moveFugitive(target);
+					}
+					else{
+						board.moveDetective(id, target);
+					}
+				}
+				else{
+					board.erasePlayer(id);
+				}
 
                       
                                               
@@ -269,6 +307,9 @@ public class ServerThread implements Runnable{
 				they must acquire a permit to cross. The last thread to hit the barrier can 
 				release permits for them all.
 				*/
+
+				board.barrier1.acquire();
+				///
                                         
                        
                                                        
@@ -375,16 +416,16 @@ public class ServerThread implements Runnable{
 
 				Reuse count to keep track of how many threads hit this barrier2 
 
-				The code is similar. 
+				The code is similar.
 				*/
-				
-
-
-
-
-
-
-
+				                                    
+                       
+                                
+                                                            
+                                           
+     
+                                        
+                                  
 
 				/*
 				__________________________________________________________________________________
@@ -396,21 +437,18 @@ public class ServerThread implements Runnable{
 				permit for the moderator to run
 
 				If all else fails use the barriers again
+
+				//If you quit while reading, now is the time to erase the player
 				*/
-				
-				
-
-
-
-
-
-
-
-
-
-
-
-    
+				          
+                             
+                                               
+                                      
+                                               
+             
+      
+            
+     
 			}
 		}
 		catch (InterruptedException ex) {
