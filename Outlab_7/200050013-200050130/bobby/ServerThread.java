@@ -42,10 +42,10 @@ public class ServerThread implements Runnable{
 			*/
 
 			// String feedback;
-			input = new BufferedReader(new InputStreamReader(socket.getInputStream()));
-			output = new PrintWriter(socket.getOutputStream(), true);
 			
 			try{
+				input = new BufferedReader(new InputStreamReader(socket.getInputStream()));
+				output = new PrintWriter(socket.getOutputStream(), true);
                                                                                     
                                                                   
 				if (this.id == -1) {
@@ -123,6 +123,8 @@ public class ServerThread implements Runnable{
 				
 				if (this.id == -1 && !this.registered){
 
+					board.reentry.acquire();
+					board.registration.acquire();
 					this.registered = true;
 					board.installPlayer(this.id);
 					Moderator moderator = new Moderator(board);
@@ -162,10 +164,14 @@ public class ServerThread implements Runnable{
 				} 
 				catch (IOException i) {
 					//set flags
+					quit = true;
+					client_quit = true;
+
                  
                         
  					
 					// release everything socket related
+					
                    
                     
                     
@@ -233,7 +239,9 @@ public class ServerThread implements Runnable{
 				*/
 				if (!this.registered){
 
-					board.moderatorEnabler.acquire();
+					board.registration.acquire();
+					this.registered = true;
+
 
 					                                  
                             
@@ -347,18 +355,22 @@ public class ServerThread implements Runnable{
 					}
 					//in case of IO Exception, off with the thread
 					catch(Exception i){
-						//set flags 
+						//set flags 	
 						                          
                   
 						// If you are a Fugitive you can't edit the board, but you can set dead to true
 						if(this.id == -1){
 							                                         
-                              
+                              board.dead = true;
                                                 
 						}
 
 						// release everything socket related
-						              
+
+						input.close();
+						output.close();
+						
+						
                      
                      
 					}

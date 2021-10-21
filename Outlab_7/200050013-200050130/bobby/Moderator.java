@@ -49,7 +49,8 @@ public class Moderator implements Runnable{
 				
 				if (this.board.embryo){
 
-					
+					board.reentry.release();
+					board.registration.release();
 					///
 
 					
