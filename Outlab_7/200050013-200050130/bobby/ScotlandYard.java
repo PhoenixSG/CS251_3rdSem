@@ -70,7 +70,7 @@ public class ScotlandYard implements Runnable{
 				//INITIALISATION: get the game going				
 				
 
-				Socket socket = this.socket;
+				Socket socket ;
 				boolean fugitiveIn = false;
 				
 				/*
@@ -84,6 +84,7 @@ public class ScotlandYard implements Runnable{
 					input = new BufferedReader(new InputStreamReader(socket.getInputStream()));
 					board.totalThreads++;
 					Moderator moderator = new Moderator(board);
+					moderator.run();
           
                                     
        

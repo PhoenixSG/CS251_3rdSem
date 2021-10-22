@@ -6,7 +6,6 @@ import java.util.*;
 
 import java.util.concurrent.Semaphore;
 
-import jdk.internal.net.http.hpack.QuickHuffman;
 
 public class Moderator implements Runnable{
 	private Board board;
@@ -65,6 +64,9 @@ public class Moderator implements Runnable{
 				//find out how many newbies
 				int newbies = board.totalThreads+board.quitThreads-board.playingThreads;
 
+				board.registration.release(newbies);
+				board.reentry.release(board.playingThreads);
+
 				
 				
 				/*
@@ -82,10 +84,10 @@ public class Moderator implements Runnable{
 					board.threadInfoProtector.release();
 					return;
 				}
-				else{
-					///
-					;
-				}
+				// else{
+				// 	///
+				// 	;
+				// }
 				
 				
 				

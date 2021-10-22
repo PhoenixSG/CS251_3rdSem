@@ -7,7 +7,6 @@ import java.util.*;
 import java.util.concurrent.Semaphore;
 
 
-
 public class ServerThread implements Runnable{
 	private Board board;
 	private int id;
@@ -127,8 +126,8 @@ public class ServerThread implements Runnable{
 					board.registration.acquire();
 					this.registered = true;
 					board.installPlayer(this.id);
-					Moderator moderator = new Moderator(board);
-					moderator.run();
+					board.moderatorEnabler.release();
+
 					///
                                        
                             
@@ -165,12 +164,15 @@ public class ServerThread implements Runnable{
 				catch (IOException i) {
 					//set flags
 					quit = true;
-					client_quit = true;
+					quit_while_reading = true;
 
                  
                         
  					
 					// release everything socket related
+					input.close();
+					output.close();
+					socket.close();
 					
                    
                     
@@ -179,7 +181,7 @@ public class ServerThread implements Runnable{
 
 				if (cmd == null){
 					// rage quit (this would happen if buffer is closed due to SIGINT (Ctrl+C) from Client), set flags
-					quit_while_reading = true;
+					client_quit = true;
 					quit=true;
 
 
@@ -187,6 +189,9 @@ public class ServerThread implements Runnable{
                         
 
 					// release everything socket related
+					input.close();
+					output.close();
+					socket.close();
 					              
                     
                     
@@ -200,6 +205,9 @@ public class ServerThread implements Runnable{
                         
 
 					// release everything socket related
+					input.close();
+					output.close();
+					socket.close();
 					              
                     
                     
@@ -237,10 +245,22 @@ public class ServerThread implements Runnable{
 
 				Note that installation of a Fugitive sets embryo to false
 				*/
+				board.reentry.acquire();
 				if (!this.registered){
 
 					board.registration.acquire();
 					this.registered = true;
+
+					if(board.dead){
+						board.erasePlayer(this.id);
+						quit = true;
+						client_quit = true;
+						input.close();
+						output.close();
+						socket.close();
+						// return;
+					}
+
 
 
 					                                  
@@ -317,6 +337,15 @@ public class ServerThread implements Runnable{
 				*/
 
 				board.barrier1.acquire();
+				board.countProtector.acquire();
+
+				board.count++;
+				if(board.count == board.playingThreads){
+					board.barrier1.release(board.count);
+				}
+				board.countProtector.release();
+
+
 				///
                                         
                        
@@ -340,6 +369,11 @@ public class ServerThread implements Runnable{
 
 				if (!client_quit){
 					String feedback;
+					if(id!=-1)
+						feedback = board.showDetective(id);
+					else{
+						feedback = board.showFugitive();
+					}
 					                                         
                         
                                            
@@ -351,11 +385,13 @@ public class ServerThread implements Runnable{
 
 					//pass this to the client via the socket output
 					try{
-
+						output.println(feedback);
 					}
 					//in case of IO Exception, off with the thread
 					catch(Exception i){
-						//set flags 	
+						//set flags 
+						quit_while_reading = true;
+						quit=true;	
 						                          
                   
 						// If you are a Fugitive you can't edit the board, but you can set dead to true
@@ -369,6 +405,7 @@ public class ServerThread implements Runnable{
 
 						input.close();
 						output.close();
+						socket.close();
 						
 						
                      
@@ -378,12 +415,15 @@ public class ServerThread implements Runnable{
 					
 					
 					//parse this feedback to find if game is on
-					String indicator;
+					String indicator = feedback.split("; ")[2];
 
 
 
 					if (!indicator.equals("Play")){
 						//Proceed simillarly to IOException
+
+
+						///
 						                          
                   
 
@@ -411,6 +451,11 @@ public class ServerThread implements Runnable{
 				totalThreads and quitThreads
 				*/
 
+				if(quit){
+					board.totalThreads--;
+					board.quitThreads++;
+				}
+
 				          
                                               
                                 
@@ -431,7 +476,17 @@ public class ServerThread implements Runnable{
 				The code is similar.
 				*/
 				                                    
-                       
+				board.barrier2.acquire();
+				board.countProtector.acquire();
+
+				board.count--;
+				if(board.count == 0){
+					// board.barrier2.release(board.playingThreads);
+					board.barrier2.release(board.totalThreads);
+					board.moderatorEnabler.release();
+				}
+				board.countProtector.release();
+
                                 
                                                             
                                            
@@ -445,13 +500,18 @@ public class ServerThread implements Runnable{
 				actually finishing off a thread
 				that decided to quit
 
-				However, the last thread to hit this must issue one
+				///However, the last thread to hit this must issue one
 				permit for the moderator to run
 
 				If all else fails use the barriers again
 
-				//If you quit while reading, now is the time to erase the player
 				*/
+
+				if(quit){
+					input.close();
+					output.close();
+					socket.close();
+				}
 				          
                              
                                                
