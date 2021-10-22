@@ -70,22 +70,24 @@ public class ScotlandYard implements Runnable{
 				//INITIALISATION: get the game going				
 				
 
-				Socket socket ;
+				Socket socket =null;
 				boolean fugitiveIn = false;
+				
 				
 				/*
 				listen for a client to play fugitive, and spawn the moderator.
 				
 				here, it is actually ok to edit this.board.dead, because the game hasn't begun
 				*/
-				
+				Thread fugitiveServerThread;
 				do{
 					///
-					input = new BufferedReader(new InputStreamReader(socket.getInputStream()));
+					socket = server.accept();
 					board.totalThreads++;
-					Moderator moderator = new Moderator(board);
-					moderator.run();
-          
+					fugitiveServerThread = new Thread(new ServerThread(board, -1, socket, port, gamenumber));
+					board.dead = false;
+					fugitiveIn=true;
+					
                                     
        
                                        
@@ -97,7 +99,7 @@ public class ScotlandYard implements Runnable{
 				System.out.println(this.gamenumber);
 
 				// Spawn a thread to run the Fugitive
-				ServerThread serverThread = new ServerThread(board, -1, socket, port, gamenumber);
+				threadPool.execute(fugitiveServerThread);
                          ///                    
                                  
                             
@@ -105,7 +107,8 @@ public class ScotlandYard implements Runnable{
                                              
 
 				// Spawn the moderator
-				Moderator moderator = new Moderator(board);
+				Thread moderator = new Thread(new Moderator(board));
+				threadPool.execute(moderator);
                       ///                            
                 
 				while (true){
@@ -115,6 +118,11 @@ public class ScotlandYard implements Runnable{
 					*/
 
 					try {
+						socket = server.accept();
+						board.totalThreads++;
+						Thread detectiveServerThread = new Thread(new ServerThread(board, -1, socket, port, gamenumber));
+						threadPool.execute(detectiveServerThread);
+					
 
 					} 
 					catch (SocketTimeoutException t){
@@ -140,18 +148,22 @@ public class ScotlandYard implements Runnable{
 
 					don't forget to release lock when done!
 					*/
-					board.threadInfoProtector.acquire();
 					
 					int i = board.getAvailableID();
-
+					
 					if(i!=-1){
+						board.threadInfoProtector.acquire();
 						board.installPlayer(i);
 						board.totalThreads++;
+						board.threadInfoProtector.release();
 					}
 					else{
+						if(board.dead){
+							break;
+						}
+						continue;
 
 					}
-					board.threadInfoProtector.release();
 
 					///
 
@@ -180,6 +192,9 @@ public class ScotlandYard implements Runnable{
 				
 				kill threadPool (Careless Whispers BGM stops)
 				*/
+				server.close();
+				moderator.join();
+				threadPool.shutdown();	
 			            
                         
                                
