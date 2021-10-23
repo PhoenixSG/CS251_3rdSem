@@ -76,68 +76,67 @@ public class ServerThread implements Runnable{
 			}
 
 			//__________________________________________________________________________________________
-
 			while(true){
 				boolean quit = false;
 				boolean client_quit = false;
 				boolean quit_while_reading = false;
 				int target = -1;
-
+				
 				/*
 				client_quit means you closed the socket when you read the input,
 				check this flag while making a move on the board
-
+				
 				quit means that the thread decides that it will not play the next round
-
+				
 				if quit_while_reading, you just set the board to dead if 
 				you're a fugitive. Don't edit the positions on the board, as threads
 				are reading
-
+				
 				quit_while_reading is used when you can't call erasePlayer just yet, 
 				because the board is being read by other threads
-
+				
 				INVARIANT: 
 				quit == client_quit || quit_while_reading
-
+				
 				client_quit && quit_while_reading == false
-
+				
 				DO NOT edit board between barriers!
-
+				
 				erasePlayer, when called by exiting Fugitive, sets 
 				this.board.dead to true. Make sure to only alter it during the
 				round
-
+				
 				either when
 				1) you're about to play but the client had told you to quit
 				2) you've played and the game got over in this round.
-
+				
 				________________________________________________________________________________________
 				
 				First, base case: Fugitive enters the game for the first time
 				installPlayer called by a fugitive sets embryo to false.
-
+				
 				Register the Fugitive, install, and enable the moderator, and 
 				continue to the next iteration
 				*/
 				
 				if (this.id == -1 && !this.registered){
-
+					
 					board.reentry.acquire();
 					board.registration.acquire();
 					this.registered = true;
 					board.installPlayer(this.id);
 					board.moderatorEnabler.release();
-
+					
 					///
-                                       
-                            
-                                              
-                                  
-                                              
-                                           
+					
+					
+					
+					
+					
+					
 					continue;
 				}
-
+				
 				/*
 				Now, usual service
 				
@@ -148,51 +147,51 @@ public class ServerThread implements Runnable{
 				totalThreads and quitThreads are relevant only to the moderator, so we can 
 				edit them in the end, just before
 				enabling the moderator. (we have the quit flag at our disposal)
-
+				
 				For now, if the player wants to quit,
 				just make the id available, by calling erasePlayer.
 				this MUST be called by acquiring the threadInfoProtector! 
 				
 				After that, say goodbye to the client if client_quit
 				*/
-
+				
 				String cmd = "";
 				try {
 					cmd = input.readLine();
-
+					
 				} 
 				catch (IOException i) {
 					//set flags
 					quit = true;
 					quit_while_reading = true;
-
-                 
-                        
- 					
+					
+					
+					
+					
 					// release everything socket related
 					input.close();
 					output.close();
 					socket.close();
 					
-                   
+					
                     
                     
 				}
-
+				
 				if (cmd == null){
 					// rage quit (this would happen if buffer is closed due to SIGINT (Ctrl+C) from Client), set flags
 					client_quit = true;
 					quit=true;
-
-
-					            
-                        
-
+					
+					
+					
+					
+					
 					// release everything socket related
 					input.close();
 					output.close();
 					socket.close();
-					              
+					
                     
                     
 				}
@@ -201,30 +200,30 @@ public class ServerThread implements Runnable{
 					// client wants to disconnect, set flags
 					client_quit = true;
 					quit = true;
-					            
-                        
-
+					
+					
+					
 					// release everything socket related
 					input.close();
 					output.close();
 					socket.close();
-					              
+					
                     
                     
 				}
-
+				
 				else{
 					try{
 						//interpret input as the integer target
 						target = Integer.parseInt(cmd);
-
+						
 					}
 					catch(Exception e){
 						//set target that does nothing for a mispressed key
 						target = -1;
 					}
 				}
-
+				
 				/*
 				In the synchronization here, playingThreads is sacrosanct.
 				DO NOT touch it!
@@ -236,21 +235,21 @@ public class ServerThread implements Runnable{
 				______________________________________________________________________________________
 				PART 2______________________
 				entering the round
-
+				
 				you must acquire the permit the moderator gave you to enter, 
 				regardless of whether you're new.
-
+				
 				Also, if you are new, check if the board is dead. If yes, erase the player, set the
 				flags, and drop the connection
-
+				
 				Note that installation of a Fugitive sets embryo to false
 				*/
 				board.reentry.acquire();
 				if (!this.registered){
-
+					
 					board.registration.acquire();
 					this.registered = true;
-
+					
 					if(board.dead){
 						board.erasePlayer(this.id);
 						quit = true;
@@ -260,35 +259,35 @@ public class ServerThread implements Runnable{
 						socket.close();
 						// return;
 					}
-
-
-
-					                                  
-                            
-                                              
-                                                
-                                      
-                  
-                          
-                                               
+					
+					
+					
+					
+					
+					
+					
+					
+					
+					
+					
                     
-                     
-                     
-      
-          
-                                   
-                                               
-      
+					
+					
+					
+					
+					
+					
+					
 				}
-
-
+				
+				
 				
 				/*
 				_______________________________________________________________________________________
 				PART 3___________________________________
 				play the move you read in PART 1 
 				if you haven't decided to quit
-
+				
 				else, erase the player
 				*/
 				if(!quit){
@@ -302,53 +301,56 @@ public class ServerThread implements Runnable{
 				else{
 					board.erasePlayer(id);
 				}
-
-                      
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
                                               
-                           
-                                      
-      
-
-          
-                                                
-      
-
-                                              
-     
-
-         
-                                              
-                                     
-                                              
-     
- 			
+				
+				
+				
+				
 				/*
-
+				
 				_______________________________________________________________________________________
-
+				
 				PART 4_____________________________________________
 				cyclic barrier, first part
 				
 				execute barrier, so that we wait for all playing threads to play
-
+				
 				Hint: use the count to keep track of how many threads hit this barrier
 				they must acquire a permit to cross. The last thread to hit the barrier can 
 				release permits for them all.
 				*/
-
+				
 				board.barrier1.acquire();
 				board.countProtector.acquire();
-
+				
 				board.count++;
+				System.out.println(board.playingThreads);
+				System.out.println("UEHFBIEFBYE");
 				if(board.count == board.playingThreads){
 					board.barrier1.release(board.count);
+					System.out.println("DETECTIVE!!"); 
 				}
 				board.countProtector.release();
-
-
+				
+				
 				///
-                                        
-                       
+				
+				
                                                        
                                                             
      

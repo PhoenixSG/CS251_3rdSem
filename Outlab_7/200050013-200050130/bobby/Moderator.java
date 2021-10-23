@@ -25,48 +25,51 @@ public class Moderator implements Runnable{
 				*/
 				board.moderatorEnabler.acquire();
 				board.threadInfoProtector.acquire();
-                                          
-                                             
 
+				
+				
+				
 				
 				/* 
 				look at the thread info, and decide how many threads can be 
 				permitted to play next round
-
+				
 				playingThreads: how many began last round
 				quitThreads: how many quit in the last round
 				totalThreads: how many are ready to play next round
-
+				
 				RECALL the invariant mentioned in Board.java
-
+				
 				T = P - Q + N
-
+				
 				P - Q is guaranteed to be non-negative.
 				*/
-
+				
 				//base case
 				
 				if (this.board.embryo){
-
+					
 					board.reentry.release();
 					board.registration.release();
 					///
-
 					
-					                              
-                                        
-                                   
-                                              
+					
+					
+					
+					
+					
+					System.out.println("QQQQQQQQQQQQQQQQQQ");
 					continue;
 				}
 				
 				
 				//find out how many newbies
 				int newbies = board.totalThreads+board.quitThreads-board.playingThreads;
-
-				board.registration.release(newbies);
-				board.reentry.release(board.playingThreads);
-
+				System.out.println("BLAHBLAH");
+				
+				
+				System.out.println(board.playingThreads);
+				System.out.println(board.totalThreads);
 				
 				
 				/*
@@ -80,7 +83,7 @@ public class Moderator implements Runnable{
 				
 				if(board.totalThreads==0){
 					board.dead=true;
-					board.moderatorEnabler.release();
+					// board.moderatorEnabler.release();
 					board.threadInfoProtector.release();
 					return;
 				}
@@ -107,8 +110,12 @@ public class Moderator implements Runnable{
 				
 				board.playingThreads = board.totalThreads;
 				board.quitThreads = 0;
+
+				board.registration.release(newbies);
+				board.reentry.release(board.playingThreads);
+				board.barrier1.release(board.playingThreads);
 				
-				board.moderatorEnabler.release();
+				// board.moderatorEnabler.release();
 				board.threadInfoProtector.release();
 				
 				

@@ -1,12 +1,12 @@
 package bobby;
 
 import java.net.*;
+import java.rmi.ServerException;
 import java.io.*;
 import java.util.*;
 
 import java.util.concurrent.Semaphore;
-
-
+import java.util.concurrent.TimeoutException;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
@@ -79,14 +79,23 @@ public class ScotlandYard implements Runnable{
 				
 				here, it is actually ok to edit this.board.dead, because the game hasn't begun
 				*/
-				Thread fugitiveServerThread;
+				Thread fugitiveServerThread = null;
 				do{
 					///
+					try{
 					socket = server.accept();
+					board.threadInfoProtector.acquire();
+					board.installPlayer(-1);
+
 					board.totalThreads++;
 					fugitiveServerThread = new Thread(new ServerThread(board, -1, socket, port, gamenumber));
 					board.dead = false;
 					fugitiveIn=true;
+					board.threadInfoProtector.release();
+					}
+					catch(Exception t){
+						continue;
+					}
 					
                                     
        
@@ -122,30 +131,31 @@ public class ScotlandYard implements Runnable{
 						board.totalThreads++;
 						Thread detectiveServerThread = new Thread(new ServerThread(board, -1, socket, port, gamenumber));
 						threadPool.execute(detectiveServerThread);
-					
+						
 
 					} 
 					catch (SocketTimeoutException t){
 						if(board.dead){
 							return;
 						}
-                                               
-                            
+						
+						
                                                 
-             
-       
-                                               
+						System.out.println("ScotlandYard!");
+						
+						
+						
 						continue;
 					}
 					
 					
 					/*
 					acquire thread info lock, and decide whether you can serve the connection at this moment,
-
+					
 					if you can't, drop connection (game full, game dead), continue, or break.
-
+					
 					if you can, spawn a thread, assign an ID, increment the totalThreads
-
+					
 					don't forget to release lock when done!
 					*/
 					
