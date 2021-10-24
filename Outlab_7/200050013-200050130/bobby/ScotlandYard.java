@@ -50,6 +50,7 @@ public class ScotlandYard implements Runnable{
 		public ScotlandYardGame(int port, int gamenumber){
 			this.port = port;
 			this.board = new Board();
+			System.out.println("BOARD CREATED!!!");
 			this.gamenumber = gamenumber;
 			try{
 				this.server = new ServerSocket(port);
@@ -85,7 +86,6 @@ public class ScotlandYard implements Runnable{
 					try{
 					socket = server.accept();
 					board.threadInfoProtector.acquire();
-					board.installPlayer(-1);
 
 					board.totalThreads++;
 					fugitiveServerThread = new Thread(new ServerThread(board, -1, socket, port, gamenumber));
@@ -118,6 +118,10 @@ public class ScotlandYard implements Runnable{
 				// Spawn the moderator
 				Thread moderator = new Thread(new Moderator(board));
 				threadPool.execute(moderator);
+				System.out.println("EMBRYO STATUS");
+				System.out.println(board.embryo);
+				board.installPlayer(-1);
+
                       ///                            
                 
 				while (true){
@@ -128,7 +132,7 @@ public class ScotlandYard implements Runnable{
 
 					try {
 						socket = server.accept();
-						board.totalThreads++;
+						// board.totalThreads++;
 						
 						
 
@@ -140,7 +144,7 @@ public class ScotlandYard implements Runnable{
 						
 						
                                                 
-						System.out.println("ScotlandYard!");
+						// System.out.println("ScotlandYard!");
 						// System.out.println(board.embryo);
 						
 						
@@ -161,6 +165,7 @@ public class ScotlandYard implements Runnable{
 					
 					int i = board.getAvailableID();
 					System.out.println("CREATE player");
+					System.out.println(i);
 					
 					if(i!=-1){
 						Thread detectiveServerThread = new Thread(new ServerThread(board, i, socket, port, gamenumber));
@@ -180,6 +185,8 @@ public class ScotlandYard implements Runnable{
 					}
 
 					///
+					board.moderatorEnabler.release();
+					System.out.println("MODERATOR PERMIT RELEASED");
 
 					                                         
                           

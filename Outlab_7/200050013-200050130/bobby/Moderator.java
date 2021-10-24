@@ -49,8 +49,10 @@ public class Moderator implements Runnable{
 				
 				if (this.board.embryo){
 					
-					board.reentry.release();
-					board.registration.release();
+					board.reentry.release(1);
+					board.registration.release(1);
+					// board.moderatorEnabler.release();
+					board.threadInfoProtector.release();
 					///
 					
 					
@@ -113,7 +115,7 @@ public class Moderator implements Runnable{
 
 				board.registration.release(newbies);
 				board.reentry.release(board.playingThreads);
-				board.barrier1.release(board.playingThreads);
+				// board.barrier1.release(board.playingThreads);
 				
 				// board.moderatorEnabler.release();
 				board.threadInfoProtector.release();

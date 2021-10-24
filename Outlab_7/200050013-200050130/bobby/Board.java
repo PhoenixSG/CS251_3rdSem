@@ -156,6 +156,8 @@ public class Board{
 	*/ 
 
 	public void moveDetective(int id, int target){
+		System.out.println("BOARD DET MOVE"+target);
+
 		//perform sanity check on input. If failure, do nothing, just return
 		if (target < 0 || target > 63 || id < 0 || id > 4){
 			return;
@@ -193,6 +195,7 @@ public class Board{
 	
 
 	public void moveFugitive(int target){
+		System.out.println("BOARD FUG MOVE"+target);
 		if (this.playingThreads > 1){
 			this.time++;
 		}
