@@ -125,7 +125,8 @@ public class ServerThread implements Runnable{
 					board.registration.acquire();
 					this.registered = true;
 					board.installPlayer(this.id);
-					board.moderatorEnabler.release();
+					// board.moderatorEnabler.release();
+					System.out.println("MODERATOR RELEASE BEGINNING");
 					
 					///
 					
@@ -291,6 +292,7 @@ public class ServerThread implements Runnable{
 				else, erase the player
 				*/
 				if(!quit){
+					System.out.println("NOT QUIT AND CALLING MOVE FUNCTION");
 					if(id == -1){
 						board.moveFugitive(target);
 					}
@@ -485,6 +487,7 @@ public class ServerThread implements Runnable{
 				if(board.count == 0){
 					// board.barrier2.release(board.playingThreads);
 					board.barrier2.release(board.totalThreads);
+					System.out.println("MODERATOR RELEASE AT THE END!!");
 					board.moderatorEnabler.release();
 				}
 				board.countProtector.release();

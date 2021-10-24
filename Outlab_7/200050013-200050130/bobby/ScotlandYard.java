@@ -129,8 +129,7 @@ public class ScotlandYard implements Runnable{
 					try {
 						socket = server.accept();
 						board.totalThreads++;
-						Thread detectiveServerThread = new Thread(new ServerThread(board, -1, socket, port, gamenumber));
-						threadPool.execute(detectiveServerThread);
+						
 						
 
 					} 
@@ -142,6 +141,7 @@ public class ScotlandYard implements Runnable{
 						
                                                 
 						System.out.println("ScotlandYard!");
+						// System.out.println(board.embryo);
 						
 						
 						
@@ -160,9 +160,13 @@ public class ScotlandYard implements Runnable{
 					*/
 					
 					int i = board.getAvailableID();
+					System.out.println("CREATE player");
 					
 					if(i!=-1){
+						Thread detectiveServerThread = new Thread(new ServerThread(board, i, socket, port, gamenumber));
+						threadPool.execute(detectiveServerThread);
 						board.threadInfoProtector.acquire();
+						System.out.println("CREATE DETECTive");
 						board.installPlayer(i);
 						board.totalThreads++;
 						board.threadInfoProtector.release();
