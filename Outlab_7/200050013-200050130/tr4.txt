@@ -1,4 +1,18 @@
-Welcome. You play Detective 2 in Game 5000:0. You start on square 0. Make a move, and wait for feedback
-Move 4; Detective 2; Play; Detectives on 28, 3, 24, -1, -1
-Move 5; Detective 2; Play; Detectives on 27, 2, 24, -1, -1
-Move 6; Detective 2; Play; Detectives on 25, 3, 0, 4, -1
+Welcome. You play Detective 1 in Game 5000:0. You start on square 0. Make a move, and wait for feedback
+Move 1; Detective 1; Play; Detectives on 48, 24, -1, -1, -1
+Move 2; Detective 1; Play; Detectives on 24, 28, -1, -1, -1
+Move 3; Detective 1; Play; Detectives on 48, 28, -1, -1, -1; Fugitive on 11
+Move 4; Detective 1; Play; Detectives on 0, 31, -1, -1, -1
+Move 5; Detective 1; Play; Detectives on 48, 29, -1, -1, -1
+Move 6; Detective 1; Play; Detectives on 0, 31, -1, -1, -1
+Move 7; Detective 1; Play; Detectives on 0, 47, -1, -1, -1
+Move 8; Detective 1; Play; Detectives on 1, 23, -1, -1, -1; Fugitive on 62
+Move 9; Detective 1; Play; Detectives on 9, 55, 16, 0, -1
+Move 10; Detective 1; Play; Detectives on 8, 53, 56, 16, -1
+Move 11; Detective 1; Play; Detectives on 40, 45, 16, 48, -1
+Move 12; Detective 1; Play; Detectives on 45, 45, 21, 48, -1
+Move 13; Detective 1; Play; Detectives on 29, 41, 21, 24, -1; Fugitive on 10
+Move 14; Detective 1; Play; Detectives on 37, 45, 16, 8, -1
+Move 15; Detective 1; Play; Detectives on 29, 37, 56, 16, -1
+Move 16; Detective 1; Play; Detectives on 28, 21, 62, 32, -1
+Move 18; Detective 1; Victory; Detectives on -1, 19, -1, 37, -1; Fugitive on -1

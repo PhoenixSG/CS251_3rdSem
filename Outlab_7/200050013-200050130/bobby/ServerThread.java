@@ -69,6 +69,9 @@ public class ServerThread implements Runnable{
 				board.totalThreads--;
 				board.threadInfoProtector.release();
 				///
+				board.countProtector.acquire();			
+				board.count++;
+				board.countProtector.release();
 				
 				                                         
                               
@@ -318,6 +321,9 @@ public class ServerThread implements Runnable{
 					board.quitThreads++;
 					board.erasePlayer(id);
 					board.threadInfoProtector.release();
+					board.countProtector.acquire();			
+					board.count++;
+					board.countProtector.release();
 					return;
 				}
 				
@@ -439,6 +445,7 @@ public class ServerThread implements Runnable{
 						board.quitThreads++;
 						board.erasePlayer(id);
 						board.threadInfoProtector.release();
+						
 
                     	return;
                      

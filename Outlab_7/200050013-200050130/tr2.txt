@@ -1,2 +1,18 @@
-Welcome. You play Detective 3 in Game 5000:0. You start on square 0. Make a move, and wait for feedback
-Move 6; Detective 3; Play; Detectives on 25, 3, 0, 4, -1
+Welcome. You play Fugitive in Game 5000:0. You start on square 42. Make a move, and wait for feedback
+Move 1; Fugitive; Play; Detectives on 48, 24, -1, -1, -1; Fugitive on 47
+Move 2; Fugitive; Play; Detectives on 24, 28, -1, -1, -1; Fugitive on 38
+Move 3; Fugitive; Play; Detectives on 48, 28, -1, -1, -1; Fugitive on 11
+Move 4; Fugitive; Play; Detectives on 0, 31, -1, -1, -1; Fugitive on 32
+Move 5; Fugitive; Play; Detectives on 48, 29, -1, -1, -1; Fugitive on 0
+Move 6; Fugitive; Play; Detectives on 0, 31, -1, -1, -1; Fugitive on 56
+Move 7; Fugitive; Play; Detectives on 0, 47, -1, -1, -1; Fugitive on 56
+Move 8; Fugitive; Play; Detectives on 1, 23, -1, -1, -1; Fugitive on 62
+Move 9; Fugitive; Play; Detectives on 9, 55, 16, 0, -1; Fugitive on 60
+Move 10; Fugitive; Play; Detectives on 8, 53, 56, 16, -1; Fugitive on 42
+Move 11; Fugitive; Play; Detectives on 40, 45, 16, 48, -1; Fugitive on 24
+Move 12; Fugitive; Play; Detectives on 45, 45, 21, 48, -1; Fugitive on 10
+Move 13; Fugitive; Play; Detectives on 29, 41, 21, 24, -1; Fugitive on 10
+Move 14; Fugitive; Play; Detectives on 37, 45, 16, 8, -1; Fugitive on 10
+Move 15; Fugitive; Play; Detectives on 29, 37, 56, 16, -1; Fugitive on 10
+Move 16; Fugitive; Play; Detectives on 28, 21, 62, 32, -1; Fugitive on 10
+Move 17; Fugitive; Defeat; Detectives on 36, 19, 62, 37, -1; Fugitive on 37
