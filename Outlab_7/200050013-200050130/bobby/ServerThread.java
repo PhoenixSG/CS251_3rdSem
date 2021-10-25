@@ -168,6 +168,7 @@ public class ServerThread implements Runnable{
 					//set flags
 					quit = true;
 					quit_while_reading = true;
+					System.out.println("READING ERROR");
 					
 					
 					
@@ -178,7 +179,7 @@ public class ServerThread implements Runnable{
 					socket.close();
 					
 					
-                    
+
                     
 				}
 				
@@ -198,7 +199,7 @@ public class ServerThread implements Runnable{
 					socket.close();
 					
                     
-                    
+
 				}
 				
 				else if (cmd.equals("Q")) {
@@ -214,7 +215,7 @@ public class ServerThread implements Runnable{
 					output.close();
 					socket.close();
 					
-                    
+
                     
 				}
 				
@@ -253,7 +254,7 @@ public class ServerThread implements Runnable{
 				Note that installation of a Fugitive sets embryo to false
 				*/
 				board.reentry.acquire();
-				System.out.println("ERROR!!");
+				System.out.println("Re-entered!!");
 				if (!this.registered){
 					
 					board.registration.acquire();
@@ -312,7 +313,12 @@ public class ServerThread implements Runnable{
 				}
 				else{
 					System.out.println("QUIT"+ this.id);
+					board.threadInfoProtector.acquire();
+					board.totalThreads--;
+					board.quitThreads++;
 					board.erasePlayer(id);
+					board.threadInfoProtector.release();
+					return;
 				}
 				
 				
@@ -416,7 +422,7 @@ public class ServerThread implements Runnable{
 						
 						// If you are a Fugitive you can't edit the board, but you can set dead to true
 						if(this.id == -1){
-							System.out.println("SET DEAD TRUE I DONT KNOW WHY");
+							System.out.println("SET DEAD TRUE");
 							
 							board.dead = true;
 							
@@ -428,8 +434,13 @@ public class ServerThread implements Runnable{
 						input.close();
 						output.close();
 						socket.close();
-						
-						
+						board.threadInfoProtector.acquire();
+						board.totalThreads--;
+						board.quitThreads++;
+						board.erasePlayer(id);
+						board.threadInfoProtector.release();
+
+                    	return;
                      
                      
 					}
@@ -446,8 +457,20 @@ public class ServerThread implements Runnable{
 
 
 						///
-						System.out.println("PLAY PLAY");
-						                          
+						board.threadInfoProtector.acquire();
+						board.erasePlayer(id);
+						board.totalThreads--;
+						board.quitThreads++;
+						board.threadInfoProtector.release();
+						///
+						
+				
+				                                         
+                              
+                                    
+                                             
+						return;
+
                   
 
                         
@@ -477,8 +500,11 @@ public class ServerThread implements Runnable{
 
 				if(quit){
 					System.out.println("QUIT FINALLY");
+					board.threadInfoProtector.acquire();
 					board.totalThreads--;
 					board.quitThreads++;
+					board.erasePlayer(id);
+					board.threadInfoProtector.release();
 				}
 
 				          
@@ -535,6 +561,7 @@ public class ServerThread implements Runnable{
 				*/
 
 				if(quit){
+					System.out.println("This should never be printed");
 					board.erasePlayer(id);
 					input.close();
 					output.close();

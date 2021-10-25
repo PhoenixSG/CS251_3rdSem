@@ -178,6 +178,7 @@ public class ScotlandYard implements Runnable{
 					}
 					else{
 						if(board.dead){
+							System.out.println("EXITING GAME");
 							break;
 						}
 						continue;
