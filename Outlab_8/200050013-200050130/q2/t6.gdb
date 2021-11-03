@@ -1,7 +1,4 @@
-b 21
-break 23
+break 20
 run 200050013-200050130
-set variable r = 0
-c
-print s
+print (string) load_var()
 quit
