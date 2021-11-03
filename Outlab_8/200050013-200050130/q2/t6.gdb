@@ -1,9 +1,7 @@
-break init
-break 24
+b 21
+break 23
 run 200050013-200050130
-next
-display s
-jump 23
-
+set variable r = 0
+c
+print s
 quit
-
