@@ -1,6 +1,4 @@
-break load_var
+break 12
 run 200050013-200050130
-finish
-set $retval = load_var()
-print (char* ) $retval
+print (string) load_var()
 quit
