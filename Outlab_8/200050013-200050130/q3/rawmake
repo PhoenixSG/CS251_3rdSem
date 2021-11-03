@@ -1,0 +1,49 @@
+helloworld: 
+	g++ helloworld.cpp -o helloworld
+
+usespthread:
+	g++ -w usespthread.cpp -o usespthread -lpthread
+
+libMyEngineDynamic.so:
+	g++ -c -w -Wall -fpic myengine/myengine.cpp
+	g++ -shared -o libMyEngineDynamic.so myengine.o
+	
+libMyEngineStatic.a:
+	g++ -c myengine/myengine.cpp -o myengine.o
+	ar rcs libMyEngineStatic.a myengine.o
+
+
+.PHONY: installdynamic
+
+installdynamic: libMyEngineDynamic.so
+	sudo cp libMyEngineDynamic.so /usr/local/lib/
+	sudo cp myengine/myengine.hpp /usr/local/include/
+	sudo ldconfig
+
+.PHONY: installstatic
+
+installstatic: libMyEngineStatic.a
+	sudo cp libMyEngineStatic.a /usr/local/lib/
+	sudo cp myengine/myengine.hpp /usr/local/include/
+	sudo ldconfig
+
+mygamestatic:
+	g++ -o static_exec mygame/mygame.cpp /usr/local/lib/libMyEngineStatic.a 
+
+mygamedynamic:
+	g++ -o dynamic_exec mygame/mygame.cpp /usr/local/lib/libMyEngineDynamic.so 
+
+.PHONY: clean
+
+clean:
+	rm -f *.o *.a *.so static_exec dynamic_exec helloworld usespthread
+
+
+
+
+
+
+
+
+
+	
