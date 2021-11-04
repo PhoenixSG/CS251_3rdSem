@@ -1,0 +1,64 @@
+GNU gdb (Ubuntu 9.2-0ubuntu1~20.04) 9.2
+Copyright (C) 2020 Free Software Foundation, Inc.
+License GPLv3+: GNU GPL version 3 or later <http://gnu.org/licenses/gpl.html>
+This is free software: you are free to change and redistribute it.
+There is NO WARRANTY, to the extent permitted by law.
+Type "show copying" and "show warranty" for details.
+This GDB was configured as "x86_64-linux-gnu".
+Type "show configuration" for configuration details.
+For bug reporting instructions, please see:
+<http://www.gnu.org/software/gdb/bugs/>.
+Find the GDB manual and other documentation resources online at:
+    <http://www.gnu.org/software/gdb/documentation/>.
+
+For help, type "help".
+Type "apropos word" to search for commands related to "word"...
+Reading symbols from ./a.out...
+Breakpoint 1 at 0x115d: file t3_program.c, line 9.
+Breakpoint 2 at 0x119d: file t3_program.c, line 16.
+
+Breakpoint 2, main (argc=1, argv=0x7fffffffdc48) at t3_program.c:16
+16	    foo(1,2,3);
+140737488345920
+140737488345928
+140737488345936
+a
+3
+b
+140737488345920
+140737488345936
+140737488345936
++-------------------------+
+| 48 dc ff ff ff 7f 00 00 | <- rsp
++-------------------------+
+| 00 00 00 00 01 00 00 00 |
++-------------------------+
+| 00 00 00 00 00 00 00 00 | <- rbp
++-------------------------+
+
+Breakpoint 1, foo (i=1, j=2, k=3) at t3_program.c:9
+9	    int x = i+3*j;
+140737488345872
+140737488345880
+140737488345888
+140737488345896
+140737488345904
+x
+a
+5
+b
+140737488345872
+140737488345904
+140737488345936
++-------------------------+
+| 36 db ff ff 03 00 00 00 | <- rsp
++-------------------------+
+| 02 00 00 00 01 00 00 00 |
++-------------------------+
+| c8 cf fa f7 ff 7f 00 00 |
++-------------------------+
+| c0 51 55 55 55 55 00 00 |
++-------------------------+
+| 50 db ff ff ff 7f 00 00 | <- rbp
++-------------------------+
+[Inferior 1 (process 14483) exited normally]
