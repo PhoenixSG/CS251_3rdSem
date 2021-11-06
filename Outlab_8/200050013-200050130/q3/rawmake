@@ -28,15 +28,15 @@ installstatic: libMyEngineStatic.a
 	sudo ldconfig
 
 mygamestatic:
-	g++ -o static_exec mygame/mygame.cpp /usr/local/lib/libMyEngineStatic.a 
+	g++ -o mygamestatic mygame/mygame.cpp /usr/local/lib/libMyEngineStatic.a 
 
 mygamedynamic:
-	g++ -o dynamic_exec mygame/mygame.cpp /usr/local/lib/libMyEngineDynamic.so 
+	g++ -o mygamedynamic mygame/mygame.cpp /usr/local/lib/libMyEngineDynamic.so 
 
 .PHONY: clean
 
 clean:
-	rm -f *.o *.a *.so static_exec dynamic_exec helloworld usespthread
+	rm -f *.o *.a *.so mygamestatic mygamedynamic helloworld usespthread
 
 
 
