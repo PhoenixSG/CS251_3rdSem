@@ -1,0 +1,16 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+/host/Documents/Semester 3/251/git repo/CS251_3rdSem/Outlab_8/200050013-200050130/q3/usespthread.cpp
+cstdlib
+-
+pthread.h
+-
+cstdio
+-
+

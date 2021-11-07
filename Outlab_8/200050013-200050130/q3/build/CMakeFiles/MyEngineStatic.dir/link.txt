@@ -1,0 +1,2 @@
+/usr/bin/ar qc libMyEngineStatic.a  CMakeFiles/MyEngineStatic.dir/myengine/myengine.cpp.o
+/usr/bin/ranlib libMyEngineStatic.a

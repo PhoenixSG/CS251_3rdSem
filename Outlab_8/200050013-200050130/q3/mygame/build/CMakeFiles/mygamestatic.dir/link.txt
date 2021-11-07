@@ -1,0 +1,1 @@
+/usr/bin/c++     CMakeFiles/mygamestatic.dir/mygame.cpp.o  -o mygamestatic  -lMyEngineStatic 

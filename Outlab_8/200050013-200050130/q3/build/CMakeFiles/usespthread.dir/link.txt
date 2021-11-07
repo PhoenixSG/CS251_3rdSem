@@ -1,0 +1,1 @@
+/usr/bin/c++     CMakeFiles/usespthread.dir/usespthread.cpp.o  -o usespthread  -pthread 

@@ -1,0 +1,4 @@
+/usr/local/lib/libMyEngineDynamic.so
+/usr/local/include/myengine.hpp
+/usr/local/lib/libMyEngineStatic.a
+/usr/local/include/myengine.hpp

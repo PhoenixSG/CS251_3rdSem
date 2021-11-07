@@ -1,0 +1,14 @@
+1. darkdust.net/files/GDB%20Cheat%20Sheet.pdf 
+2. https://www.cs.mcgill.ca/~consult/info/gdb.html
+3. https://www.geeksforgeeks.org/static-vs-dynamic-libraries/
+4. https://stackoverflow.com/questions/5395309/how-do-i-force-cmake-to-include-pthread-option-during-compilation
+5. https://stackoverflow.com/questions/17511496/how-to-create-a-shared-library-with-cmake/45843676
+
+https://stackoverflow.com/questions/5688768/how-can-i-jump-to-a-frame-in-a-stack-trace-according-to-the-function-name-in-gdb
+https://sourceware.org/gdb/current/onlinedocs/gdb/Types-In-Python.html
+https://sourceware.org/gdb/current/onlinedocs/gdb/Values-From-Inferior.html
+https://hackmd.io/_mffvN5jQW-5mIMPbP95OQ?view
+https://web.stanford.edu/class/archive/cs/cs107/cs107.1218/resources/gdb.html
+http://web.mit.edu/gnu/doc/html/gdb_10.html
+https://sourceware.org/gdb/current/onlinedocs/gdb/Memory.html
+
