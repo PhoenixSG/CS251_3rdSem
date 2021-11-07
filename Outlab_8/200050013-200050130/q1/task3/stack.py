@@ -1,27 +1,17 @@
 import gdb
-'''
-You can iterate on the frames using a = gdb.newest_frame()
- then
-a  = a.older() 
-a.select()
 
-till a is not None
-
-When a.older() gives a None object, a should be the last frame.
-
-Now within the last frame, you can do
-val_of_rbp = gdb.execute(<command>, from_tty= True, to_string=True)
-'''
 base_rbp = -1
 
 def printer(event):
 
     rsp = int(gdb.parse_and_eval("$rsp"))
     rbp = int(gdb.parse_and_eval("$rbp"))
+    global base_rbp
     # print(rsp)
     # print(rbp)
+    # print(base_rbp)
+    # print("")
     answer=""
-    global base_rbp
     if base_rbp==-1:
         if rbp>=rsp:
             base_rbp = rbp

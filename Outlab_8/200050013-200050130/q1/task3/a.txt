@@ -14,9 +14,11 @@ Find the GDB manual and other documentation resources online at:
 For help, type "help".
 Type "apropos word" to search for commands related to "word"...
 Reading symbols from a.out...
-Breakpoint 1 at 0x119d: file t3_program.c, line 16.
+Breakpoint 1 at 0x118a: file t3_program.c, line 15.
 
-Breakpoint 1, main (argc=1, argv=0x7fffffffdc48) at t3_program.c:16
+Breakpoint 1, main (argc=0, argv=0x7fffffffdc40) at t3_program.c:15
+15	{
+
 16	    foo(1,2,3);
 
 foo (i=21845, j=1431654925, k=32767) at t3_program.c:8
@@ -70,8 +72,55 @@ foo (i=21845, j=1431654925, k=32767) at t3_program.c:8
 +-------------------------+
 | 00 00 00 00 00 00 00 00 |
 +-------------------------+
+bar (i=0, j=0) at t3_program.c:2
+2	{
++-------------------------+
+| 7d 51 55 55 55 55 00 00 | <- rsp
++-------------------------+
+| 36 db ff ff 03 00 00 00 |
++-------------------------+
+| 02 00 00 00 01 00 00 00 |
++-------------------------+
+| c8 cf fa f7 ff 7f 00 00 |
++-------------------------+
+| 07 00 00 00 55 55 00 00 |
++-------------------------+
+| 50 db ff ff ff 7f 00 00 | <- rbp
++-------------------------+
+| b1 51 55 55 55 55 00 00 |
++-------------------------+
+| 48 dc ff ff ff 7f 00 00 |
++-------------------------+
+| 00 00 00 00 01 00 00 00 |
++-------------------------+
+| 00 00 00 00 00 00 00 00 |
++-------------------------+
+3	    int e = i*i-j;
++-------------------------+
+| 30 db ff ff ff 7f 00 00 | <- rsp rbp
++-------------------------+
+| 7d 51 55 55 55 55 00 00 |
++-------------------------+
+| 36 db ff ff 03 00 00 00 |
++-------------------------+
+| 02 00 00 00 01 00 00 00 |
++-------------------------+
+| c8 cf fa f7 ff 7f 00 00 |
++-------------------------+
+| 07 00 00 00 55 55 00 00 |
++-------------------------+
+| 50 db ff ff ff 7f 00 00 |
++-------------------------+
+| b1 51 55 55 55 55 00 00 |
++-------------------------+
+| 48 dc ff ff ff 7f 00 00 |
++-------------------------+
+| 00 00 00 00 01 00 00 00 |
++-------------------------+
+| 00 00 00 00 00 00 00 00 |
++-------------------------+
 A debugging session is active.
 
-	Inferior 1 [process 38242] will be killed.
+	Inferior 1 [process 66538] will be killed.
 
 Quit anyway? (y or n) [answered Y; input not from terminal]

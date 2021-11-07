@@ -1,6 +1,9 @@
 source stack.py
-b 16
+b main
 r
+step
+step
+step
 step
 step
 step
