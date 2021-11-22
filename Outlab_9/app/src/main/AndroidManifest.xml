@@ -10,7 +10,13 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.StudyPlanner_200050013_200050130">
         <activity
+            android:name=".SideNavBar"
+            android:exported="false"
+            android:label="@string/title_activity_side_nav_bar"
+            android:theme="@style/Theme.StudyPlanner_200050013_200050130.NoActionBar" />
+        <activity
             android:name=".MainActivity"
+
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
