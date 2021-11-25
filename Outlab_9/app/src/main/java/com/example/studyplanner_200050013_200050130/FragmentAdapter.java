@@ -1,42 +1,40 @@
 package com.example.studyplanner_200050013_200050130;
 
 import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
-import androidx.fragment.app.FragmentManager;
-import androidx.fragment.app.FragmentPagerAdapter;
+import androidx.fragment.app.FragmentActivity;
+import androidx.viewpager2.adapter.FragmentStateAdapter;
 
-import java.util.ArrayList;
 
-public class FragmentAdapter extends FragmentPagerAdapter {
 
-    private final ArrayList<Fragment> fragmentArrayList = new ArrayList<>();
-    private final ArrayList<String> fragmentTitle = new ArrayList<>();
+public class FragmentAdapter extends FragmentStateAdapter {
 
-    public FragmentAdapter(@NonNull FragmentManager manager, int behaviour){
-        super(manager, behaviour);
+
+    public FragmentAdapter(@NonNull FragmentActivity fragmentActivity){
+        super(fragmentActivity);
     }
+
 
     @NonNull
     @Override
-    public Fragment getItem(int position){
-        return fragmentArrayList.get(position);
+    public Fragment createFragment(int position) {
+
+        switch (position){
+            case 0:
+                return new StudyPlan();
+            case 1:
+                return new Assignment();
+            case 2:
+                return new Exam();
+            case 3:
+                return new Lecture();
+            default:
+                return null;
+        }
     }
 
     @Override
-    public int getCount(){
-        return fragmentArrayList.size();
-    }
-
-    public void addFragment(Fragment fragment, String title){
-        fragmentArrayList.add(fragment);
-        fragmentTitle.add(title);
-    }
-
-    @Nullable
-    @Override
-    public CharSequence getPageTitle(int position) {
-
-        return fragmentTitle.get(position);
+    public int getItemCount() {
+        return 4;
     }
 }

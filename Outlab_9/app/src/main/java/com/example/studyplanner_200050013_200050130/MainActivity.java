@@ -1,18 +1,17 @@
 package com.example.studyplanner_200050013_200050130;
 
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.fragment.app.Fragment;
-import androidx.fragment.app.FragmentPagerAdapter;
-import androidx.viewpager.widget.ViewPager;
-
 import android.os.Bundle;
 
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.viewpager2.widget.ViewPager2;
+
 import com.google.android.material.tabs.TabLayout;
+import com.google.android.material.tabs.TabLayoutMediator;
 
 public class MainActivity extends AppCompatActivity {
 
     private TabLayout tabLayout;
-    private ViewPager viewPager;
+    private ViewPager2 viewPager2;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -20,17 +19,32 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         tabLayout = findViewById(R.id.tabLayout);
-        viewPager = findViewById(R.id.viewPager);
+        viewPager2 = findViewById(R.id.viewPager);
 
-        tabLayout.setupWithViewPager(viewPager);
+        FragmentAdapter fragmentAdapter = new FragmentAdapter(this);
+        viewPager2.setAdapter(fragmentAdapter);
 
-        FragmentAdapter fragmentAdapter = new FragmentAdapter(getSupportFragmentManager(), FragmentPagerAdapter.BEHAVIOR_RESUME_ONLY_CURRENT_FRAGMENT);
-        fragmentAdapter.addFragment(new Exam(), "EXAM");
-        fragmentAdapter.addFragment(new Assignment(), "ASSIGNMENT");
-        fragmentAdapter.addFragment(new StudyPlan(), "STUDY PLAN");
-        fragmentAdapter.addFragment(new Lecture(), "LECTURE");
+        new TabLayoutMediator(tabLayout, viewPager2,
+                (tab, position) -> {
+                    switch(position){
+                        case 0:
+                            tab.setText("Study Plan");
+                            break;
+                        case 1:
+                            tab.setText("Assignment");
+                            break;
+                        case 2:
+                            tab.setText("Exam");
+                            break;
+                        case 3:
+                            tab.setText("Lecture");
+                            break;
+                        default:
+                            tab.setText("New Section");
+                    }
+                }
+        ).attach();
 
-        viewPager.setAdapter(fragmentAdapter);
 
 
     }
