@@ -1,12 +1,13 @@
 package com.example.studyplanner_200050013_200050130;
 
+import android.content.Intent;
 import android.os.Bundle;
-
-import androidx.fragment.app.Fragment;
-
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
+
+import androidx.fragment.app.Fragment;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -49,6 +50,7 @@ public class Assignment extends Fragment {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
         if (getArguments() != null) {
             mParam1 = getArguments().getString(ARG_PARAM1);
             mParam2 = getArguments().getString(ARG_PARAM2);
@@ -58,7 +60,26 @@ public class Assignment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
+
+        View rootView = inflater.inflate(R.layout.fragment_assignment, container, false);
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_assignment, container, false);
+        Button assignment_button = (Button) rootView.findViewById(R.id.button_assignment);
+
+        assignment_button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getActivity(), AddTask.class);
+                getActivity().startActivity(intent);
+            }
+        });
+
+        return rootView;
     }
+
+//    public void addTask(View v)
+//    {
+//        Intent intent = new Intent(getActivity(), AddTask.class);
+//        getActivity().startActivity(intent);
+//    }
+
 }

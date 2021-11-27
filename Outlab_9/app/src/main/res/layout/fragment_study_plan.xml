@@ -6,10 +6,12 @@
     tools:context=".StudyPlan">
 
     <!-- TODO: Update blank fragment layout -->
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="STUDY PLAN"
-        android:gravity="center"/>
+
+    <Button
+        android:id="@+id/button_study_plan"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:text="Button" />
 
 </FrameLayout>
