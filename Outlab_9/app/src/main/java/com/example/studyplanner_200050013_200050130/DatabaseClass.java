@@ -57,7 +57,7 @@ public class DatabaseClass extends SQLiteOpenHelper {
     }
 
     // this method is use to add new course to our sqlite database.
-    public void addNewCourse(String courseName, String courseDate, String courseDescription, String courseTime) {
+    public void addNewTask(String courseName, String courseDate, String courseDescription, String courseTime) {
 
         // on below line we are creating a variable for
         // our sqlite database and calling writable method
