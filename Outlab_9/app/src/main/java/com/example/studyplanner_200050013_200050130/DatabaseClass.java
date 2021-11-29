@@ -2,8 +2,11 @@ package com.example.studyplanner_200050013_200050130;
 
 import android.content.ContentValues;
 import android.content.Context;
+import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
+
+import java.util.ArrayList;
 
 public class DatabaseClass extends SQLiteOpenHelper {
 
@@ -89,6 +92,35 @@ public class DatabaseClass extends SQLiteOpenHelper {
         // this method is called to check if the table exists already.
         db.execSQL("DROP TABLE IF EXISTS " + TABLE_NAME);
         onCreate(db);
+    }
+
+    // we have created a new method for reading all the courses.
+    public ArrayList<TasksModel> readCourses() {
+        // on below line we are creating a
+        // database for reading our database.
+        SQLiteDatabase db = this.getReadableDatabase();
+
+        // on below line we are creating a cursor with query to read data from database.
+        Cursor cursorTasks = db.rawQuery("SELECT * FROM " + TABLE_NAME, null);
+
+        // on below line we are creating a new array list.
+        ArrayList<TasksModel> tasksModelArrayList = new ArrayList<>();
+
+        // moving our cursor to first position.
+        if (cursorTasks.moveToFirst()) {
+            do {
+                // on below line we are adding the data from cursor to our array list.
+                tasksModelArrayList.add(new TasksModel(cursorTasks.getString(1),
+                        cursorTasks.getString(4),
+                        cursorTasks.getString(2),
+                        cursorTasks.getString(3)));
+            } while (cursorTasks.moveToNext());
+            // moving our cursor to next.
+        }
+        // at last closing our cursor
+        // and returning our array list.
+        cursorTasks.close();
+        return tasksModelArrayList;
     }
 
 }

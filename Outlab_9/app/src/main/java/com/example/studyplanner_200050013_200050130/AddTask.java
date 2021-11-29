@@ -15,7 +15,7 @@ public class AddTask extends AppCompatActivity {
 
     private EditText taskTitle, taskDate, taskTime, taskDesc;
     private Spinner spinner;
-    private Button addTask;
+    private Button addTask, viewTasks;
     private DatabaseClass databaseClass;
 
     @Override
@@ -32,6 +32,7 @@ public class AddTask extends AppCompatActivity {
         spinner.setAdapter(adapter);
 
         addTask = (Button) findViewById(R.id.addTask);
+        viewTasks = (Button) findViewById(R.id.readTasks);
 
         taskTitle = (EditText) findViewById(R.id.TaskTitle);
         taskDesc =  (EditText) findViewById(R.id.TaskDescription);
@@ -73,6 +74,16 @@ public class AddTask extends AppCompatActivity {
                 taskTime.setText("");
             }
         });
+
+
+        viewTasks.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent i = new Intent(getApplicationContext(), ViewTasks.class);
+                startActivity(i);
+            }
+        });
+
 
     }
 }

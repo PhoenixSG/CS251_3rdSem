@@ -56,4 +56,13 @@
         android:text="Add Task"
         android:textAllCaps="false" />
 
+    <!--button for reading new task-->
+    <Button
+        android:id="@+id/readTasks"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp"
+        android:text="View Tasks"
+        android:textAllCaps="false" />
+
 </LinearLayout>

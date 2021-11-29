@@ -12,6 +12,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.StudyPlanner_200050013_200050130">
         <activity
+            android:name=".ViewTasks"
+            android:exported="false" />
+        <activity
             android:name=".AddTask"
             android:exported="false" />
         <activity
