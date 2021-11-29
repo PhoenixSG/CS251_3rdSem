@@ -41,6 +41,7 @@ public class TaskRecyclerViewAdapter extends RecyclerView.Adapter<TaskRecyclerVi
         holder.taskDesc.setText(tasksModel.getTaskDesc());
         holder.taskTime.setText(tasksModel.getTaskTime());
         holder.taskName.setText(tasksModel.getTaskTitle());
+        holder.taskType.setText(tasksModel.getTaskType());
     }
 
     @Override
@@ -52,7 +53,7 @@ public class TaskRecyclerViewAdapter extends RecyclerView.Adapter<TaskRecyclerVi
     public class ViewHolder extends RecyclerView.ViewHolder {
 
         // creating variables for our text views.
-        private TextView taskName, taskDesc, taskDate, taskTime;
+        private TextView taskName, taskDesc, taskDate, taskTime, taskType;
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
@@ -61,6 +62,7 @@ public class TaskRecyclerViewAdapter extends RecyclerView.Adapter<TaskRecyclerVi
             taskDesc = itemView.findViewById(R.id.idTVTaskDescription);
             taskDate = itemView.findViewById(R.id.idTVTaskDate);
             taskTime = itemView.findViewById(R.id.idTVTaskTime);
+            taskType = itemView.findViewById(R.id.idTVTaskType);
         }
     }
 }

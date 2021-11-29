@@ -8,6 +8,7 @@ public class TasksModel {
     private String taskDesc;
     private String taskDate;
     private String taskTime;
+    private String taskType;
     private int id;
 
     public String getTaskTitle() {
@@ -42,6 +43,14 @@ public class TasksModel {
         this.taskTime = taskTime;
     }
 
+    public TasksModel(String taskTitle, String taskDesc, String taskDate, String taskTime, String taskType) {
+        this.taskTitle = taskTitle;
+        this.taskDesc = taskDesc;
+        this.taskDate = taskDate;
+        this.taskTime = taskTime;
+        this.taskType = taskType;
+    }
+
     public int getId() {
         return id;
     }
@@ -50,10 +59,11 @@ public class TasksModel {
         this.id = id;
     }
 
-    public TasksModel(String taskTitle, String taskDesc, String taskDate, String taskTime) {
-        this.taskTitle = taskTitle;
-        this.taskDesc = taskDesc;
-        this.taskDate = taskDate;
-        this.taskTime = taskTime;
+    public String getTaskType() {
+        return taskType;
+    }
+
+    public void setTaskType(String taskType) {
+        this.taskType = taskType;
     }
 }

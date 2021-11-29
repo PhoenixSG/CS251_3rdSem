@@ -32,8 +32,11 @@ public class DatabaseClass extends SQLiteOpenHelper {
     // below variable id for our task time column.
     private static final String TIME_COL = "time_of_task";
 
-    // below variable for our course description column.
+    // below variable for our task description column.
     private static final String DESCRIPTION_COL = "description";
+
+    // below variable for our task type column.
+    private static final String TYPE_COL = "type";
 
     // creating a constructor for our database handler.
     public DatabaseClass(Context context) {
@@ -52,6 +55,7 @@ public class DatabaseClass extends SQLiteOpenHelper {
                 + NAME_COL + " TEXT,"
                 + DATE_COL + " TEXT,"
                 + TIME_COL + " TEXT,"
+                + TYPE_COL + " TEXT,"
                 + DESCRIPTION_COL + " TEXT)";
 
         // at last we are calling a exec sql
@@ -59,8 +63,8 @@ public class DatabaseClass extends SQLiteOpenHelper {
         db.execSQL(query);
     }
 
-    // this method is use to add new course to our sqlite database.
-    public void addNewTask(String courseName, String courseDate, String courseDescription, String courseTime) {
+    // this method is use to add new task to our sqlite database.
+    public void addNewTask(String taskName, String taskDate, String taskDescription, String taskTime, String taskType) {
 
         // on below line we are creating a variable for
         // our sqlite database and calling writable method
@@ -73,10 +77,11 @@ public class DatabaseClass extends SQLiteOpenHelper {
 
         // on below line we are passing all values
         // along with its key and value pair.
-        values.put(NAME_COL, courseName);
-        values.put(DATE_COL, courseDate);
-        values.put(DESCRIPTION_COL, courseDescription);
-        values.put(TIME_COL, courseTime);
+        values.put(NAME_COL, taskName);
+        values.put(DATE_COL, taskDate);
+        values.put(DESCRIPTION_COL, taskDescription);
+        values.put(TYPE_COL, taskType);
+        values.put(TIME_COL, taskTime);
 
         // after adding all values we are passing
         // content values to our table.
@@ -94,8 +99,8 @@ public class DatabaseClass extends SQLiteOpenHelper {
         onCreate(db);
     }
 
-    // we have created a new method for reading all the courses.
-    public ArrayList<TasksModel> readCourses() {
+    // we have created a new method for reading all the tasks.
+    public ArrayList<TasksModel> readtasks() {
         // on below line we are creating a
         // database for reading our database.
         SQLiteDatabase db = this.getReadableDatabase();
@@ -111,9 +116,10 @@ public class DatabaseClass extends SQLiteOpenHelper {
             do {
                 // on below line we are adding the data from cursor to our array list.
                 tasksModelArrayList.add(new TasksModel(cursorTasks.getString(1),
-                        cursorTasks.getString(4),
+                        cursorTasks.getString(5),
                         cursorTasks.getString(2),
-                        cursorTasks.getString(3)));
+                        cursorTasks.getString(3),
+                        cursorTasks.getString(4)));
             } while (cursorTasks.moveToNext());
             // moving our cursor to next.
         }

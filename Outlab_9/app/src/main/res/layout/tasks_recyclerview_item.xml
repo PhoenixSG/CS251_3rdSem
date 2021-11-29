@@ -14,14 +14,29 @@
         android:layout_margin="3dp"
         android:orientation="vertical">
 
-        <!--text view for our course name-->
-        <TextView
-            android:id="@+id/idTVTaskName"
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:padding="3dp"
-            android:text="Task Name"
-            android:textColor="@color/black" />
+            android:orientation="horizontal"
+            android:weightSum="2">
+            <TextView
+                android:id="@+id/idTVTaskName"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="wrap_content"
+                android:padding="3dp"
+                android:text="Task Name"
+                android:textColor="@color/black" />
+
+            <TextView
+                android:id="@+id/idTVTaskType"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="wrap_content"
+                android:padding="3dp"
+                android:text="Task Type"
+                android:textColor="@color/black" />
+        </LinearLayout>
 
         <LinearLayout
             android:layout_width="match_parent"

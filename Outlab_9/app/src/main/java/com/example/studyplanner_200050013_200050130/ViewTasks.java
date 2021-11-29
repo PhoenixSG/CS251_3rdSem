@@ -26,9 +26,9 @@ public class ViewTasks extends AppCompatActivity {
         tasksModelArrayList = new ArrayList<>();
         databaseClass = new DatabaseClass(ViewTasks.this);
 
-        // getting our course array
+        // getting our task array
         // list from db handler class.
-        tasksModelArrayList = databaseClass.readCourses();
+        tasksModelArrayList = databaseClass.readtasks();
 
         // on below line passing our array lost to our adapter class.
         taskRecyclerViewAdapter = new TaskRecyclerViewAdapter(tasksModelArrayList, ViewTasks.this);

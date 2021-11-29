@@ -30,6 +30,7 @@ public class AddTask extends AppCompatActivity {
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_item);
 
         spinner.setAdapter(adapter);
+        spinner.setSelected(false);
 
         addTask = (Button) findViewById(R.id.addTask);
         viewTasks = (Button) findViewById(R.id.readTasks);
@@ -55,6 +56,7 @@ public class AddTask extends AppCompatActivity {
                 String input_taskDesc = taskDesc.getText().toString();
                 String input_taskDate = taskDate.getText().toString();
                 String input_taskTime = taskTime.getText().toString();
+                String input_taskType = spinner.getSelectedItem().toString();
 
                 // validating if the text fields are empty or not.
                 if (input_taskTitle.isEmpty() || input_taskDesc.isEmpty() || input_taskDate.isEmpty() || input_taskTime.isEmpty()) {
@@ -64,7 +66,7 @@ public class AddTask extends AppCompatActivity {
 
                 // on below line we are calling a method to add new
                 // course to sqlite data and pass all our values to it.
-                databaseClass.addNewTask(input_taskTitle, input_taskDate, input_taskDesc, input_taskTime);
+                databaseClass.addNewTask(input_taskTitle, input_taskDate, input_taskDesc, input_taskTime, input_taskType);
 
                 // after adding the data we are displaying a toast message.
                 Toast.makeText(getApplicationContext(), "Task has been added.", Toast.LENGTH_SHORT).show();
@@ -72,6 +74,7 @@ public class AddTask extends AppCompatActivity {
                 taskDesc.setText("");
                 taskDate.setText("");
                 taskTime.setText("");
+                spinner.setSelected(false);
             }
         });
 
