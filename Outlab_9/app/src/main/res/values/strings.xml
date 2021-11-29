@@ -9,5 +9,10 @@
     <string name="Saturday">SAT</string>
     <string name="Previous">Prev</string>
     <string name="Next">Next</string>
+    <string name="_0">0 </string>
+    <string name="assignment">Assignment </string>
+    <string name="study_plans" >Study Plans</string>
+    <string name="_14_feb_2022" > 14 Feb 2022</string>
+    <string name="exams">Exams </string>
 
 </resources>

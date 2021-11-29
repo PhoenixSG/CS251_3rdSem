@@ -4,7 +4,6 @@ import android.os.Build;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
@@ -21,6 +20,7 @@ public class MainActivity extends AppCompatActivity implements CalendarAdapter.O
     private TextView monthYearText;
     private RecyclerView calendarRecyclerView;
     private LocalDate selectedDate;
+    private TextView onClickDate;
 
     @RequiresApi(api = Build.VERSION_CODES.O)
     @Override
@@ -37,6 +37,7 @@ public class MainActivity extends AppCompatActivity implements CalendarAdapter.O
     private void initWidgets() {
         calendarRecyclerView = findViewById(R.id.calendarRecyclerView);
         monthYearText = findViewById(R.id.monthYearTV);
+        onClickDate = findViewById(R.id.today);
     }
 
     @RequiresApi(api = Build.VERSION_CODES.O)
@@ -96,9 +97,10 @@ public class MainActivity extends AppCompatActivity implements CalendarAdapter.O
     @Override
     public void onItemClick(int position, String dayText) {
         if(!dayText.equals("")){
-
-            String message = "Selected Date" + dayText + " " + monthYearFromDate(selectedDate);
-            Toast.makeText(this, message, Toast.LENGTH_LONG).show();
+            String msg = dayText + " " + monthYearFromDate(selectedDate);
+            String message = "Selected Date: " + msg;
+            //Toast.makeText(this, message, Toast.LENGTH_LONG).show();
+            onClickDate.setText(msg);
         }
     }
 }
