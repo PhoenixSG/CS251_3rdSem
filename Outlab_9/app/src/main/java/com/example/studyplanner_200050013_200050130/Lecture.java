@@ -8,6 +8,10 @@ import android.view.ViewGroup;
 import android.widget.Button;
 
 import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
+
+import java.util.ArrayList;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -63,10 +67,36 @@ public class Lecture extends Fragment {
         // Inflate the layout for this fragment
         Button lecture_button = (Button) rootView.findViewById(R.id.button_lecture);
 
+        ArrayList<TasksModel> tasksModelArrayList;
+        DatabaseClass databaseClass;
+        TaskRecyclerViewAdapter taskRecyclerViewAdapter;
+        RecyclerView recyclerViewTasks;
+
+
+        // initializing our all variables.
+        tasksModelArrayList = new ArrayList<>();
+        databaseClass = new DatabaseClass(getActivity().getApplicationContext());
+
+        // getting our task array
+        // list from db handler class.
+        tasksModelArrayList = databaseClass.readTasks(2);
+
+        // on below line passing our array lost to our adapter class.
+        taskRecyclerViewAdapter = new TaskRecyclerViewAdapter(tasksModelArrayList, getContext());
+        recyclerViewTasks = rootView.findViewById(R.id.idRVLectures);
+
+        // setting layout manager for our recycler view.
+        LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getContext(), RecyclerView.VERTICAL, false);
+        recyclerViewTasks.setLayoutManager(linearLayoutManager);
+
+        // setting our adapter to recycler view.
+        recyclerViewTasks.setAdapter(taskRecyclerViewAdapter);
+
         lecture_button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(getActivity(), AddTask.class);
+                intent.putExtra("name", 2);
                 getActivity().startActivity(intent);
             }
         });

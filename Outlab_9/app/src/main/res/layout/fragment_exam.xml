@@ -5,12 +5,23 @@
     android:layout_height="match_parent"
     tools:context=".Exam">
 
-    <!-- TODO: Update blank fragment layout -->
-    <Button
-        android:id="@+id/button_exam"
-        android:layout_width="wrap_content"
+    <LinearLayout
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:text="Button" />
+        android:orientation="vertical">
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/idRVExams"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+
+        <Button
+            android:id="@+id/button_exam"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:text="Add exam" />
+
+    </LinearLayout>
 
 </FrameLayout>

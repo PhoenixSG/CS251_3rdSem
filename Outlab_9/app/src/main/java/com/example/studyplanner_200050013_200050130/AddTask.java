@@ -23,6 +23,8 @@ public class AddTask extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_task);
         Intent intent = getIntent();
+        int position = intent.getIntExtra("name",0);
+
 
         spinner=findViewById(R.id.spinner_options);
 
@@ -30,7 +32,8 @@ public class AddTask extends AppCompatActivity {
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_item);
 
         spinner.setAdapter(adapter);
-        spinner.setSelected(false);
+        spinner.setSelection(position);
+
 
         addTask = (Button) findViewById(R.id.addTask);
         viewTasks = (Button) findViewById(R.id.readTasks);
@@ -43,14 +46,14 @@ public class AddTask extends AppCompatActivity {
         databaseClass = new DatabaseClass(getApplicationContext());
 
 
-
+       taskDate.setText("today");
+       taskTime.setText("now");
 
 
 
         addTask.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Toast.makeText(getApplicationContext(), "Click working", Toast.LENGTH_SHORT).show();
                 // below line is to get data from all edit text fields.
                 String input_taskTitle = taskTitle.getText().toString();
                 String input_taskDesc = taskDesc.getText().toString();
@@ -75,6 +78,10 @@ public class AddTask extends AppCompatActivity {
                 taskDate.setText("");
                 taskTime.setText("");
                 spinner.setSelected(false);
+                Intent intent = new Intent(AddTask.this, MainActivity.class);
+                intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+                startActivity(intent);
+                
             }
         });
 
@@ -82,8 +89,9 @@ public class AddTask extends AppCompatActivity {
         viewTasks.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent i = new Intent(getApplicationContext(), ViewTasks.class);
+                Intent i = new Intent(AddTask.this, ViewTasks.class);
                 startActivity(i);
+                AddTask.this.finish();
             }
         });
 
