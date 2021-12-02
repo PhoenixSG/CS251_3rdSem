@@ -65,4 +65,13 @@
         android:text="View All Tasks"
         android:textAllCaps="false" />
 
+    <!--button for reading new task-->
+    <Button
+        android:id="@+id/viewCalendar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp"
+        android:text="View Calendar"
+        android:textAllCaps="false" />
+
 </LinearLayout>

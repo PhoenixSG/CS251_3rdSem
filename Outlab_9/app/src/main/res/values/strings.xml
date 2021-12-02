@@ -8,4 +8,19 @@
         <item>Lectures</item>
         <item>Assignments</item>
     </string-array>
+    <string name="Sunday">SUN</string>
+    <string name="Monday">MON</string>
+    <string name="Tuesday">TUE</string>
+    <string name="Wednesday">WED</string>
+    <string name="Thursday">THU</string>
+    <string name="Friday">FRI</string>
+    <string name="Saturday">SAT</string>
+    <string name="Previous">Prev</string>
+    <string name="Next">Next</string>
+    <string name="_0">0 </string>
+    <string name="assignment">Assignment </string>
+    <string name="study_plans">Study Plans</string>
+    <string name="_14_feb_2022"> 14 Feb 2022</string>
+    <string name="exams">Exams </string>
+
 </resources>
