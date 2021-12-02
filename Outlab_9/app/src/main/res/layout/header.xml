@@ -9,17 +9,21 @@
     <ImageView
         android:layout_width="75dp"
         android:layout_height="75dp"
+        android:layout_marginLeft="10dp"
         android:src="@drawable/menu_icon" />
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginLeft="10dp"
         android:text="Study Planner"
         android:textSize="24sp" />
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginLeft="10dp"
+        android:layout_marginBottom="10dp"
         android:text="android.studio@android.com"
         android:textSize="14sp" />
 
