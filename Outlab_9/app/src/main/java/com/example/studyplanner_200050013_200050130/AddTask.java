@@ -1,22 +1,36 @@
 package com.example.studyplanner_200050013_200050130;
 
+import android.app.AlertDialog;
+import android.app.DatePickerDialog;
+import android.app.TimePickerDialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.Spinner;
+import android.widget.TimePicker;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import java.util.Calendar;
+import java.util.Locale;
+
 public class AddTask extends AppCompatActivity {
 
-    private EditText taskTitle, taskDate, taskTime, taskDesc;
+    private EditText taskTitle, taskDesc;
+
     private Spinner spinner;
-    private Button addTask, viewTasks, viewCalendar;
+    private Button addTask, viewTasks, viewCalendar,taskDate, taskTime;
     private DatabaseClass databaseClass;
+
+    private DatePickerDialog datePickerDialog;
+    private TimePickerDialog timePickerDialog;
+    int hour, minute;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -41,14 +55,15 @@ public class AddTask extends AppCompatActivity {
 
         taskTitle = (EditText) findViewById(R.id.TaskTitle);
         taskDesc =  (EditText) findViewById(R.id.TaskDescription);
-        taskDate =  (EditText) findViewById(R.id.TaskDate);
-        taskTime =  (EditText) findViewById(R.id.TaskTime);
+        taskDate =  (Button) findViewById(R.id.TaskDate);
+        taskTime =  (Button) findViewById(R.id.TaskTime);
 
         databaseClass = new DatabaseClass(getApplicationContext());
 
+        initDatePicker();
+        taskDate.setText(getTodaysDate());
+        taskTime.setText(getCurrentTime());
 
-       taskDate.setText("today");
-       taskTime.setText("now");
 
 
 
@@ -104,7 +119,76 @@ public class AddTask extends AppCompatActivity {
                 AddTask.this.finish();
             }
         });
+    }
 
+    private String getTodaysDate()
+    {
+        Calendar cal = Calendar.getInstance();
+        int year = cal.get(Calendar.YEAR);
+        int month = cal.get(Calendar.MONTH);
+        month = month + 1;
+        int day = cal.get(Calendar.DAY_OF_MONTH);
+        return makeDateString(day, month, year);
+    }
+
+    private String getCurrentTime(){
+        Calendar calendar = Calendar.getInstance();
+        int hour = calendar.get(Calendar.HOUR);
+        int minute = calendar.get(Calendar.MINUTE);
+        return String.format(Locale.getDefault(), "%02d:%02d",hour, minute);
+    }
+
+    private void initDatePicker()
+    {
+        DatePickerDialog.OnDateSetListener dateSetListener = new DatePickerDialog.OnDateSetListener()
+        {
+            @Override
+            public void onDateSet(DatePicker datePicker, int year, int month, int day)
+            {
+                month = month + 1;
+                String date = makeDateString(day, month, year);
+                taskDate.setText(date);
+            }
+        };
+
+        Calendar cal = Calendar.getInstance();
+        int year = cal.get(Calendar.YEAR);
+        int month = cal.get(Calendar.MONTH);
+        int day = cal.get(Calendar.DAY_OF_MONTH);
+
+        int style = AlertDialog.THEME_HOLO_LIGHT;
+
+        datePickerDialog = new DatePickerDialog(this, style, dateSetListener, year, month, day);
 
     }
+
+    private String makeDateString(int day, int month, int year) {
+        return day + "/" + month + "/" + year;
+    }
+
+    public void openDatePicker(View view)
+    {
+        datePickerDialog.show();
+    }
+
+    public void openTimePicker(View view)
+    {
+        TimePickerDialog.OnTimeSetListener onTimeSetListener = new TimePickerDialog.OnTimeSetListener()
+        {
+            @Override
+            public void onTimeSet(TimePicker timePicker, int selectedHour, int selectedMinute)
+            {
+                hour = selectedHour;
+                minute = selectedMinute;
+                taskTime.setText(String.format(Locale.getDefault(), "%02d:%02d",hour, minute));
+            }
+        };
+
+
+        TimePickerDialog timePickerDialog = new TimePickerDialog(this, onTimeSetListener, hour, minute, true);
+
+        timePickerDialog.setTitle("Select Time");
+        timePickerDialog.show();
+    }
+
 }
