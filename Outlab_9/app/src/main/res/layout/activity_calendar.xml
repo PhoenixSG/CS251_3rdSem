@@ -14,11 +14,11 @@
         android:layout_marginBottom="20dp"
         android:orientation="horizontal">
 
-        <Button
+        <androidx.appcompat.widget.AppCompatButton
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:background="@null"
+            android:background="@color/design_default_color_secondary"
             android:onClick="previousMonthAction"
             android:text="@string/Previous"
             android:textColor="@color/blue"
@@ -36,11 +36,11 @@
             android:textColor="@color/black"
             android:textSize="20sp" />
 
-        <Button
+        <androidx.appcompat.widget.AppCompatButton
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:background="@null"
+            android:background="@color/design_default_color_secondary"
             android:onClick="nextMonthAction"
             android:text="@string/Next"
             android:textColor="@color/blue"
