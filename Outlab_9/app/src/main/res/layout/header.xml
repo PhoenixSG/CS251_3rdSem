@@ -24,7 +24,7 @@
         android:layout_height="wrap_content"
         android:layout_marginLeft="10dp"
         android:layout_marginBottom="10dp"
-        android:text="android.studio@android.com"
+        android:text="By Arpon and Shashwat"
         android:textSize="14sp" />
 
 </LinearLayout>

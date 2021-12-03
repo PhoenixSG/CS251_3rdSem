@@ -39,7 +39,9 @@
                     android:layout_height="match_parent"
                     android:layout_gravity="left"
                     android:id="@+id/nav_button"
+                    android:onClick="openCloseNavigationDrawer"
                     android:src="@drawable/menu_button"></ImageView>
+
 
 
             </androidx.appcompat.widget.Toolbar>
