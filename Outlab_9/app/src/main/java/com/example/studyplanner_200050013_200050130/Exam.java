@@ -97,7 +97,7 @@ public class Exam extends Fragment {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(getActivity(), AddTask.class);
-                intent.putExtra("name", 1);
+                intent.putExtra("name", 2);
                 getActivity().startActivity(intent);
             }
         });

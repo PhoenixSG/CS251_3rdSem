@@ -4,7 +4,6 @@ import android.os.Build;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
@@ -102,6 +101,15 @@ public class CalendarActivity extends AppCompatActivity implements CalendarAdapt
             String message = "Selected Date: " + msg;
             //Toast.makeText(this, message, Toast.LENGTH_LONG).show();
             onClickDate.setText(msg);
+
+            DatabaseClass databaseClass = new DatabaseClass(CalendarActivity.this);
+
+            ((TextView)findViewById(R.id.calendar_studyplan_count)).setText(""+databaseClass.readTasks(0).size());
+            ((TextView)findViewById(R.id.calendar_exams_count)).setText(""+databaseClass.readTasks(1).size());
+            ((TextView)findViewById(R.id.calendar_lecture_count)).setText(""+databaseClass.readTasks(2).size());
+            ((TextView)findViewById(R.id.calendar_assignment_count)).setText(""+databaseClass.readTasks(3).size());
+
+
         }
     }
 }

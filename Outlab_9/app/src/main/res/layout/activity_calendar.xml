@@ -150,35 +150,7 @@
         android:layout_height="1dip"
         android:background="@color/gray" />
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal">
 
-        <TextView
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="2"
-            android:gravity="left"
-            android:paddingLeft="10dip"
-            android:text="Lecture"
-            android:textColor="@color/black"
-            android:textSize="30sp"
-            android:textStyle="bold" />
-
-        <TextView
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="2"
-            android:gravity="right"
-            android:paddingRight="10dip"
-            android:text="@string/_0"
-            android:textColor="@color/black"
-            android:textSize="30sp"
-            android:textStyle="bold" />
-
-
-    </LinearLayout>
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -200,6 +172,7 @@
             android:layout_height="wrap_content"
             android:layout_weight="2"
             android:gravity="right"
+            android:id="@+id/calendar_studyplan_count"
             android:paddingRight="10dip"
             android:text="@string/_0"
             android:textColor="@color/black"
@@ -208,6 +181,41 @@
 
 
     </LinearLayout>
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="2"
+            android:gravity="left"
+            android:paddingLeft="10dip"
+            android:text="@string/assignment"
+            android:textColor="@color/black"
+            android:textSize="30sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="2"
+            android:gravity="right"
+            android:id="@+id/calendar_assignment_count"
+            android:paddingRight="10dip"
+            android:text="@string/_0"
+            android:textColor="@color/black"
+            android:textSize="30sp"
+            android:layout_marginBottom="20dip"
+            android:textStyle="bold" />
+
+
+    </LinearLayout>
+
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -230,6 +238,7 @@
             android:layout_weight="2"
             android:gravity="right"
             android:paddingRight="10dip"
+            android:id="@+id/calendar_exams_count"
             android:text="0"
             android:textColor="@color/black"
             android:textSize="30sp"
@@ -237,6 +246,7 @@
 
 
     </LinearLayout>
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -248,7 +258,7 @@
             android:layout_weight="2"
             android:gravity="left"
             android:paddingLeft="10dip"
-            android:text="@string/assignment"
+            android:text="@string/lectures"
             android:textColor="@color/black"
             android:textSize="30sp"
             android:textStyle="bold" />
@@ -257,15 +267,16 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="2"
+            android:id="@+id/calendar_lecture_count"
             android:gravity="right"
             android:paddingRight="10dip"
             android:text="@string/_0"
             android:textColor="@color/black"
             android:textSize="30sp"
-            android:layout_marginBottom="20dip"
             android:textStyle="bold" />
 
 
     </LinearLayout>
+
 
 </LinearLayout>

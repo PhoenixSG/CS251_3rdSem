@@ -1,8 +1,11 @@
 package com.example.studyplanner_200050013_200050130;
 
 import android.os.Bundle;
+import android.view.MenuItem;
 import android.widget.ImageView;
+import android.widget.Toast;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.core.view.GravityCompat;
@@ -13,7 +16,7 @@ import com.google.android.material.navigation.NavigationView;
 import com.google.android.material.tabs.TabLayout;
 import com.google.android.material.tabs.TabLayoutMediator;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
 
     private TabLayout tabLayout;
     private ViewPager2 viewPager2;
@@ -23,8 +26,6 @@ public class MainActivity extends AppCompatActivity {
     Toolbar toolbar;
 
     ImageView navButton;
-
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -62,6 +63,25 @@ public class MainActivity extends AppCompatActivity {
                     }
                 }
         ).attach();
+        
+//        navigationView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
+//            @Override
+//            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+//                if(item== findViewById(R.id.nav_home)){
+//                    Toast.makeText(getApplicationContext(), "HOME", Toast.LENGTH_SHORT).show();
+//                }
+//                else if(item== findViewById(R.id.nav_calendar)){
+//                    Toast.makeText(getApplicationContext(), "CALENDAR", Toast.LENGTH_SHORT).show();
+//                }
+//                else{
+//                    Toast.makeText(getApplicationContext(), "NOTHING", Toast.LENGTH_SHORT).show();
+//                }
+//                return true;
+//            }
+//        });
+
+        navigationView.setNavigationItemSelectedListener(this);
+
 
 
     }
@@ -75,5 +95,22 @@ public class MainActivity extends AppCompatActivity {
     }
 
 
+    @Override
+    public boolean onNavigationItemSelected(@NonNull MenuItem item) {
 
+        switch (item.getItemId()){
+            case R.id.nav_home:
+                Toast.makeText(this, "HOME", Toast.LENGTH_SHORT).show();
+                break;
+            case R.id.nav_calendar:
+                Toast.makeText(this, "CALENDAR", Toast.LENGTH_SHORT).show();
+                break;
+            default:
+                Toast.makeText(this, "NOTHING", Toast.LENGTH_SHORT).show();
+                break;
+        }
+
+
+        return true;
+    }
 }

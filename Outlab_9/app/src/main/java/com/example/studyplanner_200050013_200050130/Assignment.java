@@ -98,7 +98,7 @@ public class Assignment extends Fragment {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(getActivity(), AddTask.class);
-                intent.putExtra("name", 3);
+                intent.putExtra("name", 1);
                 getActivity().startActivity(intent);
             }
         });

@@ -96,7 +96,7 @@ public class Lecture extends Fragment {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(getActivity(), AddTask.class);
-                intent.putExtra("name", 2);
+                intent.putExtra("name", 3);
                 getActivity().startActivity(intent);
             }
         });

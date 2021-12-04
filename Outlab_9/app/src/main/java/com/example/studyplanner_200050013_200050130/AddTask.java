@@ -133,7 +133,7 @@ public class AddTask extends AppCompatActivity {
 
     private String getCurrentTime(){
         Calendar calendar = Calendar.getInstance();
-        int hour = calendar.get(Calendar.HOUR);
+        int hour = calendar.get(Calendar.HOUR_OF_DAY);
         int minute = calendar.get(Calendar.MINUTE);
         return String.format(Locale.getDefault(), "%02d:%02d",hour, minute);
     }
