@@ -6,7 +6,10 @@ import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 
 public class DatabaseClass extends SQLiteOpenHelper {
 
@@ -32,6 +35,9 @@ public class DatabaseClass extends SQLiteOpenHelper {
     // below variable id for our task time column.
     private static final String TIME_COL = "time_of_task";
 
+    // below variable id for our task ordering column.
+    private static final String ORDER_COL = "ordering_of_task";
+
     // below variable for our task description column.
     private static final String DESCRIPTION_COL = "description";
 
@@ -56,7 +62,8 @@ public class DatabaseClass extends SQLiteOpenHelper {
                 + DATE_COL + " TEXT,"
                 + TIME_COL + " TEXT,"
                 + TYPE_COL + " TEXT,"
-                + DESCRIPTION_COL + " TEXT)";
+                + DESCRIPTION_COL + " TEXT,"
+                + ORDER_COL + " TEXT)";
 
         // at last we are calling a exec sql
         // method to execute above sql query
@@ -83,6 +90,18 @@ public class DatabaseClass extends SQLiteOpenHelper {
         values.put(TYPE_COL, taskType);
         values.put(TIME_COL, taskTime);
 
+        try {
+            Date date=new SimpleDateFormat("dd/MM/yyyy").parse(taskDate);
+            Long ordering_value = date.getTime();
+            String[] time = taskTime.split(":");
+            ordering_value += Long.parseLong(time[0])*3600000+Long.parseLong(time[1])*60000;
+            values.put(ORDER_COL, ordering_value);
+
+
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
+
         // after adding all values we are passing
         // content values to our table.
         db.insert(TABLE_NAME, null, values);
@@ -106,7 +125,7 @@ public class DatabaseClass extends SQLiteOpenHelper {
         SQLiteDatabase db = this.getReadableDatabase();
 
         // on below line we are creating a cursor with query to read data from database.
-        Cursor cursorTasks = db.rawQuery("SELECT * FROM " + TABLE_NAME, null);
+        Cursor cursorTasks = db.rawQuery("SELECT * FROM " + TABLE_NAME + " ORDER BY "+ORDER_COL+ " ASC", null);
 
         // on below line we are creating a new array list.
         ArrayList<TasksModel> tasksModelArrayList = new ArrayList<>();
@@ -135,7 +154,7 @@ public class DatabaseClass extends SQLiteOpenHelper {
         SQLiteDatabase db = this.getReadableDatabase();
 
         // on below line we are creating a cursor with query to read data from database.
-        Cursor cursorTasks = db.rawQuery("SELECT * FROM " + TABLE_NAME+ " WHERE "+ TYPE_COL +" = ?", new String[]{type});
+        Cursor cursorTasks = db.rawQuery("SELECT * FROM " + TABLE_NAME+ " WHERE "+ TYPE_COL +" = ? ORDER BY "+ORDER_COL+ " ASC", new String[]{type});
 
         // on below line we are creating a new array list.
         ArrayList<TasksModel> tasksModelArrayList = new ArrayList<>();
@@ -171,7 +190,7 @@ public class DatabaseClass extends SQLiteOpenHelper {
         SQLiteDatabase db = this.getReadableDatabase();
 
         // on below line we are creating a cursor with query to read data from database.
-        Cursor cursorTasks = db.rawQuery("SELECT * FROM " + TABLE_NAME + " WHERE "+ DATE_COL +" = ? AND "+TYPE_COL+" = ?", new String[]{date, type});
+        Cursor cursorTasks = db.rawQuery("SELECT * FROM " + TABLE_NAME + " WHERE "+ DATE_COL +" = ? AND "+TYPE_COL+" = ? ORDER BY "+ORDER_COL+ " ASC", new String[]{date, type});
 
         // on below line we are creating a new array list.
         ArrayList<TasksModel> tasksModelArrayList = new ArrayList<>();
