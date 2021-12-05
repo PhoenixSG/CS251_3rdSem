@@ -4,6 +4,7 @@ import android.os.Build;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
@@ -83,6 +84,18 @@ public class CalendarActivity extends AppCompatActivity implements CalendarAdapt
     }
 
     @RequiresApi(api = Build.VERSION_CODES.O)
+    private String num_monthFromDate(LocalDate date){
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("MM");
+        return date.format(formatter);
+    }
+
+    @RequiresApi(api = Build.VERSION_CODES.O)
+    private String num_yearFromDate(LocalDate date){
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy");
+        return date.format(formatter);
+    }
+
+    @RequiresApi(api = Build.VERSION_CODES.O)
     public void previousMonthAction(View view){
         selectedDate = selectedDate.minusMonths(1);
         setMonthView();
@@ -95,21 +108,21 @@ public class CalendarActivity extends AppCompatActivity implements CalendarAdapt
     }
 
     @RequiresApi(api = Build.VERSION_CODES.O)
-    public void onItemClick(int position, String dayText) {
-        if(!dayText.equals("")){
-            String msg = dayText + " " + monthYearFromDate(selectedDate);
-            String message = "Selected Date: " + msg;
-            //Toast.makeText(this, message, Toast.LENGTH_LONG).show();
+    public void onItemClick(int position, Integer dayText) {
+        if(dayText!=0){
+            String msg = String.format("%02d/%s/%s", dayText, num_monthFromDate(selectedDate), num_yearFromDate(selectedDate));
+            Toast.makeText(this, ""+selectedDate, Toast.LENGTH_SHORT).show();
             onClickDate.setText(msg);
-
             DatabaseClass databaseClass = new DatabaseClass(CalendarActivity.this);
+            int selected_position= dayText+selectedDate.withDayOfMonth(1).getDayOfWeek().getValue();
 
-            ((TextView)findViewById(R.id.calendar_studyplan_count)).setText(""+databaseClass.readTasks(0).size());
-            ((TextView)findViewById(R.id.calendar_exams_count)).setText(""+databaseClass.readTasks(1).size());
-            ((TextView)findViewById(R.id.calendar_lecture_count)).setText(""+databaseClass.readTasks(2).size());
-            ((TextView)findViewById(R.id.calendar_assignment_count)).setText(""+databaseClass.readTasks(3).size());
-
-
+            ((TextView)findViewById(R.id.calendar_studyplan_count)).setText(""+databaseClass.readTasks(0, msg).size());
+            ((TextView)findViewById(R.id.calendar_exams_count)).setText(""+databaseClass.readTasks(1, msg).size());
+            ((TextView)findViewById(R.id.calendar_lecture_count)).setText(""+databaseClass.readTasks(2, msg).size());
+            ((TextView)findViewById(R.id.calendar_assignment_count)).setText(""+databaseClass.readTasks(3, msg).size());
+        }
+        else{
+            Toast.makeText(getApplicationContext(), "Please Select a Date :)", Toast.LENGTH_SHORT).show();
         }
     }
 }

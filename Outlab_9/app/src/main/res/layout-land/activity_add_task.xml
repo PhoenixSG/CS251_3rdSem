@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     tools:context=".AddTask"
-    android:weightSum="12">
+    android:weightSum="6.5">
 
     <EditText
         android:id="@+id/TaskTitle"
@@ -59,11 +59,17 @@
         android:autofillHints="OPTIONS"
         android:spinnerMode="dropdown" />
 
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="2"
+        android:orientation="horizontal"
+        android:weightSum="2">
     <!--button for adding new task-->
     <Button
         android:id="@+id/addTask"
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
         android:layout_weight="1"
         android:layout_margin="10dp"
         android:text="Add Task"
@@ -72,12 +78,13 @@
     <!--button for reading new task-->
     <Button
         android:id="@+id/readTasks"
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
+        android:layout_width="0dp"
         android:layout_weight="1"
+        android:layout_height="match_parent"
         android:layout_margin="10dp"
         android:text="View All Tasks"
         android:textAllCaps="false" />
+    </LinearLayout>
 
     <!--button for reading new task-->
     <Button

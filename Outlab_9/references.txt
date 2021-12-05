@@ -6,3 +6,6 @@ https://developer.android.com/reference/android/app/Fragment
 https://developer.android.com/training/animation/screen-slide
 https://www.youtube.com/watch?v=iJpB5ju3tN8
 https://www.youtube.com/watch?v=Ba0Q-cK1fJo
+https://www.geeksforgeeks.org/how-to-update-data-to-sqlite-database-in-android/
+https://www.youtube.com/watch?v=fGcMLu1GJEc
+https://stackoverflow.com/questions/8239195/how-to-draw-a-line-between-two-linear-layouts

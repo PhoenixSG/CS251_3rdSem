@@ -163,7 +163,7 @@ public class AddTask extends AppCompatActivity {
     }
 
     private String makeDateString(int day, int month, int year) {
-        return day + "/" + month + "/" + year;
+        return String.format("%02d/%02d/%02d",day, month,year);
     }
 
     public void openDatePicker(View view)
