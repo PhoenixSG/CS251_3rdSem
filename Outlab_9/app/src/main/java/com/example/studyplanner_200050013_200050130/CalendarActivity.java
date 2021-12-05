@@ -1,5 +1,6 @@
 package com.example.studyplanner_200050013_200050130;
 
+import android.graphics.Color;
 import android.os.Build;
 import android.os.Bundle;
 import android.view.View;
@@ -22,6 +23,7 @@ public class CalendarActivity extends AppCompatActivity implements CalendarAdapt
     private RecyclerView calendarRecyclerView;
     private LocalDate selectedDate;
     private TextView onClickDate;
+    private TextView highlighted_date;
 
     @RequiresApi(api = Build.VERSION_CODES.O)
     @Override
@@ -39,6 +41,7 @@ public class CalendarActivity extends AppCompatActivity implements CalendarAdapt
         calendarRecyclerView = (RecyclerView) findViewById(R.id.calendarRecyclerView);
         monthYearText = (TextView) findViewById(R.id.monthYearTV);
         onClickDate = (TextView) findViewById(R.id.today);
+        highlighted_date = null;
     }
 
     @RequiresApi(api = Build.VERSION_CODES.O)
@@ -96,25 +99,44 @@ public class CalendarActivity extends AppCompatActivity implements CalendarAdapt
     }
 
     @RequiresApi(api = Build.VERSION_CODES.O)
+    private void reset(){
+        ((TextView)findViewById(R.id.calendar_studyplan_count)).setText(""+0);
+        ((TextView)findViewById(R.id.calendar_exams_count)).setText(""+0);
+        ((TextView)findViewById(R.id.calendar_lecture_count)).setText(""+0);
+        ((TextView)findViewById(R.id.calendar_assignment_count)).setText(""+0);
+        ((TextView)findViewById(R.id.today)).setText("Select a Date");
+    }
+
+    @RequiresApi(api = Build.VERSION_CODES.O)
     public void previousMonthAction(View view){
         selectedDate = selectedDate.minusMonths(1);
         setMonthView();
+        reset();
     }
 
     @RequiresApi(api = Build.VERSION_CODES.O)
     public void nextMonthAction(View view){
         selectedDate = selectedDate.plusMonths(1);
         setMonthView();
+        reset();
     }
 
     @RequiresApi(api = Build.VERSION_CODES.O)
-    public void onItemClick(int position, Integer dayText) {
+    public void onItemClick(int position, Integer dayText, TextView dayOfMonth) {
         if(dayText!=0){
+
+            if(highlighted_date!=null){
+                highlighted_date.setBackgroundColor(Color.parseColor("#FFFFFF"));
+            }
+            highlighted_date = dayOfMonth;
+            highlighted_date.setBackgroundColor(Color.parseColor("#00FF00"));
+
             String msg = String.format("%02d/%s/%s", dayText, num_monthFromDate(selectedDate), num_yearFromDate(selectedDate));
-            Toast.makeText(this, msg, Toast.LENGTH_SHORT).show();
+//            Toast.makeText(this, msg, Toast.LENGTH_SHORT).show();
+
             onClickDate.setText(""+dayText+" "+monthYearFromDate(selectedDate));
+
             DatabaseClass databaseClass = new DatabaseClass(CalendarActivity.this);
-            int selected_position= dayText+selectedDate.withDayOfMonth(1).getDayOfWeek().getValue();
 
             ((TextView)findViewById(R.id.calendar_studyplan_count)).setText(""+databaseClass.readTasks("Study Plan", msg).size());
             ((TextView)findViewById(R.id.calendar_exams_count)).setText(""+databaseClass.readTasks("Exams", msg).size());

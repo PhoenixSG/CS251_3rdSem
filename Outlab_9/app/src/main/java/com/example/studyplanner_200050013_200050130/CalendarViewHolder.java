@@ -20,11 +20,11 @@ public class CalendarViewHolder extends RecyclerView.ViewHolder implements View.
     @Override
     public void onClick(View v) {
         if((String)dayOfMonth.getText()!="") {
-            onItemListener.onItemClick(getAdapterPosition(), Integer.parseInt((String) dayOfMonth.getText()));
+            onItemListener.onItemClick(getAdapterPosition(), Integer.parseInt((String) dayOfMonth.getText()), dayOfMonth);
 //            dayOfMonth.setBackgroundColor(Color.parseColor("#00FF00"));
         }
         else{
-            onItemListener.onItemClick(getAdapterPosition(), 0);
+            onItemListener.onItemClick(getAdapterPosition(), 0, dayOfMonth);
         }
 
 
