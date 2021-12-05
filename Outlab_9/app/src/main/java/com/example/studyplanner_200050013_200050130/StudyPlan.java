@@ -79,7 +79,7 @@ public class StudyPlan extends Fragment {
 
         // getting our task array
         // list from db handler class.
-        tasksModelArrayList = databaseClass.readTasks(0);
+        tasksModelArrayList = databaseClass.readTasks("Study Plan");
 
         // on below line passing our array lost to our adapter class.
         taskRecyclerViewAdapter = new TaskRecyclerViewAdapter(tasksModelArrayList, getContext());

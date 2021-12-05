@@ -111,15 +111,15 @@ public class CalendarActivity extends AppCompatActivity implements CalendarAdapt
     public void onItemClick(int position, Integer dayText) {
         if(dayText!=0){
             String msg = String.format("%02d/%s/%s", dayText, num_monthFromDate(selectedDate), num_yearFromDate(selectedDate));
-            Toast.makeText(this, ""+selectedDate, Toast.LENGTH_SHORT).show();
-            onClickDate.setText(msg);
+            Toast.makeText(this, msg, Toast.LENGTH_SHORT).show();
+            onClickDate.setText(""+dayText+" "+monthYearFromDate(selectedDate));
             DatabaseClass databaseClass = new DatabaseClass(CalendarActivity.this);
             int selected_position= dayText+selectedDate.withDayOfMonth(1).getDayOfWeek().getValue();
 
-            ((TextView)findViewById(R.id.calendar_studyplan_count)).setText(""+databaseClass.readTasks(0, msg).size());
-            ((TextView)findViewById(R.id.calendar_exams_count)).setText(""+databaseClass.readTasks(1, msg).size());
-            ((TextView)findViewById(R.id.calendar_lecture_count)).setText(""+databaseClass.readTasks(2, msg).size());
-            ((TextView)findViewById(R.id.calendar_assignment_count)).setText(""+databaseClass.readTasks(3, msg).size());
+            ((TextView)findViewById(R.id.calendar_studyplan_count)).setText(""+databaseClass.readTasks("Study Plan", msg).size());
+            ((TextView)findViewById(R.id.calendar_exams_count)).setText(""+databaseClass.readTasks("Exams", msg).size());
+            ((TextView)findViewById(R.id.calendar_lecture_count)).setText(""+databaseClass.readTasks("Lectures", msg).size());
+            ((TextView)findViewById(R.id.calendar_assignment_count)).setText(""+databaseClass.readTasks("Assignments", msg).size());
         }
         else{
             Toast.makeText(getApplicationContext(), "Please Select a Date :)", Toast.LENGTH_SHORT).show();

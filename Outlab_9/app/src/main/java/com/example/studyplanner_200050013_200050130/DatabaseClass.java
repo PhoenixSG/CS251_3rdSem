@@ -129,60 +129,32 @@ public class DatabaseClass extends SQLiteOpenHelper {
         return tasksModelArrayList;
     }
 
-    public ArrayList<TasksModel> readTasks(int position) {
+    public ArrayList<TasksModel> readTasks(String type) {
         // on below line we are creating a
         // database for reading our database.
         SQLiteDatabase db = this.getReadableDatabase();
 
         // on below line we are creating a cursor with query to read data from database.
-        Cursor cursorTasks = db.rawQuery("SELECT * FROM " + TABLE_NAME, null);
+        Cursor cursorTasks = db.rawQuery("SELECT * FROM " + TABLE_NAME+ " WHERE "+ TYPE_COL +" = ?", new String[]{type});
 
         // on below line we are creating a new array list.
         ArrayList<TasksModel> tasksModelArrayList = new ArrayList<>();
-        Boolean flag = true;
         // moving our cursor to first position.
         if (cursorTasks.moveToFirst()) {
             do {
-                flag=true;
-                switch (position) {
-                    case 0:
-                        if (!cursorTasks.getString(4).equals("Study Plan")) {
-                            flag = false;
-                        }
-                        break;
-                    case 1:
-                        if (!cursorTasks.getString(4).equals("Exams")) {
-                            flag = false;
-                        }
-                        break;
-                    case 2:
-                        if (!cursorTasks.getString(4).equals("Lectures")) {
-                            flag = false;
-                        }
-                        break;
-                    case 3:
-                        if (!cursorTasks.getString(4).equals("Assignments")) {
-                            flag = false;
-                        }
-                        break;
-                    default:
-                        break;
-
-                }
-                // on below line we are adding the data from cursor to our array list.
 
                 // 1 title
                 // 2 date
                 // 3 time
                 // 4 type
                 // 5 description
-                if(flag) {
-                    tasksModelArrayList.add(new TasksModel(cursorTasks.getString(1),
-                            cursorTasks.getString(5),
-                            cursorTasks.getString(2),
-                            cursorTasks.getString(3),
-                            cursorTasks.getString(4)));
-                }
+
+                tasksModelArrayList.add(new TasksModel(cursorTasks.getString(1),
+                        cursorTasks.getString(5),
+                        cursorTasks.getString(2),
+                        cursorTasks.getString(3),
+                        cursorTasks.getString(4)));
+
             } while (cursorTasks.moveToNext());
             // moving our cursor to next.
         }
@@ -193,46 +165,20 @@ public class DatabaseClass extends SQLiteOpenHelper {
     }
 
 
-    public ArrayList<TasksModel> readTasks(int position, String date) {
+    public ArrayList<TasksModel> readTasks(String type, String date) {
         // on below line we are creating a
         // database for reading our database.
         SQLiteDatabase db = this.getReadableDatabase();
 
         // on below line we are creating a cursor with query to read data from database.
-        Cursor cursorTasks = db.rawQuery("SELECT * FROM " + TABLE_NAME + " WHERE "+ DATE_COL +" = ?", new String[]{date});
+        Cursor cursorTasks = db.rawQuery("SELECT * FROM " + TABLE_NAME + " WHERE "+ DATE_COL +" = ? AND "+TYPE_COL+" = ?", new String[]{date, type});
 
         // on below line we are creating a new array list.
         ArrayList<TasksModel> tasksModelArrayList = new ArrayList<>();
-        Boolean flag = true;
         // moving our cursor to first position.
         if (cursorTasks.moveToFirst()) {
             do {
-                flag=true;
-                switch (position) {
-                    case 0:
-                        if (!cursorTasks.getString(4).equals("Study Plan")) {
-                            flag = false;
-                        }
-                        break;
-                    case 1:
-                        if (!cursorTasks.getString(4).equals("Exams")) {
-                            flag = false;
-                        }
-                        break;
-                    case 2:
-                        if (!cursorTasks.getString(4).equals("Lectures")) {
-                            flag = false;
-                        }
-                        break;
-                    case 3:
-                        if (!cursorTasks.getString(4).equals("Assignments")) {
-                            flag = false;
-                        }
-                        break;
-                    default:
-                        break;
 
-                }
                 // on below line we are adding the data from cursor to our array list.
 
                 // 1 title
@@ -240,13 +186,13 @@ public class DatabaseClass extends SQLiteOpenHelper {
                 // 3 time
                 // 4 type
                 // 5 description
-                if(flag) {
-                    tasksModelArrayList.add(new TasksModel(cursorTasks.getString(1),
-                            cursorTasks.getString(5),
-                            cursorTasks.getString(2),
-                            cursorTasks.getString(3),
-                            cursorTasks.getString(4)));
-                }
+
+                tasksModelArrayList.add(new TasksModel(cursorTasks.getString(1),
+                        cursorTasks.getString(5),
+                        cursorTasks.getString(2),
+                        cursorTasks.getString(3),
+                        cursorTasks.getString(4)));
+
             } while (cursorTasks.moveToNext());
             // moving our cursor to next.
         }

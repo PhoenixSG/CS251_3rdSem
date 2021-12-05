@@ -81,7 +81,7 @@ public class Assignment extends Fragment {
 
         // getting our task array
         // list from db handler class.
-        tasksModelArrayList = databaseClass.readTasks(3);
+        tasksModelArrayList = databaseClass.readTasks("Assignments");
 
         // on below line passing our array lost to our adapter class.
         taskRecyclerViewAdapter = new TaskRecyclerViewAdapter(tasksModelArrayList, getContext());

@@ -79,7 +79,7 @@ public class Exam extends Fragment {
 
         // getting our task array
         // list from db handler class.
-        tasksModelArrayList = databaseClass.readTasks(1);
+        tasksModelArrayList = databaseClass.readTasks("Exams");
 
         // on below line passing our array lost to our adapter class.
         taskRecyclerViewAdapter = new TaskRecyclerViewAdapter(tasksModelArrayList, getContext());
