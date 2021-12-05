@@ -1,5 +1,6 @@
 package com.example.studyplanner_200050013_200050130;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.MenuItem;
 import android.widget.ImageView;
@@ -16,13 +17,12 @@ import com.google.android.material.navigation.NavigationView;
 import com.google.android.material.tabs.TabLayout;
 import com.google.android.material.tabs.TabLayoutMediator;
 
-public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
+public class MainActivity extends AppCompatActivity {
 
     private TabLayout tabLayout;
     private ViewPager2 viewPager2;
 
-    DrawerLayout drawerLayout;
-    NavigationView navigationView;
+
     Toolbar toolbar;
 
     ImageView navButton;
@@ -30,12 +30,9 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.nav_activity_main);
 
-        drawerLayout = findViewById(R.id.drawer_layout);
-        navigationView = findViewById(R.id.nav_view);
         toolbar = findViewById(R.id.toolbar);
-        navButton = findViewById(R.id.nav_button);
 
         tabLayout = findViewById(R.id.tabLayout);
         viewPager2 = findViewById(R.id.viewPager);
@@ -63,54 +60,30 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                     }
                 }
         ).attach();
-        
-//        navigationView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
-//            @Override
-//            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-//                if(item== findViewById(R.id.nav_home)){
-//                    Toast.makeText(getApplicationContext(), "HOME", Toast.LENGTH_SHORT).show();
-//                }
-//                else if(item== findViewById(R.id.nav_calendar)){
-//                    Toast.makeText(getApplicationContext(), "CALENDAR", Toast.LENGTH_SHORT).show();
-//                }
-//                else{
-//                    Toast.makeText(getApplicationContext(), "NOTHING", Toast.LENGTH_SHORT).show();
-//                }
-//                return true;
-//            }
-//        });
 
-        navigationView.setNavigationItemSelectedListener(this);
+        NavigationView navigationView = findViewById(R.id.nav_view);
+        navigationView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
+            @Override
+            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+                if(item.getItemId()==R.id.nav_home){
 
+                    Toast.makeText(getApplicationContext(), "Already on HOME", Toast.LENGTH_SHORT).show();
+                }
+                else if(item.getItemId()==R.id.nav_calendar){
+                    Intent intent = new Intent(MainActivity.this, CalendarActivity.class);
+                    intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+                    startActivity(intent);
+                    Toast.makeText(getApplicationContext(), "CALENDAR PRESSED", Toast.LENGTH_SHORT).show();
+                }
+
+                DrawerLayout drawerLayout = findViewById(R.id.drawer_layout);
+                drawerLayout.closeDrawer(GravityCompat.START);
+                return true;
+            }
+        });
 
 
     }
 
-    public void openCloseNavigationDrawer(android.view.View navButton) {
-        if (drawerLayout.isDrawerOpen(GravityCompat.START)) {
-            drawerLayout.closeDrawer(GravityCompat.START);
-        } else {
-            drawerLayout.openDrawer(GravityCompat.START);
-        }
-    }
 
-
-    @Override
-    public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-
-        switch (item.getItemId()){
-            case R.id.nav_home:
-                Toast.makeText(this, "HOME", Toast.LENGTH_SHORT).show();
-                break;
-            case R.id.nav_calendar:
-                Toast.makeText(this, "CALENDAR", Toast.LENGTH_SHORT).show();
-                break;
-            default:
-                Toast.makeText(this, "NOTHING", Toast.LENGTH_SHORT).show();
-                break;
-        }
-
-
-        return true;
-    }
 }
