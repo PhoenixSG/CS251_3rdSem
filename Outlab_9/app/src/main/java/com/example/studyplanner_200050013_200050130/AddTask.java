@@ -24,7 +24,7 @@ public class AddTask extends AppCompatActivity {
     private EditText taskTitle, taskDesc;
 
     private Spinner spinner;
-    private Button addTask, viewTasks, viewCalendar,taskDate, taskTime;
+    private Button addTask, viewTasks,taskDate, taskTime;
     private DatabaseClass databaseClass;
 
     private DatePickerDialog datePickerDialog;
@@ -51,7 +51,6 @@ public class AddTask extends AppCompatActivity {
 
         addTask = (Button) findViewById(R.id.addTask);
         viewTasks = (Button) findViewById(R.id.readTasks);
-        viewCalendar = (Button) findViewById(R.id.viewCalendar);
 
         taskTitle = (EditText) findViewById(R.id.TaskTitle);
         taskDesc =  (EditText) findViewById(R.id.TaskDescription);
@@ -111,14 +110,6 @@ public class AddTask extends AppCompatActivity {
             }
         });
 
-        viewCalendar.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent i = new Intent(AddTask.this, CalendarActivity.class);
-                startActivity(i);
-                AddTask.this.finish();
-            }
-        });
     }
 
     private String getTodaysDate()

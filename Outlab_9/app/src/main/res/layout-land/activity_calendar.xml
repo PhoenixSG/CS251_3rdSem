@@ -13,6 +13,7 @@
         android:id="@+id/toolbar"
         android:layout_width="match_parent"
         android:layout_height="0dp"
+        android:layout_marginBottom="2sp"
         android:layout_weight="1"
 
         android:background="?attr/colorPrimary"
@@ -26,7 +27,6 @@
             android:layout_gravity="center"
             android:text="STUDY PLANNER"
             android:textAlignment="center"
-            android:textAppearance="@style/TextAppearance.AppCompat.Large"
             android:textColor="#FFFFFF"
             android:textSize="30sp" />
 
@@ -35,8 +35,6 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_marginTop="20dp"
-        android:layout_marginBottom="20dp"
         android:orientation="horizontal"
         android:layout_weight="1">
 
@@ -167,7 +165,6 @@
 
         <TextView
 
-            android:id="@+id/today"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="2"
@@ -175,7 +172,8 @@
             android:paddingLeft="10dip"
             android:text="@string/date"
             android:textColor="@color/black"
-            android:textSize="34sp"
+            android:textSize="24sp"
+            android:id="@+id/today"
             android:textStyle="bold" />
 
 
@@ -201,19 +199,19 @@
             android:paddingLeft="10dip"
             android:text="@string/study_plans"
             android:textColor="@color/black"
-            android:textSize="30sp"
+            android:textSize="20sp"
             android:textStyle="bold" />
 
         <TextView
-            android:id="@+id/calendar_studyplan_count"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="2"
             android:gravity="right"
+            android:id="@+id/calendar_studyplan_count"
             android:paddingRight="10dip"
             android:text="@string/_0"
             android:textColor="@color/black"
-            android:textSize="30sp"
+            android:textSize="20sp"
             android:textStyle="bold" />
 
 
@@ -234,19 +232,19 @@
             android:paddingLeft="10dip"
             android:text="@string/assignment"
             android:textColor="@color/black"
-            android:textSize="30sp"
+            android:textSize="20sp"
             android:textStyle="bold" />
 
         <TextView
-            android:id="@+id/calendar_assignment_count"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="2"
             android:gravity="right"
+            android:id="@+id/calendar_assignment_count"
             android:paddingRight="10dip"
             android:text="@string/_0"
             android:textColor="@color/black"
-            android:textSize="30sp"
+            android:textSize="20sp"
             android:textStyle="bold" />
 
 
@@ -267,19 +265,19 @@
             android:paddingLeft="10dip"
             android:text="@string/exams"
             android:textColor="@color/black"
-            android:textSize="30sp"
+            android:textSize="20sp"
             android:textStyle="bold" />
 
         <TextView
-            android:id="@+id/calendar_exams_count"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="2"
             android:gravity="right"
             android:paddingRight="10dip"
+            android:id="@+id/calendar_exams_count"
             android:text="0"
             android:textColor="@color/black"
-            android:textSize="30sp"
+            android:textSize="20sp"
             android:textStyle="bold" />
 
 
@@ -299,19 +297,19 @@
             android:paddingLeft="10dip"
             android:text="@string/lectures"
             android:textColor="@color/black"
-            android:textSize="30sp"
+            android:textSize="20sp"
             android:textStyle="bold" />
 
         <TextView
-            android:id="@+id/calendar_lecture_count"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="2"
+            android:id="@+id/calendar_lecture_count"
             android:gravity="right"
             android:paddingRight="10dip"
             android:text="@string/_0"
             android:textColor="@color/black"
-            android:textSize="30sp"
+            android:textSize="20sp"
             android:textStyle="bold" />
 
 

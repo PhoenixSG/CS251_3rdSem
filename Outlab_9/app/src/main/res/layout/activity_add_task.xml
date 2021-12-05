@@ -1,12 +1,36 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
     tools:context=".AddTask"
     android:weightSum="12">
+
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+
+        android:background="?attr/colorPrimary"
+        android:minHeight="?attr/actionBarSize"
+        android:titleTextColor="#ffffff"
+        app:subtitleTextAppearance="@style/TextAppearance.AppCompat.Large">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:text="STUDY PLANNER"
+            android:textAlignment="center"
+            android:textAppearance="@style/TextAppearance.AppCompat.Large"
+            android:textColor="#FFFFFF"
+            android:textSize="30sp" />
+
+    </androidx.appcompat.widget.Toolbar>
 
     <EditText
         android:id="@+id/TaskTitle"
@@ -79,14 +103,5 @@
         android:text="View All Tasks"
         android:textAllCaps="false" />
 
-    <!--button for reading new task-->
-    <Button
-        android:id="@+id/viewCalendar"
-        android:layout_width="match_parent"
-        android:layout_weight="1"
-        android:layout_height="0dp"
-        android:layout_margin="10dp"
-        android:text="View Calendar"
-        android:textAllCaps="false" />
 
 </LinearLayout>
