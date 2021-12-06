@@ -6,7 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".AddTask"
+    tools:context=".UpdateTask"
     android:weightSum="7.5">
 
     <androidx.appcompat.widget.Toolbar
@@ -33,7 +33,7 @@
     </androidx.appcompat.widget.Toolbar>
 
     <EditText
-        android:id="@+id/TaskTitle"
+        android:id="@+id/UpdateTaskTitle"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:hint="Enter Task Title"
@@ -41,7 +41,7 @@
         android:inputType="textShortMessage" />
 
     <Button
-        android:id="@+id/TaskDate"
+        android:id="@+id/UpdateTaskDate"
         style="?android:spinnerStyle"
         android:layout_width="match_parent"
         android:layout_height="0dp"
@@ -52,7 +52,7 @@
         android:textSize="20sp" />
 
     <Button
-        android:id="@+id/TaskTime"
+        android:id="@+id/UpdateTaskTime"
         style="?android:spinnerStyle"
         android:layout_width="match_parent"
         android:layout_height="0dp"
@@ -63,7 +63,7 @@
         android:textSize="20sp" />
 
     <EditText
-        android:id="@+id/TaskDescription"
+        android:id="@+id/UpdateTaskDescription"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="1"
@@ -72,12 +72,13 @@
 
 
     <Spinner
-        android:id="@+id/spinner_options"
+        android:id="@+id/Update_spinner_options"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="1"
         android:autofillHints="OPTIONS"
         android:spinnerMode="dropdown" />
+
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -85,26 +86,26 @@
         android:layout_weight="1.5"
         android:orientation="horizontal"
         android:weightSum="2">
+
     <!--button for adding new task-->
     <Button
-        android:id="@+id/addTask"
+        android:id="@+id/UpdateTask"
         android:layout_width="0dp"
         android:layout_height="match_parent"
         android:layout_weight="1"
         android:layout_margin="10dp"
-        android:text="Add Task"
+        android:text="Update Task"
         android:textAllCaps="false" />
 
-    <!--button for reading new task-->
     <Button
-        android:id="@+id/readTasks"
+        android:id="@+id/DeleteTask"
         android:layout_width="0dp"
-        android:layout_weight="1"
         android:layout_height="match_parent"
         android:layout_margin="10dp"
-        android:text="View All Tasks"
+        android:layout_weight="1"
+        android:text="Delete Task"
         android:textAllCaps="false" />
-    </LinearLayout>
 
+    </LinearLayout>
 
 </LinearLayout>
