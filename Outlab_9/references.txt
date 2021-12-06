@@ -1,11 +1,12 @@
 https://www.geeksforgeeks.org/how-to-create-and-add-data-to-sqlite-database-in-android/
 https://www.geeksforgeeks.org/how-to-read-data-from-sqlite-database-in-android/
+https://www.geeksforgeeks.org/how-to-update-data-to-sqlite-database-in-android/
+https://www.geeksforgeeks.org/how-to-delete-data-in-sqlite-database-in-android/
 https://www.codegrepper.com/code-examples/java/intent+in+fragment+android
 https://developer.android.com/reference/androidx/fragment/app/FragmentActivity
 https://developer.android.com/reference/android/app/Fragment
 https://developer.android.com/training/animation/screen-slide
 https://www.youtube.com/watch?v=iJpB5ju3tN8
 https://www.youtube.com/watch?v=Ba0Q-cK1fJo
-https://www.geeksforgeeks.org/how-to-update-data-to-sqlite-database-in-android/
 https://www.youtube.com/watch?v=fGcMLu1GJEc
 https://stackoverflow.com/questions/8239195/how-to-draw-a-line-between-two-linear-layouts

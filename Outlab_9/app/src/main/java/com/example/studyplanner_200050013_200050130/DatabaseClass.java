@@ -220,4 +220,52 @@ public class DatabaseClass extends SQLiteOpenHelper {
         cursorTasks.close();
         return tasksModelArrayList;
     }
+
+    // below is the method for updating our courses
+    public void updateTask(String originalTaskName,String taskName, String taskDate, String taskDescription, String taskTime, String taskType) {
+
+        // calling a method to get writable database.
+        SQLiteDatabase db = this.getWritableDatabase();
+        ContentValues values = new ContentValues();
+
+        // on below line we are passing all values
+        // along with its key and value pair.
+        values.put(NAME_COL, taskName);
+        values.put(DATE_COL, taskDate);
+        values.put(DESCRIPTION_COL, taskDescription);
+        values.put(TYPE_COL, taskType);
+        values.put(TIME_COL, taskTime);
+
+        try {
+            Date date=new SimpleDateFormat("dd/MM/yyyy").parse(taskDate);
+            Long ordering_value = date.getTime();
+            String[] time = taskTime.split(":");
+            ordering_value += Long.parseLong(time[0])*3600000+Long.parseLong(time[1])*60000;
+            values.put(ORDER_COL, ordering_value);
+
+
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
+
+        // on below line we are calling a update method to update our database and passing our values.
+        // and we are comparing it with name of our task which is stored in original name variable.
+        db.update(TABLE_NAME, values, ""+NAME_COL+"=?", new String[]{originalTaskName});
+        db.close();
+    }
+
+
+    // below is the method for deleting our course.
+    public void deleteCourse(String taskName) {
+
+        // on below line we are creating
+        // a variable to write our database.
+        SQLiteDatabase db = this.getWritableDatabase();
+
+        // on below line we are calling a method to delete
+        db.delete(TABLE_NAME, ""+NAME_COL+"=?", new String[]{taskName});
+        db.close();
+    }
+
+
 }

@@ -1,6 +1,7 @@
 package com.example.studyplanner_200050013_200050130;
 
 import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -42,6 +43,27 @@ public class TaskRecyclerViewAdapter extends RecyclerView.Adapter<TaskRecyclerVi
         holder.taskTime.setText(tasksModel.getTaskTime());
         holder.taskName.setText(tasksModel.getTaskTitle());
         holder.taskType.setText(tasksModel.getTaskType());
+
+        // below line is to add on click listener for our recycler view item.
+        holder.itemView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                // on below line we are calling an intent.
+                Intent i = new Intent(context, UpdateTask.class);
+
+                // below we are passing all our values.
+                i.putExtra("name", tasksModel.getTaskTitle());
+                i.putExtra("description", tasksModel.getTaskDesc());
+                i.putExtra("date", tasksModel.getTaskDate());
+                i.putExtra("time", tasksModel.getTaskTime());
+                i.putExtra("type", tasksModel.getTaskType());
+
+                // starting our activity.
+                context.startActivity(i);
+            }
+        });
+
     }
 
     @Override
