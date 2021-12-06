@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".AddTask"
+    android:weightSum="7">
+
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+
+        android:background="?attr/colorPrimary"
+        android:minHeight="?attr/actionBarSize"
+        android:titleTextColor="#ffffff"
+        app:subtitleTextAppearance="@style/TextAppearance.AppCompat.Large">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:text="STUDY PLANNER"
+            android:textAlignment="center"
+            android:textAppearance="@style/TextAppearance.AppCompat.Large"
+            android:textColor="#FFFFFF"
+            android:textSize="30sp" />
+
+    </androidx.appcompat.widget.Toolbar>
+
+    <EditText
+        android:id="@+id/TaskTitle"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:hint="Enter Task Title"
+        android:layout_weight="1"
+        android:inputType="textShortMessage" />
+
+    <Button
+        android:id="@+id/TaskDate"
+        style="?android:spinnerStyle"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:onClick="openDatePicker"
+        android:text="SELECT DATE"
+        android:layout_weight="1"
+        android:textColor="#000000"
+        android:textSize="20sp" />
+
+    <Button
+        android:id="@+id/TaskTime"
+        style="?android:spinnerStyle"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:onClick="openTimePicker"
+        android:text="SELECT TIME"
+        android:layout_weight="1"
+        android:textColor="#000000"
+        android:textSize="20sp" />
+
+    <EditText
+        android:id="@+id/TaskDescription"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:hint="Enter Task Description"
+        android:inputType="textMultiLine" />
+
+
+    <Spinner
+        android:id="@+id/spinner_options"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:autofillHints="OPTIONS"
+        android:spinnerMode="dropdown" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="2"
+        android:orientation="horizontal"
+        android:weightSum="2">
+    <!--button for adding new task-->
+    <Button
+        android:id="@+id/addTask"
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_weight="1"
+        android:layout_margin="10dp"
+        android:text="Add Task"
+        android:textAllCaps="false" />
+
+    <!--button for reading new task-->
+    <Button
+        android:id="@+id/readTasks"
+        android:layout_width="0dp"
+        android:layout_weight="1"
+        android:layout_height="match_parent"
+        android:layout_margin="10dp"
+        android:text="View All Tasks"
+        android:textAllCaps="false" />
+    </LinearLayout>
+
+
+</LinearLayout>
