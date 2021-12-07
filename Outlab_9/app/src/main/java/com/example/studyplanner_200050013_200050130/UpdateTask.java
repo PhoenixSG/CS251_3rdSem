@@ -3,6 +3,7 @@ package com.example.studyplanner_200050013_200050130;
 import android.app.AlertDialog;
 import android.app.DatePickerDialog;
 import android.app.TimePickerDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -107,11 +108,31 @@ public class UpdateTask extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 // calling a method to delete our course.
-                databaseClass.deleteCourse(old_task_name);
-                Toast.makeText(UpdateTask.this, "Deleted the task- "+old_task_name, Toast.LENGTH_SHORT).show();
-                Intent intent = new Intent(UpdateTask.this, MainActivity.class);
-                intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
-                startActivity(intent);
+                AlertDialog.Builder alert = new AlertDialog.Builder(UpdateTask.this);
+                alert.setTitle("Delete");
+                alert.setMessage("Are you sure you want to delete "+old_task_name+"?");
+                alert.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        databaseClass.deleteCourse(old_task_name);
+                        Toast.makeText(UpdateTask.this, "Deleted the task- "+old_task_name, Toast.LENGTH_SHORT).show();
+                        Intent intent = new Intent(UpdateTask.this, MainActivity.class);
+                        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+                        startActivity(intent);
+                    }
+                });
+
+                alert.setNegativeButton("No", new DialogInterface.OnClickListener() {
+
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        dialog.dismiss();
+                    }
+                });
+
+                alert.show();
+
             }
         });
     }

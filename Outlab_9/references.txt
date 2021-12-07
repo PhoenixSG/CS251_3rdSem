@@ -10,3 +10,4 @@ https://www.youtube.com/watch?v=iJpB5ju3tN8
 https://www.youtube.com/watch?v=Ba0Q-cK1fJo
 https://www.youtube.com/watch?v=fGcMLu1GJEc
 https://stackoverflow.com/questions/8239195/how-to-draw-a-line-between-two-linear-layouts
+https://www.codegrepper.com/code-examples/java/android+studio+confirmation+dialog
