@@ -7,6 +7,7 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     tools:context=".CalendarActivity"
+    android:background="@drawable/screen_background"
     android:weightSum="12">
 
     <androidx.appcompat.widget.Toolbar
@@ -19,6 +20,16 @@
         android:minHeight="?attr/actionBarSize"
         android:titleTextColor="#ffffff"
         app:subtitleTextAppearance="@style/TextAppearance.AppCompat.Large">
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_gravity="left"
+            android:id="@+id/nav_button"
+            android:onClick="openCloseNavigationDrawer"
+            android:src="@drawable/menu_button">
+
+        </ImageView>
 
         <TextView
             android:layout_width="match_parent"
@@ -44,10 +55,11 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:background="@color/design_default_color_secondary"
+            android:background="@color/calendar_button"
             android:onClick="previousMonthAction"
             android:text="@string/Previous"
-            android:textColor="@color/blue"
+            android:layout_marginLeft="5dp"
+            android:textColor="@color/white"
             android:textSize="20sp"
             android:textStyle="bold" />
 
@@ -66,10 +78,11 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:background="@color/design_default_color_secondary"
+            android:background="@color/calendar_button"
             android:onClick="nextMonthAction"
+            android:layout_marginRight="5dp"
             android:text="@string/Next"
-            android:textColor="@color/blue"
+            android:textColor="@color/white"
             android:textSize="20sp"
             android:textStyle="bold" />
     </LinearLayout>
@@ -157,6 +170,7 @@
         android:id="@+id/calendarRecyclerView"
         android:layout_width="match_parent"
         android:layout_height="0dp"
+        android:background="@drawable/calendar_background"
         android:layout_weight="5"></androidx.recyclerview.widget.RecyclerView>
 
     <LinearLayout

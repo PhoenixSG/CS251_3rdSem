@@ -6,6 +6,7 @@ import android.os.Build;
 import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -32,6 +33,9 @@ public class CalendarActivity extends AppCompatActivity implements CalendarAdapt
     private TextView onClickDate;
     private TextView highlighted_date;
 
+    ImageView navButton;
+
+
     @RequiresApi(api = Build.VERSION_CODES.O)
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -40,6 +44,8 @@ public class CalendarActivity extends AppCompatActivity implements CalendarAdapt
         initWidgets();
         selectedDate = LocalDate.now();
         setMonthView();
+
+        navButton = findViewById(R.id.nav_button);
 
 
         NavigationView navigationView = findViewById(R.id.nav_view);
@@ -155,10 +161,10 @@ public class CalendarActivity extends AppCompatActivity implements CalendarAdapt
         if(dayText!=0){
 
             if(highlighted_date!=null){
-                highlighted_date.setBackgroundColor(Color.parseColor("#FFFFFF"));
+                highlighted_date.setBackgroundColor(Color.parseColor("#ffe4e1"));
             }
             highlighted_date = dayOfMonth;
-            highlighted_date.setBackgroundColor(Color.parseColor("#00FF00"));
+            highlighted_date.setBackgroundColor(Color.parseColor("#F7CAC9"));
 
             String msg = String.format("%02d/%s/%s", dayText, num_monthFromDate(selectedDate), num_yearFromDate(selectedDate));
 //            Toast.makeText(this, msg, Toast.LENGTH_SHORT).show();
@@ -174,6 +180,15 @@ public class CalendarActivity extends AppCompatActivity implements CalendarAdapt
         }
         else{
             Toast.makeText(getApplicationContext(), "Please Select a Date :)", Toast.LENGTH_SHORT).show();
+        }
+    }
+
+    public void openCloseNavigationDrawer(android.view.View navButton) {
+        DrawerLayout drawerLayout = findViewById(R.id.drawer_layout);
+        if (drawerLayout.isDrawerOpen(GravityCompat.START)) {
+            drawerLayout.closeDrawer(GravityCompat.START);
+        } else {
+            drawerLayout.openDrawer(GravityCompat.START);
         }
     }
 }

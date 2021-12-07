@@ -5,16 +5,16 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/screen_background"
     android:orientation="vertical"
+    android:background="@drawable/screen_background"
     tools:context=".ViewTasks"
-    android:weightSum="12">
+    android:weightSum="16">
 
 <androidx.appcompat.widget.Toolbar
     android:id="@+id/toolbar"
     android:layout_width="match_parent"
     android:layout_height="0dp"
-    android:layout_weight="1"
+    android:layout_weight="2"
 
     android:background="?attr/colorPrimary"
     android:minHeight="?attr/actionBarSize"
@@ -36,7 +36,7 @@
 <RelativeLayout
     android:layout_width="match_parent"
     android:layout_height="0dp"
-    android:layout_weight="11">
+    android:layout_weight="14">
 
 <!--recycler view for displaying our courses-->
 <androidx.recyclerview.widget.RecyclerView

@@ -5,6 +5,7 @@
     android:id="@+id/drawer_layout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/screen_background"
     android:fitsSystemWindows="true"
     tools:context=".MainActivity"
     tools:openDrawer="start">
@@ -28,6 +29,16 @@
                 android:titleTextColor="#ffffff"
                 app:subtitleTextAppearance="@style/TextAppearance.AppCompat.Large">
 
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_gravity="left"
+                    android:id="@+id/nav_button"
+                    android:onClick="openCloseNavigationDrawer"
+                    android:src="@drawable/menu_button">
+
+                </ImageView>
+
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -47,7 +58,9 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.5"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent">
+                app:layout_constraintTop_toTopOf="parent"
+                app:tabTextColor="@color/black"
+                android:background="@drawable/screen_background">
 
                 <com.google.android.material.tabs.TabItem
                     android:layout_width="wrap_content"

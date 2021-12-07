@@ -36,6 +36,8 @@ public class MainActivity extends AppCompatActivity {
 
         tabLayout = findViewById(R.id.tabLayout);
         viewPager2 = findViewById(R.id.viewPager);
+        navButton = findViewById(R.id.nav_button);
+
 
         FragmentAdapter fragmentAdapter = new FragmentAdapter(this);
         viewPager2.setAdapter(fragmentAdapter);
@@ -75,7 +77,6 @@ public class MainActivity extends AppCompatActivity {
                     startActivity(intent);
                     Toast.makeText(getApplicationContext(), "CALENDAR PRESSED", Toast.LENGTH_SHORT).show();
                 }
-
                 DrawerLayout drawerLayout = findViewById(R.id.drawer_layout);
                 drawerLayout.closeDrawer(GravityCompat.START);
                 return true;
@@ -84,6 +85,13 @@ public class MainActivity extends AppCompatActivity {
 
 
     }
-
+    public void openCloseNavigationDrawer(android.view.View navButton) {
+        DrawerLayout drawerLayout = findViewById(R.id.drawer_layout);
+        if (drawerLayout.isDrawerOpen(GravityCompat.START)) {
+            drawerLayout.closeDrawer(GravityCompat.START);
+        } else {
+            drawerLayout.openDrawer(GravityCompat.START);
+        }
+    }
 
 }
