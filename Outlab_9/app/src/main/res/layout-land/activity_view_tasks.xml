@@ -38,7 +38,7 @@
     android:layout_height="0dp"
     android:layout_weight="14">
 
-<!--recycler view for displaying our courses-->
+<!--recycler view for displaying our tasks-->
 <androidx.recyclerview.widget.RecyclerView
     android:id="@+id/idRVTasks"
     android:layout_width="match_parent"

@@ -221,7 +221,7 @@ public class DatabaseClass extends SQLiteOpenHelper {
         return tasksModelArrayList;
     }
 
-    // below is the method for updating our courses
+    // below is the method for updating our tasks
     public void updateTask(String originalTaskName,String taskName, String taskDate, String taskDescription, String taskTime, String taskType) {
 
         // calling a method to get writable database.
@@ -255,8 +255,8 @@ public class DatabaseClass extends SQLiteOpenHelper {
     }
 
 
-    // below is the method for deleting our course.
-    public void deleteCourse(String taskName) {
+    // below is the method for deleting our tasks.
+    public void deleteTask(String taskName) {
 
         // on below line we are creating
         // a variable to write our database.

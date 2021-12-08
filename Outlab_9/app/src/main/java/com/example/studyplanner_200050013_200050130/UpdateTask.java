@@ -78,7 +78,7 @@ public class UpdateTask extends AppCompatActivity {
 
         String old_task_name = getIntent().getStringExtra("name");
 
-        // adding on click listener to our update course button.
+        // adding on click listener to our update task button.
         UpdateTask.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -90,11 +90,11 @@ public class UpdateTask extends AppCompatActivity {
                     return;
                 }
 
-                // inside this method we are calling an update course
+                // inside this method we are calling an update task
                 // method and passing all our edit text values.
                 databaseClass.updateTask(old_task_name, taskTitleUpdate.getText().toString(), taskDateUpdate.getText().toString(), taskDescUpdate.getText().toString(), taskTimeUpdate.getText().toString(), spinnerUpdate.getSelectedItem().toString());
 
-                // displaying a toast message that our course has been updated.
+                // displaying a toast message that our task has been updated.
                 Toast.makeText(UpdateTask.this, "Task Details Updated Successfully", Toast.LENGTH_SHORT).show();
 
                 // launching our main activity.
@@ -107,7 +107,7 @@ public class UpdateTask extends AppCompatActivity {
         DeleteTask.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                // calling a method to delete our course.
+                // calling a method to delete our task.
                 AlertDialog.Builder alert = new AlertDialog.Builder(UpdateTask.this);
                 alert.setTitle("Delete");
                 alert.setMessage("Are you sure you want to delete "+old_task_name+"?");
@@ -115,7 +115,7 @@ public class UpdateTask extends AppCompatActivity {
 
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
-                        databaseClass.deleteCourse(old_task_name);
+                        databaseClass.deleteTask(old_task_name);
                         Toast.makeText(UpdateTask.this, "Deleted the task- "+old_task_name, Toast.LENGTH_SHORT).show();
                         Intent intent = new Intent(UpdateTask.this, MainActivity.class);
                         intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);

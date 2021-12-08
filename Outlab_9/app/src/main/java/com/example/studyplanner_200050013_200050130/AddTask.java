@@ -83,7 +83,7 @@ public class AddTask extends AppCompatActivity {
                 }
 
                 // on below line we are calling a method to add new
-                // course to sqlite data and pass all our values to it.
+                // task to sqlite data and pass all our values to it.
                 databaseClass.addNewTask(input_taskTitle, input_taskDate, input_taskDesc, input_taskTime, input_taskType);
 
                 // after adding the data we are displaying a toast message.
